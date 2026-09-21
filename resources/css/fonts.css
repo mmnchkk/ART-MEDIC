@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Onest"; 
+  src: url("../../public/fonts/onest/Onest-Regular.ttf") format("opentype"); 
+  font-style: normal; 
+  font-weight: normal; 
+}
+
+@font-face {
+  font-family: "OnestMedium"; 
+  src: url("../../public/fonts/onest/Onest-Medium.ttf") format("opentype"); 
+  font-style: normal; 
+  font-weight: normal; 
+}
