@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
-    @vite(['resources/css/header-footer.css'])
+    @vite(['resources/css/header-footer.css', 'resources/css/fontello.css'])
     @stack('vite')
 </head>
 <body>
@@ -49,7 +49,7 @@
                     <a href="#"><img src="img/icons/vk.svg" alt="vk"></a>
                     <a href="#"><img src="img/icons/telegram.svg" alt="telegram"></a>
                 </div>
-                <a href="#" class="footer-accessibility">Версия для слабовидящих</a>
+                <a href="#" class="footer-accessibility"><i class="demo-icon icon-subtract"></i>Версия для слабовидящих</a>
                 <div class="footer-copy">
                     © Медико-косметологический центр Арт-медика 2026<br>
                     Категория 18+
@@ -85,11 +85,11 @@
                     <a href="#" class="footer-appointment">Записаться</a>
                     <a href="#" class="phone-button"><img src="img/icons/phone-icon.svg" alt="phone" class="phone-icon"></a>
                 </div>
-
-                <div class="footer-contact">Челябинск, пр. Ленина 12а</div>
-                <div class="footer-contact">+7 (351) 775-19-18</div>
-                <div class="footer-contact">marketing.art-medica@mail.ru</div>
+                <div class="footer-contact"><i class="demo-icon icon-subtract-1"></i>Челябинск, пр. Ленина 12а</div>
+                <div class="footer-contact"><i class="demo-icon icon-vector-189"></i>+7 (351) 775-19-18</div>
+                <div class="footer-contact"><i class="demo-icon icon-subtract-2"></i>marketing.art-medica@mail.ru</div>
                 <div class="footer-contact">
+                    <i class="demo-icon icon-subtract-3"></i>
                     09:00 до 20:00<br>
                     понедельник - суббота
                 </div>
