@@ -56,3 +56,35 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+php artisan tinker
+
+$user = App\Models\User::create([
+    'name' => 'Admin',
+    'email' => 'admin@test.ru',
+    'password' => bcrypt('password'),
+]);
+
+пишем в терминал следуйщее:
+composer install
+cp .env.example .env 
+
+незабудьте зайти в .env и раскоментировать строчки
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=MEDICAL
+DB_USERNAME=root
+DB_PASSWORD=
+
+php artisan key:generate
+php artisan migrate
+php artisan serve
+
+ОТКРЫВАЕМ НОВЫЙ ТЕРМНАЛ туда пишем:
+npm i
+npm run dev

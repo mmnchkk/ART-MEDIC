@@ -4,6 +4,6 @@
 
 <x-main>
     <x-slot:title>
-        Арт-медика
+    звзв
     </x-slot:title>
 </x-main>

@@ -47,6 +47,13 @@ return [
             'report' => false,
         ],
 
+        'news' => [
+            'driver' => 'local',
+            'root' => public_path('resources/news'),
+            'url' => env('APP_URL') . '/resources/news',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
