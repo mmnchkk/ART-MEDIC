@@ -27,7 +27,6 @@ class ContactsTable
 
                 TextColumn::make('sms')
                     ->label('SMS')
-                    ->icon('heroicon-o-chat-bubble-left-text')
                     ->searchable(),
 
                 TextColumn::make('phones_count')
