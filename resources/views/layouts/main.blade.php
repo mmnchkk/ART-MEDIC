@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
-    @vite(['resources/css/header-footer.css', 'resources/css/fontello.css'])
+    @vite(['resources/css/header-footer.css', 'resources/css/fontello.css', 'resources/js/app.js'])
     @stack('vite')
 </head>
+
 <body>
     <header class="header">
         <div class="header-container">
@@ -14,12 +16,12 @@
                 <img src="img/logo.svg" alt="logo" class="logo-img">
             </a>
             <nav class="navigation">
-                <a href="#clinic">О клинике</a>
-                <a href="#services">Услуги</a>
-                <a href="#specialists">Специалисты</a>
-                <a href="#offers">Акции</a>
-                <a href="#documents">Документы</a>
-                <a href="#contacts">Контакты</a>
+                <a href="clinic">О клинике</a>
+                <a href="services">Услуги</a>
+                <a href="specialists">Специалисты</a>
+                <a href="offers">Акции</a>
+                <a href="documents">Документы</a>
+                <a href="contacts">Контакты</a>
             </nav>
             <div class="header-right">
                 <div class="header-info">
@@ -100,4 +102,5 @@
         </div>
     </footer>
 </body>
+
 </html>

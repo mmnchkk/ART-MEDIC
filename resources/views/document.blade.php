@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Документы</title>
+@push('vite')
+    @vite('resources/css/app.css')
+    @vite('resources/css/documents.css')
+@endpush
+
+<x-main>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    @vite(['resources/css/documents.css'])
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body>
+    <x-slot:title>
+    звзв
+    </x-slot:title>
     <div class="doc-page">
         <nav class="doc-breadcrumbs">
             <a href="/">Арт-Медика</a>
@@ -57,5 +50,7 @@
             @endforeach
         </div>
     </div>
-</body>
-</html>
+
+
+
+</x-main>

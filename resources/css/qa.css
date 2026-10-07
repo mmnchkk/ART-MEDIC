@@ -1,0 +1,147 @@
+.qa-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #1A1D20;
+    background-color: #ffffff;
+}
+
+@media (min-width: 640px) {
+    .qa-page { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+    .qa-page { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.qa-breadcrumbs {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.qa-breadcrumbs a {
+    color: #1A1D20;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.qa-breadcrumbs a:hover {
+    opacity: 0.7;
+}
+
+.qa-breadcrumbs .separator {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+}
+
+.qa-breadcrumbs .current {
+    color: #6b7280;
+}
+
+.qa-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+    .qa-header {
+        grid-template-columns: 1.2fr 2fr;
+        gap: 4rem;
+    }
+}
+
+.qa-title {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    color: #92B5DF;
+    margin: 0;
+}
+
+.qa-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 5px;
+}
+
+.qa-intro {
+    font-size: 26px;
+    line-height: 1.5;
+    color: #2b2b2b;
+    font-weight: 400;
+    margin: 0;
+}
+
+.qa-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.qa-item {
+    background-color: #F6F8FA;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.qa-item-btn {
+    width: 100%;
+    padding: 1.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.qa-item-btn:hover {
+    background-color: rgba(243, 244, 246, 0.5);
+}
+
+.qa-item-btn:focus {
+    outline: none;
+}
+
+.qa-item-question {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A1D20;
+}
+
+.qa-item-icon {
+    width: 24px;
+    height: 24px;
+    color: #1A1D20;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.qa-item-icon.rotate {
+    transform: rotate(180deg);
+}
+
+.qa-item-content {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.qa-item-answer {
+    font-size: 17px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
