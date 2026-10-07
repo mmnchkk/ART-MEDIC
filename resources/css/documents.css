@@ -1,0 +1,162 @@
+.doc-page {
+    max-width: 80rem; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 3rem 1rem; /* py-12 px-4 */
+    font-family: 'Inter', sans-serif;
+    color: #1A1D20;
+    background-color: #ffffff;
+}
+
+@media (min-width: 640px) {
+    .doc-page { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+    .doc-page { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.doc-breadcrumbs {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.doc-breadcrumbs a {
+    color: #1A1D20;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.doc-breadcrumbs a:hover {
+    opacity: 0.7;
+}
+
+.doc-breadcrumbs .separator {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+}
+
+.doc-breadcrumbs .current {
+    color: #6b7280;
+}
+
+.doc-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    color: #92B5DF;
+}
+
+.doc-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+}
+
+.doc-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.doc-section {
+    background-color: #F6F8FA;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.doc-section-btn {
+    width: 100%;
+    padding: 1.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.doc-section-btn:hover {
+    background-color: rgba(243, 244, 246, 0.5);
+}
+
+.doc-section-btn:focus {
+    outline: none;
+}
+
+.doc-section-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A1D20;
+}
+
+.doc-section-icon {
+    width: 24px;
+    height: 24px;
+    color: #1A1D20;
+    transition: transform 0.3s ease;
+}
+
+.doc-section-icon.rotate {
+    transform: rotate(180deg);
+}
+
+.doc-content {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.doc-empty {
+    color: #6b7280;
+    margin: 0;
+}
+
+.doc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.doc-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.doc-item:hover {
+    opacity: 0.7;
+}
+
+.doc-item-left {
+    display: flex;
+    align-items: center;
+}
+
+.doc-item-icon {
+    width: 24px;
+    height: 24px;
+    color: #6b7280;
+    margin-right: 1rem;
+}
+
+.doc-item-name {
+    font-size: 17px;
+    color: #333333;
+}
+
+.doc-item-download {
+    width: 24px;
+    height: 24px;
+    color: #1A1D20;
+}
