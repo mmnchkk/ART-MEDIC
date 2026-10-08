@@ -1,31 +1,79 @@
 @import "fonts.css";
 
+[x-cloak] {
+    display: none !important;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 .header {
     width: 100%;
     height: 144px;
     background: #ffffff;
-    font-family: Onest;
+    font-family: Onest, sans-serif;
+    position: relative;
+    z-index: 100;
 }
 
 .header-container {
     width: 100%;
-    max-width: 1720px;
+    max-width: 1920px;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 132px;
+    justify-content: space-between;
+    padding: 0 100px;
     margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Бургер-кнопка (скрыта на десктопе) */
+.burger-button {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 36px;
+}
+
+.burger-line {
+    display: block;
+    width: 28px;
+    height: 2.5px;
+    background-color: #212529;
+    border-radius: 2px;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
 .logo-img {
     width: 270px;
-    height: 64px;
+    height: auto;
+    display: block;
 }
 
 .navigation {
@@ -38,38 +86,57 @@
     font-size: 18px;
     font-weight: 500;
     color: #212529;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navigation a:hover {
+    color: #3a261d;
 }
 
 .header-right {
     display: flex;
     align-items: center;
     gap: 36px;
+    flex-shrink: 0;
 }
 
 .header-info {
     font-size: 16px;
     color: #37241B;
+    text-align: left;
+    white-space: nowrap;
 }
 
 .header-address {
-    font-family: OnestMedium;
+    font-family: OnestMedium, sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.address-city {
+    display: inline;
+}
+
+.address-space {
+    display: inline;
+}
+
+.address-street {
+    display: inline;
+}
+
+.header-time {
+    font-family: Onest, sans-serif;
+    font-size: 14px;
+    color: #37241B;
+    line-height: 1.3;
+    margin-top: 2px;
 }
 
 .header-buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.phone-button {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #3a261d;
 }
 
 .appointment-button {
@@ -82,26 +149,298 @@
     background: #3a261d;
     color: #fff;
     font-size: 16px;
-    font-family: OnestMedium;
+    font-family: OnestMedium, sans-serif;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-sizing: border-box;
 }
 
+.appointment-button:hover {
+    background: #4d3327;
+}
+
+.appointment-button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   МОБИЛЬНОЕ МЕНЮ / МОДАЛКА (DRAWER)
+   ========================================================================== */
+.mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+}
+
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    background: #ffffff;
+    z-index: 9999;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-transition {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-closed {
+    transform: translateX(-100%);
+}
+
+.drawer-open {
+    transform: translateX(0);
+}
+
+.mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 20px 20px 24px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.drawer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.drawer-logo-img {
+    width: 180px;
+    height: auto;
+}
+
+.drawer-close-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #212529;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+    transform: scale(1.1);
+}
+
+.drawer-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 24px 40px;
+    gap: 16px;
+}
+
+.drawer-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: #212529;
+    text-decoration: none;
+    font-family: OnestMedium, sans-serif;
+    transition: color 0.15s ease;
+    display: block;
+}
+
+.drawer-link:hover {
+    color: #3a261d;
+}
+
+.drawer-accordion-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #212529;
+    font-family: OnestMedium, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.drawer-arrow {
+    transition: transform 0.25s ease;
+}
+
+.drawer-arrow.rotate {
+    transform: rotate(180deg);
+}
+
+.drawer-services-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0 6px 14px;
+    border-left: 2px solid #e9ecef;
+    margin-top: 8px;
+    margin-left: 4px;
+}
+
+.drawer-services-sublist a {
+    font-size: 15px;
+    color: #5a4b43;
+    text-decoration: none;
+    font-family: Onest, sans-serif;
+    transition: color 0.15s ease;
+}
+
+.drawer-services-sublist a:hover {
+    color: #3a261d;
+}
+
+/* ==========================================================================
+   АДАПТИВ ШАПКИ: 1440px
+   ========================================================================== */
+@media (max-width: 1600px) {
+    .header {
+        height: 124px;
+    }
+
+    .header-container {
+        padding: 0 60px;
+    }
+
+    .logo-img {
+        width: 240px;
+    }
+
+    .navigation {
+        gap: 26px;
+    }
+
+    .navigation a {
+        font-size: 16px;
+    }
+
+    .header-right {
+        gap: 24px;
+    }
+
+    .header-info {
+        font-size: 15px;
+        line-height: 1.25;
+    }
+
+    /* Адрес в 2 строки без времени (как во 2-м макете 1440) */
+    .address-city {
+        display: block;
+    }
+
+    .address-space {
+        display: none;
+    }
+
+    .address-street {
+        display: block;
+    }
+
+    .header-time {
+        display: none;
+    }
+
+    .appointment-button {
+        width: 156px;
+        height: 48px;
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   АДАПТИВ ШАПКИ: ДАЛЕЕ С МОДАЛКОЙ (< 1180px)
+   ========================================================================== */
+@media (max-width: 1250px) {
+    .header {
+        height: 80px;
+    }
+
+    .header-container {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .burger-button {
+        display: flex;
+    }
+
+    .logo {
+        display: flex;
+    }
+
+    .logo-img {
+        width: 190px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .header-right {
+        display: flex;
+    }
+
+    .header-info {
+        display: none;
+    }
+
+    .appointment-button {
+        width: 135px;
+        height: 42px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 16px;
+    }
+
+    .logo-img {
+        width: 165px;
+    }
+
+    .appointment-button {
+        width: 120px;
+        height: 40px;
+        font-size: 13.5px;
+    }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .footer {
     width: 100%;
     background: #f4f6ff;
-    font-family: Onest;
+    font-family: Onest, sans-serif;
     color: #37241B;
 }
 
 .footer-container {
     width: 100%;
-    max-width: 1720px;
-    min-height: 485px;
+    max-width: 1920px;
     margin: 0 auto;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
-    column-gap: 70px;
-    padding: 60px 0 40px;
+    column-gap: 60px;
+    padding: 70px 100px 50px;
     box-sizing: border-box;
 }
 
@@ -109,6 +448,18 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.footer-brand-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-brand .logo-img {
+    width: 270px;
+    height: auto;
 }
 
 .footer-socials {
@@ -120,10 +471,11 @@
 .footer-socials img {
     width: 56px;
     height: 56px;
+    display: block;
 }
 
 i {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .footer-accessibility {
@@ -132,12 +484,20 @@ i {
     font-weight: 600;
     color: #37241B;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.footer-accessibility:hover {
+    opacity: 0.8;
 }
 
 .footer-copy {
     margin-top: 32px;
     font-size: 14px;
     line-height: 1.8;
+    color: #5c4d44;
 }
 
 .footer-column {
@@ -147,17 +507,22 @@ i {
 }
 
 .footer-column h3 {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
     font-size: 18px;
     font-weight: 600;
 }
 
 .footer-column a {
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 12px;
+    font-size: 16px;
     line-height: 1.35;
     color: #37241B;
     text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+    opacity: 0.7;
 }
 
 .footer-contacts {
@@ -170,7 +535,7 @@ i {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
 
 .footer-appointment {
@@ -182,16 +547,58 @@ i {
     border-radius: 30px;
     background: #3a261d;
     color: #fff;
-    font-family: OnestMedium;
+    font-family: OnestMedium, sans-serif;
     font-size: 16px;
     text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.footer-appointment:hover {
+    background: #4d3327;
+}
+
+.phone-button {
+    display: none;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: #3a261d;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.phone-button:hover {
+    background: #4d3327;
+}
+
+.phone-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-contact {
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin-bottom: 18px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.35;
+    display: flex;
+    align-items: flex-start;
+}
+
+.hours-sep {
+    display: none;
+}
+
+.hours-br {
+    display: inline;
 }
 
 .footer-warning {
@@ -200,9 +607,260 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 16px 20px;
     box-sizing: border-box;
     background: #3a261d;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
     text-align: center;
+}
+
+/* ==========================================================================
+   АДАПТИВ ФУТЕРА: 1600px (Скриншот 2)
+   ========================================================================== */
+@media (max-width: 1600px) {
+    .footer-container {
+        padding: 60px 60px 45px;
+        column-gap: 36px;
+    }
+
+    .footer-brand .logo-img {
+        width: 240px;
+    }
+
+    .footer-socials {
+        margin-top: 24px;
+        gap: 12px;
+    }
+
+    .footer-socials img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer-accessibility {
+        margin-top: 28px;
+        font-size: 17px;
+    }
+
+    .footer-copy {
+        margin-top: 28px;
+        font-size: 14px;
+    }
+
+    .footer-column h3 {
+        font-size: 17px;
+        margin-bottom: 18px;
+    }
+
+    .footer-column a {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .footer-buttons {
+        margin-bottom: 26px;
+    }
+
+    .footer-appointment {
+        width: 210px;
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .footer-contact {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+}
+
+/* ==========================================================================
+   АДАПТИВ ФУТЕРА: ДАЛЕЕ С МОДАЛКОЙ (< 1250px, Скриншот 3)
+   ========================================================================== */
+@media (max-width: 1250px) {
+    .footer-container {
+        padding: 32px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 0;
+    }
+
+    .footer-brand,
+    .footer-contacts {
+        display: contents;
+    }
+
+    /* 1. Верхний ряд: Логотип слева, соцсети справа */
+    .footer-brand-top {
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 26px;
+    }
+
+    .footer-brand-top .logo-img {
+        width: 190px;
+    }
+
+    .footer-socials {
+        margin-top: 0;
+        gap: 12px;
+    }
+
+    .footer-socials img {
+        width: 48px;
+        height: 48px;
+    }
+
+    /* Колонки навигации скрываются (перенесены в бургер-меню) */
+    .footer-column {
+        display: none;
+    }
+
+    /* 2. Контакты */
+    .footer-contact-list {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 26px;
+        width: 100%;
+    }
+
+    .footer-contact {
+        margin-bottom: 0;
+        font-size: 17px;
+        font-weight: 500;
+        color: #212529;
+        display: flex;
+        align-items: center;
+    }
+
+    .hours-sep {
+        display: inline;
+    }
+
+    .hours-br {
+        display: none;
+    }
+
+    /* 3. Кнопки: Записаться + звонок */
+    .footer-buttons {
+        order: 3;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+
+    .footer-appointment {
+        width: 175px;
+        height: 52px;
+        border-radius: 26px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .phone-button {
+        display: flex;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #3a261d;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .phone-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* 4. Версия для слабовидящих */
+    .footer-accessibility {
+        order: 4;
+        margin-top: 0;
+        margin-bottom: 22px;
+        font-size: 17px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    /* 5. Копирайт */
+    .footer-copy {
+        order: 5;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: #212529;
+    }
+
+    /* Предупреждение */
+    .footer-warning {
+        font-size: 13.5px;
+        padding: 14px 16px;
+        line-height: 1.4;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   АДАПТИВ ФУТЕРА: 480px (Мобильные экраны)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 24px 16px 20px;
+    }
+
+    .footer-brand-top .logo-img {
+        width: 160px;
+    }
+
+    .footer-socials {
+        gap: 8px;
+    }
+
+    .footer-socials img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-contact {
+        font-size: 15px;
+    }
+
+    .footer-appointment {
+        width: 150px;
+        height: 46px;
+        font-size: 14.5px;
+    }
+
+    .phone-button {
+        width: 46px;
+        height: 46px;
+    }
+
+    .phone-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .footer-accessibility {
+        font-size: 15.5px;
+    }
+
+    .footer-copy {
+        font-size: 13px;
+    }
+
+    .footer-warning {
+        font-size: 12px;
+        padding: 12px 14px;
+    }
 }

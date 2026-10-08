@@ -1,0 +1,52 @@
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.slider-wrapper * {
+    box-sizing: border-box;
+}
+
+.slider-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    padding-bottom: 1rem; 
+    scroll-behavior: smooth;
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.slider-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.slider-nav-btn {
+    background-color: #3C3532;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.slider-nav-btn:hover {
+    background-color: #5a4f4a;
+}
+
+.slider-nav-btn svg {
+    width: 24px;
+    height: 24px;
+}
