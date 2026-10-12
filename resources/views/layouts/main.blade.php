@@ -130,12 +130,12 @@
             <div class="footer-brand">
                 <div class="footer-brand-top">
                     <a href="/" class="footer-logo">
-                        <img src="img/logo.svg" alt="logo" class="logo-img">
+                        <img src="/img/logo.svg" alt="logo" class="logo-img">
                     </a>
                     <div class="footer-socials">
-                        <a href="#"><img src="img/icons/max.svg" alt="max"></a>
-                        <a href="#"><img src="img/icons/vk.svg" alt="vk"></a>
-                        <a href="#"><img src="img/icons/telegram.svg" alt="telegram"></a>
+                        <a href="#"><img src="/img/icons/max.svg" alt="max"></a>
+                        <a href="#"><img src="/img/icons/vk.svg" alt="vk"></a>
+                        <a href="#"><img src="/img/icons/telegram.svg" alt="telegram"></a>
                     </div>
                 </div>
                 <a href="#" class="footer-accessibility"><i class="demo-icon icon-subtract"></i>Версия для слабовидящих</a>
@@ -173,7 +173,7 @@
             <div class="footer-contacts">
                 <div class="footer-buttons">
                     <a href="#" class="footer-appointment">Записаться</a>
-                    <a href="#" class="phone-button"><img src="img/icons/phone-icon.svg" alt="phone" class="phone-icon"></a>
+                    <a href="#" class="phone-button"><img src="/img/icons/phone-icon.svg" alt="phone" class="phone-icon"></a>
                 </div>
                 <div class="footer-contact-list">
                     <div class="footer-contact"><i class="demo-icon icon-subtract-1"></i>Челябинск, пр. Ленина 12а</div>
