@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parten extends Model
 {
+    protected $table = 'partens';
+
     protected $fillable = [
         'name',
         'description',

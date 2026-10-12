@@ -6,6 +6,7 @@ use App\Http\Controllers\QuestionAnswerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UncoController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,8 +18,10 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 Route::get('/quesAns', [QuestionAnswerController::class, 'index'])->name('quesAns');
 Route::get('/uncos', [UncoController::class, 'index'])->name('uncos');
+Route::get('/uncos/{id}', [UncoController::class, 'show'])->name('uncos.show');
 Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
-
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,4 +33,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
