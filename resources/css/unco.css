@@ -22,9 +22,13 @@ body {
     align-items: center;
     gap: 15px;
     font-size: 18px;
-    color: #000000;
     cursor: default;
     line-height: 26px;
+}
+
+.news-navigation a {
+    text-decoration: none;
+    color: #000000;
 }
 
 .news-navigation p {
@@ -47,7 +51,6 @@ body {
 .news-title-nav h1 {
     color: #91b5d5;
     font-size: 40px;
-    font-family: "OnestMedium";
     line-height: 52px;
 }
 
@@ -819,5 +822,73 @@ body {
 
     .pagination-pages {
         gap: 4px;
+    }
+}
+
+/* Небольшие правки для динамических карточек и пагинации */
+.news-cards {
+    min-width: 0;
+}
+
+.news-card-small {
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-card-small .news-card-top p,
+.news-card-small .news-card-text,
+.news-card-small .news-card-date {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.news-card-small .news-card-top img {
+    flex-shrink: 0;
+}
+
+.news-card-small .news-card-image,
+.news-card-small .news-card-content {
+    min-width: 0;
+}
+
+.news-card-small .news-card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card-small .news-card-text {
+    overflow-wrap: anywhere;
+}
+
+.news-pagination {
+    min-width: 0;
+    gap: 12px;
+}
+
+.pagination-pages {
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-page {
+    flex-shrink: 0;
+}
+
+.pagination-arrow.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+    .news-pagination {
+        gap: 8px;
+    }
+
+    .pagination-pages {
+        gap: 6px;
     }
 }
