@@ -23,6 +23,10 @@ Route::get('/documents', [DocumentController::class, 'index'])->name('documents'
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
+Route::get('/clinic', function () {
+    return view('clinic');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

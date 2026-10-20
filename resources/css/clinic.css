@@ -1,0 +1,1005 @@
+body {
+    width: 100%;
+    margin: 0;
+    font-family: "Onest";
+}
+
+.clinic {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 124px;
+}
+
+.clinic-navigation {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    color: #000000;
+    cursor: default;
+    line-height: 26px;
+}
+
+.clinic-navigation p {
+    color: #392d24;
+    font-family: "OnestMedium";
+}
+
+.clinic-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.clinic-title-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-title-nav h1 {
+    color: #91b5d5;
+    font-size: 40px;
+    font-family: "OnestMedium";
+    line-height: 52px;
+}
+
+.clinic-title-description {
+    color: #37241b;
+    font-size: 40px;
+    font-family: "OnestMedium";
+    width: 1140px;
+    max-width: 100%;
+    line-height: 52px;
+}
+
+.clinic-about {
+    display: grid;
+    grid-template-columns: 705px 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.clinic-about-image {
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 607px;
+}
+
+.clinic-about-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clinic-about-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.clinic-about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 28px;
+    line-height: 36px;
+    color: #212529;
+}
+
+.clinic-des-cards {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 0.95fr;
+    gap: 21px;
+}
+
+.clinic-des-card {
+    background: #f4f7ff;
+    border-radius: 12px;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 228px;
+}
+
+.clinic-des-card h3 {
+    font-family: "OnestMedium";
+    font-size: 64px;
+    line-height: 82px;
+    color: #37241b;
+}
+
+.clinic-des-card p {
+    font-size: 24px;
+    line-height: 32px;
+    color: #37241b;
+}
+
+.clinic-departments {
+    background: #f4f7ff;
+    border-radius: 20px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clinic-policlinic {
+    width: 519px;
+}
+
+.clinic-hospital {
+    width: 992px;
+}
+
+.clinic-department-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.clinic-departments h3 {
+    font-family: "OnestMedium";
+    font-size: 36px;
+    line-height: 44px;
+    color: #37241b;
+}
+
+.clinic-departments p {
+    font-size: 20px;
+    line-height: 28px;
+    color: #37241b;
+}
+
+.clinic-policlinic-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #37241b;
+}
+
+.clinic-policlinic-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    line-height: 28px;
+    cursor: default;
+}
+
+.clinic-policlinic-list li::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #37241b;
+    -webkit-mask: url("../../public/img/arrow-ul-ol.svg") center / contain
+        no-repeat;
+    mask: url("../../public/img/arrow-ul-ol.svg") center / contain no-repeat;
+}
+
+.clinic-hospital {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.clinic-hospital h3 {
+    font-size: 36px;
+    line-height: 44px;
+    color: #37241b;
+}
+
+.clinic-hospital-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.clinic-hospital-text p {
+    font-size: 20px;
+    line-height: 28px;
+    max-width: 930px;
+}
+
+.clinic-hospital-text b {
+    font-family: "OnestMedium";
+    font-weight: 400;
+}
+
+.clinic-hospital-bottom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 20px;
+    margin-top: 20px;
+}
+
+.clinic-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    padding: 0 40px;
+    border: none;
+    border-radius: 100px;
+    background: #37241b;
+    color: #ffffff;
+    font-family: "OnestMedium";
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.clinic-button:hover {
+    opacity: 0.85;
+}
+
+.clinic-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex: 0 1 auto;
+}
+
+.clinic-links a {
+    font-size: 20px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    color: #37241b;
+}
+
+.clinic-results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.clinic-filters {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.clinic-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.clinic-filter {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 12px 24px;
+    border-radius: 6px;
+    background: #f4f7ff;
+    font-size: 18px;
+    line-height: 26px;
+    color: #212529;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.clinic-filter:hover {
+    background: #e6ebfa;
+}
+
+.clinic-filter.active {
+    background: #37241b;
+    color: #ffffff;
+    font-family: "OnestMedium";
+}
+
+.clinic-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.clinic-gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 373px;
+    isolation: isolate;
+}
+
+.clinic-gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(12px);
+    transform: scale(1.1);
+    transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .clinic-gallery-item:hover img {
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+.clinic-pagination {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    background: #392d24;
+    transition: opacity 0.2s;
+}
+
+.pagination-arrow:hover {
+    opacity: 0.85;
+}
+
+.pagination-arrow img {
+    width: 22px;
+    height: 18px;
+}
+
+@media (min-width: 1441px) and (max-width: 1760px) {
+    .clinic {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .clinic-title-description {
+        width: 70%;
+    }
+
+    .clinic-about {
+        grid-template-columns: 41% 1fr;
+    }
+
+    .clinic-policlinic {
+        width: auto;
+        flex: 0 0 30%;
+    }
+
+    .clinic-hospital {
+        width: auto;
+        flex: 1;
+        max-width: 992px;
+        min-width: 0;
+    }
+
+    .clinic-hospital-text p {
+        max-width: none;
+    }
+}
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+    .clinic {
+        padding-left: 40px;
+        padding-right: 40px;
+        gap: 36px;
+    }
+
+    .clinic-title-nav h1 {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .clinic-title-description {
+        width: 70%;
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .clinic-about {
+        grid-template-columns: 41% 1fr;
+    }
+
+    .clinic-about-image {
+        min-height: 0;
+    }
+
+    .clinic-about-info {
+        gap: 40px;
+    }
+
+    .clinic-about-text {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .clinic-des-card {
+        padding: 20px;
+        min-height: 200px;
+    }
+
+    .clinic-des-card h3 {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
+    .clinic-des-card p {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .clinic-policlinic {
+        width: auto;
+        flex: 0 0 32%;
+    }
+
+    .clinic-hospital {
+        width: auto;
+        flex: 1;
+        max-width: 992px;
+        min-width: 0;
+    }
+
+    .clinic-departments h3,
+    .clinic-hospital h3 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .clinic-departments p,
+    .clinic-policlinic-list li,
+    .clinic-hospital-text p,
+    .clinic-links a {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-hospital-text p {
+        max-width: none;
+    }
+
+    .clinic-gallery-item {
+        height: 320px;
+    }
+
+    .pagination-arrow {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .clinic {
+        padding-left: 32px;
+        padding-right: 32px;
+        gap: 28px;
+    }
+
+    .clinic-title-nav h1 {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .clinic-title-description {
+        width: 65%;
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .clinic-about {
+        grid-template-columns: 40% 1fr;
+        gap: 16px;
+    }
+
+    .clinic-about-image {
+        min-height: 0;
+    }
+
+    .clinic-about-info {
+        gap: 24px;
+    }
+
+    .clinic-about-text {
+        font-size: 18px;
+        line-height: 26px;
+        gap: 16px;
+    }
+
+    .clinic-des-cards {
+        gap: 12px;
+    }
+
+    .clinic-des-card {
+        padding: 16px;
+        min-height: 0;
+    }
+
+    .clinic-des-card h3 {
+        font-size: 40px;
+        line-height: 52px;
+    }
+
+    .clinic-des-card p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .clinic-departments {
+        padding: 32px 20px;
+        gap: 24px;
+    }
+
+    .clinic-policlinic {
+        width: auto;
+        flex: 0 0 32%;
+    }
+
+    .clinic-hospital {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .clinic-departments h3,
+    .clinic-hospital h3 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .clinic-departments p,
+    .clinic-policlinic-list li,
+    .clinic-hospital-text p,
+    .clinic-links a {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .clinic-hospital-text p {
+        max-width: none;
+    }
+
+    .clinic-button {
+        height: 48px;
+        padding: 0 32px;
+    }
+
+    .clinic-filter {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .clinic-gallery {
+        gap: 12px;
+    }
+
+    .clinic-gallery-item {
+        height: 260px;
+    }
+
+    .pagination-arrow {
+        width: 52px;
+        height: 52px;
+    }
+
+    .clinic-links {
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .clinic {
+        padding-left: 32px;
+        padding-right: 32px;
+        gap: 32px;
+    }
+
+    .clinic-title {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .clinic-title-nav h1 {
+        font-size: 32px;
+        line-height: 42px;
+        margin: 0;
+    }
+
+    .clinic-title-description {
+        width: 100%;
+        margin: 0;
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .clinic-about {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .clinic-about-image {
+        min-height: 0;
+        aspect-ratio: 3 / 2;
+        border-radius: 24px;
+    }
+
+    .clinic-about-info {
+        gap: 24px;
+    }
+
+    .clinic-about-text {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .clinic-des-cards {
+        gap: 16px;
+    }
+
+    .clinic-des-card {
+        padding: 20px;
+        min-height: 0;
+    }
+
+    .clinic-des-card h3 {
+        font-size: 44px;
+        line-height: 56px;
+    }
+
+    .clinic-des-card p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-departments {
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px 24px;
+    }
+
+    .clinic-policlinic,
+    .clinic-hospital {
+        width: 100%;
+    }
+
+    .clinic-departments h3,
+    .clinic-hospital h3 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .clinic-departments p,
+    .clinic-policlinic-list li,
+    .clinic-hospital-text p,
+    .clinic-links a {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-hospital-text p {
+        max-width: none;
+    }
+
+    .clinic-gallery {
+        gap: 16px;
+    }
+
+    .clinic-gallery-item {
+        height: 240px;
+    }
+
+    .pagination-arrow {
+        width: 52px;
+        height: 52px;
+    }
+
+    .clinic-links {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .clinic {
+        padding: 0 20px 60px;
+        gap: 20px;
+    }
+
+    .clinic-navigation {
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .clinic-navigation a,
+    .clinic-navigation span {
+        flex-shrink: 0;
+    }
+
+    .clinic-navigation > p {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .clinic-title {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .clinic-title-nav h1 {
+        font-size: 20px;
+        line-height: 28px;
+        margin: 0;
+    }
+
+    .clinic-title-nav img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .clinic-title-description {
+        width: 100%;
+        margin: 0;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .clinic-about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .clinic-about-image {
+        min-height: 0;
+        aspect-ratio: 5 / 4;
+        border-radius: 16px;
+    }
+
+    .clinic-about-info {
+        gap: 20px;
+    }
+
+    .clinic-about-text {
+        font-size: 16px;
+        line-height: 24px;
+        gap: 16px;
+    }
+
+    .clinic-des-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .clinic-des-card {
+        padding: 16px;
+        min-height: 0;
+        border-radius: 12px;
+    }
+
+    .clinic-des-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .clinic-des-card h3 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .clinic-des-card p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .clinic-departments {
+        flex-direction: column;
+        gap: 28px;
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .clinic-policlinic,
+    .clinic-hospital {
+        width: 100%;
+    }
+
+    .clinic-departments h3,
+    .clinic-hospital h3 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .clinic-department-title {
+        margin-bottom: 16px;
+    }
+
+    .clinic-departments p,
+    .clinic-policlinic-list li,
+    .clinic-hospital-text p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-policlinic-list {
+        gap: 12px;
+    }
+
+    .clinic-hospital-text {
+        gap: 16px;
+    }
+
+    .clinic-hospital-text p {
+        max-width: none;
+    }
+
+    .clinic-hospital-text p:first-child {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .clinic-hospital-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-top: 8px;
+    }
+
+    .clinic-button {
+        height: 48px;
+        padding: 0 32px;
+    }
+
+    .clinic-links {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .clinic-links a {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .clinic-results {
+        gap: 20px;
+    }
+
+    .clinic-filters {
+        gap: 12px;
+        margin-right: -20px;
+        padding-right: 20px;
+    }
+
+    .clinic-filter {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 10px 20px;
+        white-space: nowrap;
+    }
+
+    .clinic-gallery {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        margin-right: -20px;
+        padding-right: 20px;
+    }
+
+    .clinic-gallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .clinic-gallery-item {
+        flex: 0 0 85%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+        scroll-snap-align: start;
+    }
+
+    .clinic-pagination {
+        display: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .clinic {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .clinic-title-nav h1 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .clinic-title-nav img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .clinic-title-description {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .clinic-about-image {
+        aspect-ratio: 3 / 2;
+    }
+
+    .clinic-about-text {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-des-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .clinic-des-card:last-child {
+        grid-column: auto;
+    }
+
+    .clinic-filters,
+    .clinic-gallery {
+        margin-right: -24px;
+        padding-right: 24px;
+    }
+
+    .clinic-gallery-item {
+        flex-basis: 44%;
+    }
+}
+
+@media (max-width: 360px) {
+    .clinic {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .clinic-title-description {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .clinic-departments {
+        padding: 20px 16px;
+    }
+
+    .clinic-departments h3,
+    .clinic-hospital h3 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .clinic-departments p,
+    .clinic-policlinic-list li,
+    .clinic-hospital-text p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .clinic-filters,
+    .clinic-gallery {
+        margin-right: -16px;
+        padding-right: 16px;
+    }
+}

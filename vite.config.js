@@ -16,6 +16,7 @@ export default defineConfig({
                 "resources/css/unco.css",
                 "resources/css/projects.css",
                 "resources/css/unco_show.css",
+                "resources/css/clinic.css",
             ],
             refresh: true,
         }),
