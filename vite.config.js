@@ -13,7 +13,6 @@ export default defineConfig({
                 "resources/css/slider.css",
                 "resources/js/app.js",
                 "resources/css/fontello.css",
-                "resources/css/filament/admin/theme.css",
                 "resources/css/unco.css",
                 "resources/css/projects.css",
                 "resources/css/unco_show.css",
