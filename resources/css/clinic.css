@@ -4,6 +4,13 @@ body {
     font-family: "Onest";
 }
 
+p,
+a,
+h1,
+h3 {
+    margin: 0;
+}
+
 .clinic {
     width: 100%;
     max-width: 1720px;
@@ -26,6 +33,11 @@ body {
     line-height: 26px;
 }
 
+.clinic-navigation a {
+    color: #000000;
+    text-decoration: none;
+}
+
 .clinic-navigation p {
     color: #392d24;
     font-family: "OnestMedium";
@@ -46,14 +58,12 @@ body {
 .clinic-title-nav h1 {
     color: #91b5d5;
     font-size: 40px;
-    font-family: "OnestMedium";
     line-height: 52px;
 }
 
 .clinic-title-description {
     color: #37241b;
     font-size: 40px;
-    font-family: "OnestMedium";
     width: 1140px;
     max-width: 100%;
     line-height: 52px;
