@@ -27,6 +27,10 @@ Route::get('/clinic', function () {
     return view('clinic');
 });
 
+Route::get('/specialists', function () {
+    return view('specialists');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

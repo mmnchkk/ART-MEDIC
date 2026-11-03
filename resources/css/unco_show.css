@@ -4,6 +4,13 @@ body {
     font-family: "Onest";
 }
 
+p,
+a,
+h1,
+h3 {
+    margin: 0;
+}
+
 .news {
     width: 100%;
     max-width: 1720px;

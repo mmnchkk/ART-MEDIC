@@ -52,7 +52,7 @@ h3 {
 .clinic-title-nav {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 13px;
 }
 
 .clinic-title-nav h1 {
@@ -291,6 +291,7 @@ h3 {
 }
 
 .clinic-filter {
+    text-decoration: none;
     flex: 0 0 auto;
     white-space: nowrap;
     padding: 12px 24px;

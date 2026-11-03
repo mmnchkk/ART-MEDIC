@@ -6,6 +6,13 @@ body {
     font-family: "Onest";
 }
 
+p,
+a,
+h1,
+h3 {
+    margin: 0;
+}
+
 .news {
     width: 100%;
     max-width: 1720px;
@@ -45,7 +52,7 @@ body {
 .news-title-nav {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 13px;
 }
 
 .news-title-nav h1 {

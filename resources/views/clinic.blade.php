@@ -17,7 +17,13 @@
         <div class="clinic-title">
             <div class="clinic-title-nav">
                 <h1>О клинике</h1>
-                <!-- <img src="{{ Vite::asset('resources/image/arrow-right.svg') }}" alt="О клинике"> -->
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path
+                        d="M19.6847 19.6326L19.6274 1.50556L1.5003 1.56291M19.6274 1.50556L3.06346 18.1746"
+                        stroke="#91B5D5"
+                        stroke-width="3"
+                        stroke-linecap="round" />
+                </svg>
             </div>
 
             <p class="clinic-title-description">
@@ -88,7 +94,13 @@
         <div class="clinic-title">
             <div class="clinic-title-nav">
                 <h1>Результат операций</h1>
-                <!-- <img src="{{ Vite::asset('resources/image/arrow-right.svg') }}" alt="Результат операций"> -->
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path
+                        d="M19.6847 19.6326L19.6274 1.50556L1.5003 1.56291M19.6274 1.50556L3.06346 18.1746"
+                        stroke="#91B5D5"
+                        stroke-width="3"
+                        stroke-linecap="round" />
+                </svg>
             </div>
 
             <p class="clinic-title-description">
@@ -98,15 +110,15 @@
 
         <div class="clinic-results">
             <div class="clinic-filters">
-                <p class="clinic-filter active">Все</p>
-                <p class="clinic-filter">Блефаропластика</p>
-                <p class="clinic-filter">Ринопластика</p>
-                <p class="clinic-filter">Фэйслифтинг</p>
-                <p class="clinic-filter">Коррекция губ</p>
-                <p class="clinic-filter">Нитевой лифтинг</p>
-                <p class="clinic-filter">Маммопластика</p>
-                <p class="clinic-filter">Липосакция</p>
-                <p class="clinic-filter">Липофилинг</p>
+                <a href="#" class="clinic-filter active">Все</a>
+                <a href="#" class="clinic-filter">Блефаропластика</a>
+                <a href="#" class="clinic-filter">Ринопластика</a>
+                <a href="#" class="clinic-filter">Фэйслифтинг</a>
+                <a href="#" class="clinic-filter">Коррекция губ</a>
+                <a href="#" class="clinic-filter">Нитевой лифтинг</a>
+                <a href="#" class="clinic-filter">Маммопластика</a>
+                <a href="#" class="clinic-filter">Липосакция</a>
+                <a href="#" class="clinic-filter">Липофилинг</a>
             </div>
             <div class="clinic-gallery">
                 <div class="clinic-gallery-item">
@@ -120,8 +132,12 @@
                 </div>
             </div>
             <div class="clinic-pagination">
-                <a href="#" class="pagination-arrow"><img src="{{ Vite::asset('resources/image/pagination-arrow-left.svg') }}" alt="Назад"></a>
-                <a href="#" class="pagination-arrow"><img src="{{ Vite::asset('resources/image/pagination-arrow-right.svg') }}" alt="Вперед"></a>
+                <a href="#" class="pagination-arrow"><svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.12109 10.0605L1.06043 8.99989L-0.000227284 10.0605L1.06043 11.1212L2.12109 10.0605ZM24.6211 11.5605C25.4495 11.5605 26.1211 10.889 26.1211 10.0605C26.1211 9.23212 25.4495 8.56055 24.6211 8.56055L24.6211 10.0605L24.6211 11.5605ZM11.1211 1.06055L10.0604 -0.000112555L1.06043 8.99989L2.12109 10.0605L3.18175 11.1212L12.1818 2.12121L11.1211 1.06055ZM2.12109 10.0605L1.06043 11.1212L10.0604 20.1212L11.1211 19.0605L12.1818 17.9999L3.18175 8.99989L2.12109 10.0605ZM2.12109 10.0605L2.12109 11.5605L24.6211 11.5605L24.6211 10.0605L24.6211 8.56055L2.12109 8.56055L2.12109 10.0605Z" fill="#F4F7FF" />
+                    </svg></a>
+                <a href="#" class="pagination-arrow"><svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 10.0605L25.0607 11.1212L26.1213 10.0605L25.0607 8.99989L24 10.0605ZM1.5 8.56054C0.671575 8.56054 1.71846e-06 9.23212 1.57361e-06 10.0605C1.42876e-06 10.889 0.671575 11.5605 1.5 11.5605L1.5 10.0605L1.5 8.56054ZM15 19.0605L16.0607 20.1212L25.0607 11.1212L24 10.0605L22.9393 8.99989L13.9393 17.9999L15 19.0605ZM24 10.0605L25.0607 8.99989L16.0607 -0.000113922L15 1.06055L13.9393 2.1212L22.9393 11.1212L24 10.0605ZM24 10.0605L24 8.56055L1.5 8.56054L1.5 10.0605L1.5 11.5605L24 11.5605L24 10.0605Z" fill="#F4F7FF" />
+                    </svg></a>
             </div>
         </div>
     </div>
