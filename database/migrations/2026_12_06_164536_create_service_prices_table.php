@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('service_prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade'); // Привязка к услуге
-            $table->foreignId('complexity_id')->nullable()->constrained('service_complexities')->nullOnDelete(); // Сложность
-            $table->string('code'); //Код Номенклатуры мед услуг
             $table->string('code_mis'); //Код МИС
             $table->string('name'); //Наименование мед услуги
             $table->string('duration'); //Продолжительность мед услуги в минутах
-            $table->string('price'); //Цена мед услуги
+            $table->string('price')->nullable(); //Цена мед услуги
+
+            $table->decimal('price_category_1', 10, 2)->nullable(); // Категория I
+            $table->decimal('price_category_2', 10, 2)->nullable(); // Категория II
+            $table->decimal('price_category_3', 10, 2)->nullable(); // Категория III
             $table->timestamps();
         });
     }

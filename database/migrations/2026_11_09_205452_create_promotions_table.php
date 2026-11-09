@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_complexities', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('first_complexities'); //первая сложность
-            $table->string('second_complexities'); //вторая сложность
-            $table->string('third_complexities'); //третья сложность
+            $table->string('name'); // Название акции
+            $table->text('description'); // Описание акции
+            $table->string('image'); // Картинка акции
+            $table->date('date')->nullable(); // Дата начала
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_complexities');
+        Schema::dropIfExists('promotions');
     }
 };

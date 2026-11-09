@@ -37,4 +37,10 @@ class Service extends Model
     {
         return $this->belongsToMany(Specialist::class, 'specialist_service');
     }
+
+    public function promotions()
+    {
+    return $this->belongsToMany(Promotion::class, 'promotion_service');
+    }
+
 }

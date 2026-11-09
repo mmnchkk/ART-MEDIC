@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources\Services\Schemas;
 
 use Filament\Schemas\Schema;
@@ -108,26 +109,44 @@ class ServiceForm
                                 ->label('Цены услуг')
                                 ->relationship('prices')
                                 ->schema([
-                                    Select::make('complexity_id')
-                                        ->relationship('complexity', 'first_complexities')
-                                        ->nullable()
-                                        ->label('Сложность'),
                                     TextInput::make('code')
                                         ->label('Код Номенклатуры мед. услуг')
                                         ->required(),
+
                                     TextInput::make('code_mis')
                                         ->label('Код МИС')
                                         ->required(),
+
                                     TextInput::make('name')
                                         ->label('Наименование по прайсу')
-                                        ->required(),
+                                        ->required()
+                                        ->columnSpanFull(),
+
                                     TextInput::make('duration')
                                         ->label('Продолжительность (мин)')
                                         ->required(),
+
+                                    // Единая цена (если категории не нужны)
                                     TextInput::make('price')
-                                        ->label('Цена (руб)')
-                                        ->required()
-                                        ->numeric(),
+                                        ->label('Единая цена (руб)')
+                                        ->numeric()
+                                        ->nullable(),
+
+                                    // Пустой блок для выравнивания сетки, если нужно, либо идем дальше с категориями
+                                    TextInput::make('price_category_1')
+                                        ->label('Цена I кат. (руб)')
+                                        ->numeric()
+                                        ->nullable(),
+
+                                    TextInput::make('price_category_2')
+                                        ->label('Цена II кат. (руб)')
+                                        ->numeric()
+                                        ->nullable(),
+
+                                    TextInput::make('price_category_3')
+                                        ->label('Цена III кат. (руб)')
+                                        ->numeric()
+                                        ->nullable(),
                                 ])->columns(2)
                                 ->addActionLabel('Добавить позицию прайса')
                                 ->columnSpanFull()
