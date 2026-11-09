@@ -10,8 +10,8 @@ class Speciality extends Model
         'name'
     ];
 
-    public function specialist()
+    public function specialists()
     {
-        return $this->belongsTo(Specialist::class);
+        return $this->belongsToMany(Specialist::class, 'specialist_speciality');
     }
 }

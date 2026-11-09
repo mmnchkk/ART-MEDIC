@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Specialists;
+namespace App\Filament\Resources\Specialists; // <-- Обрати внимание: добавлено /Specialists
 
 use App\Filament\Resources\Specialists\Pages\CreateSpecialist;
 use App\Filament\Resources\Specialists\Pages\EditSpecialist;

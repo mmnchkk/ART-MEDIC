@@ -24,7 +24,7 @@ class Specialist extends Model
     }
 
     public function specialities(){
-        return $this->hasMany(Speciality::class);
+        return $this->belongsToMany(Speciality::class, 'specialist_speciality');
     }
 
     public function directions(){

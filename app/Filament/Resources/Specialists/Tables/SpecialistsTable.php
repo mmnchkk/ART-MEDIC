@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Specialists\Tables;
 
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,24 +19,42 @@ class SpecialistsTable
                     ->label('Фото')
                     ->circular(),
 
-                TextColumn::make('full_name')
-                    ->label('ФИО')
+                TextColumn::make('lastname')
+                    ->label('Фамилия')
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('specialization')
-                    ->label('Специализация')
+                TextColumn::make('name')
+                    ->label('Имя')
+                    ->searchable(),
+
+                TextColumn::make('middle_name')
+                    ->label('Отчество')
                     ->searchable(),
 
                 TextColumn::make('experience')
-                    ->label('Стаж'),
+                    ->label('Опыт (лет)')
+                    ->sortable(),
 
-                TextColumn::make('services_count')
-                    ->counts('services')
-                    ->label('Услуг'),
+                TextColumn::make('count_operations')
+                    ->label('Операций')
+                    ->sortable(),
+
+                TextColumn::make('percentage_reviews')
+                    ->label('% отзывов')
+                    ->badge()
+                    ->color('success'),
             ])
             ->filters([
                 //
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 }
