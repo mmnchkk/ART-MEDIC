@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //название услуги
-            $table->string('description'); //описание услуги
+            $table->foreignId('category_id')->constrained('service_categories')->onDelete('cascade'); // Привязка к категории
+            $table->string('name'); // Название услуги
+            $table->text('description'); // Описание услуги
             $table->text('preparation')->nullable(); // Подготовка
             $table->text('method')->nullable(); // Способ
             $table->timestamps();
         });
+
     }
 
     /**

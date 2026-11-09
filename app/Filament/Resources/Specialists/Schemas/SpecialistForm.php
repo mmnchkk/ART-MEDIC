@@ -24,11 +24,11 @@ class SpecialistForm
                         ->schema([
                             Select::make('specialities')
                                 ->label('Выберите специальности')
-                                ->relationship('specialities', 'name') // Указываем связь многие-ко-многим и поле для отображения
-                                ->multiple() // Разрешаем выбирать несколько
-                                ->searchable() // Поиск по списку
-                                ->preload() // Предзагрузка списка
-                                ->createOptionForm([ // Если специальности нет в базе, можно добавить новую в модалке
+                                ->relationship('specialities', 'name') 
+                                ->multiple() 
+                                ->searchable() 
+                                ->preload() 
+                                ->createOptionForm([ 
                                     TextInput::make('name')
                                         ->label('Название специальности')
                                         ->required(),

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stock_service', function (Blueprint $table) {
+        Schema::create('service_category_section_alls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('stock_id')->constrained('stocks')->onDelete('cascade');
-            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
+            $table->string('name'); // Название секции
+            $table->text('description'); // Описание секции
+            $table->string('image')->nullable(); // Изображение секции
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stock_service');
+        Schema::dropIfExists('service_category_section_alls');
     }
 };

@@ -6,20 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = [
-        'name',
-        'description',
-        'preparation',
-        'method'
-    ];
+    protected $fillable = ['category_id', 'name', 'description', 'preparation', 'method'];
 
-    public function stocks()
+    public function category()
     {
-        return $this->belongsToMany(Stock::class, 'stock_service');
+        return $this->belongsTo(ServiceCategory::class, 'category_id');
     }
-    public function prices()
+
+    public function problems()
     {
-        return $this->hasMany(ServicePrice::class);
+        return $this->hasMany(ServiceProblem::class);
     }
 
     public function types()
@@ -32,14 +28,9 @@ class Service extends Model
         return $this->hasMany(ServiceResult::class);
     }
 
-    public function problems()
+    public function prices()
     {
-        return $this->hasMany(ServiceProblem::class);
-    }
-
-    public function categories()
-    {
-        return $this->hasMany(ServiceCategory::class);
+        return $this->hasMany(ServicePrice::class);
     }
 
     public function specialists()

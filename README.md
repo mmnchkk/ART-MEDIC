@@ -35,15 +35,10 @@ php artisan migrate
 *(Не забудьте также сделать `php artisan storage:link`, чтобы картинки корректно отображались на сайте).*
 
 ### 4. Создание администратора
-Чтобы создать аккаунт администратора, зайдите в консоль Laravel (Tinker):
+Чтобы создать администратора нужно запустить сидер (создается автоматически)
 ```bash
-php artisan tinker
+php artisan db:seed
 ```
-И вставьте туда этот код:
-```php
-$user = App\Models\User::create([ 'name' => 'Admin', 'email' => 'admin@test.ru', 'password' => bcrypt('password'), ]);
-```
-После создания напишите `exit`, чтобы выйти из Tinker.
 
 ### 5. Запуск серверов
 В том же терминале запустите сервер Laravel:

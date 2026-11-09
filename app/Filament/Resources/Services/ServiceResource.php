@@ -13,16 +13,20 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBriefcase;
+    protected static string|UnitEnum|null $navigationGroup = 'Управление услугами';
+    protected static ?string $navigationLabel = 'Конкретные услуги';
+    protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationLabel = 'Услуги';
-    protected static ?string $modelLabel = 'Услуга';
-    protected static ?string $pluralModelLabel = 'Услуги';
+    protected static ?string $modelLabel = 'Конкретная услуга';
+    protected static ?string $pluralModelLabel = 'Конкретные услуги';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBriefcase;
 
     public static function form(Schema $schema): Schema
     {

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('service_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //название категории
-            $table->text('description'); //описание категории
+            $table->foreignId('parent_id')->nullable()->constrained('service_categories')->onDelete('cascade'); // Родительская категория
+            $table->foreignId('section_id')->nullable()->constrained('service_category_sections')->onDelete('cascade'); // Привязка к среднему уровню
+            $table->string('name'); // Название категории
             $table->timestamps();
         });
     }

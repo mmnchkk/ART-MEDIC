@@ -1,15 +1,15 @@
 <?php
-
 namespace App\Filament\Resources\Services\Schemas;
 
-use Filament\Schemas\Components\Group;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\RichEditor;
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Group;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 
 class ServiceForm
 {
@@ -17,123 +17,135 @@ class ServiceForm
     {
         return $schema
             ->components([
-                Group::make()
-                    ->schema([
-                        Section::make('Основная информация')
-                            ->schema([
-                                TextInput::make('name')
-                                    ->label('Название услуги')
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->columnSpanFull(),
+                Group::make()->schema([
+                    
+                    // Основная информация
+                    Section::make('Основная информация')
+                        ->schema([
+                            Select::make('category_id')
+                                ->relationship('category', 'name')
+                                ->required()
+                                ->searchable()
+                                ->preload()
+                                ->label('Категория услуги')
+                                ->columnSpanFull(),
 
-                                RichEditor::make('description')
-                                    ->label('Описание')
-                                    ->columnSpanFull(),
+                            TextInput::make('name')
+                                ->label('Название услуги')
+                                ->required()
+                                ->maxLength(255)
+                                ->columnSpanFull(),
 
-                                Textarea::make('preparation')
-                                    ->label('Подготовка к процедуре')
-                                    ->rows(3)
-                                    ->columnSpanFull(),
+                            RichEditor::make('description')
+                                ->label('Описание услуги')
+                                ->required()
+                                ->columnSpanFull(),
 
-                                Textarea::make('method')
-                                    ->label('Методика проведения')
-                                    ->rows(3)
-                                    ->columnSpanFull(),
-                            ]),
+                            Textarea::make('preparation')
+                                ->label('Подготовка к процедуре')
+                                ->columnSpanFull(),
 
-                        Section::make('Цены и Категории')
-                            ->schema([
-                                Repeater::make('prices')
-                                    ->relationship('prices')
-                                    ->label('Цены')
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label('Наименование/Тип цены')
-                                            ->placeholder('Например: Первичный прием')
-                                            ->required(),
-                                        TextInput::make('price')
-                                            ->label('Цена')
-                                            ->numeric()
-                                            ->prefix('₽')
-                                            ->required(),
-                                    ])
-                                    ->columns(2)
-                                    ->collapsible()
-                                    ->itemLabel(fn (array $state): ?string => isset($state['title']) ? "{$state['title']} — " . ($state['price'] ?? 0) . " ₽" : null),
+                            Textarea::make('method')
+                                ->label('Способ проведения')
+                                ->columnSpanFull(),
+                        ]),
 
-                                Repeater::make('categories')
-                                    ->relationship('categories')
-                                    ->label('Категории')
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label('Название категории')
-                                            ->required(),
-                                    ])
-                                    ->collapsible()
-                                    ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
+                    // Проблемы
+                    Section::make('Проблемы, которые решает услуга')
+                        ->schema([
+                            Repeater::make('problems')
+                                ->label('Проблемы')
+                                ->relationship('problems')
+                                ->schema([
+                                    TextInput::make('name')
+                                        ->label('Название проблемы')
+                                        ->required(),
+                                ])
+                                ->addActionLabel('Добавить проблему')
+                                ->columnSpanFull()
+                        ]),
 
-                                Repeater::make('types')
-                                    ->relationship('types')
-                                    ->label('Типы услуги')
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label('Название типа')
-                                            ->required(),
-                                    ])
-                                    ->collapsible()
-                                    ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
-                            ]),
+                    // Виды услуги
+                    Section::make('Виды услуги')
+                        ->schema([
+                            Repeater::make('types')
+                                ->label('Виды')
+                                ->relationship('types')
+                                ->schema([
+                                    TextInput::make('description')
+                                        ->label('Описание типа')
+                                        ->required(),
+                                    FileUpload::make('image')
+                                        ->label('Изображение')
+                                        ->image()
+                                        ->directory('services/types'),
+                                ])->columns(2)
+                                ->addActionLabel('Добавить вид услуги')
+                                ->columnSpanFull()
+                        ]),
 
-                        Section::make('Дополнительная информация')
-                            ->schema([
-                                Repeater::make('results')
-                                    ->relationship('results')
-                                    ->label('Результаты процедуры')
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label('Результат')
-                                            ->required(),
-                                    ])
-                                    ->collapsible()
-                                    ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
+                    // Результаты До/После
+                    Section::make('Результаты (До / После)')
+                        ->schema([
+                            Repeater::make('results')
+                                ->label('Результаты')
+                                ->relationship('results')
+                                ->schema([
+                                    FileUpload::make('image')
+                                        ->label('Фото результата')
+                                        ->image()
+                                        ->directory('services/results')
+                                        ->required(),
+                                ])
+                                ->addActionLabel('Добавить результат')
+                                ->columnSpanFull()
+                        ]),
 
-                                Repeater::make('problems')
-                                    ->relationship('problems')
-                                    ->label('Решаемые проблемы')
-                                    ->schema([
-                                        TextInput::make('name')
-                                            ->label('Проблема')
-                                            ->required(),
-                                    ])
-                                    ->collapsible()
-                                    ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
-                            ]),
-                    ])
-                    ->columnSpan(['lg' => 2]),
+                    // Цены и номенклатура (Прайс)
+                    Section::make('Прайс и номенклатура')
+                        ->schema([
+                            Repeater::make('prices')
+                                ->label('Цены услуг')
+                                ->relationship('prices')
+                                ->schema([
+                                    Select::make('complexity_id')
+                                        ->relationship('complexity', 'first_complexities')
+                                        ->nullable()
+                                        ->label('Сложность'),
+                                    TextInput::make('code')
+                                        ->label('Код Номенклатуры мед. услуг')
+                                        ->required(),
+                                    TextInput::make('code_mis')
+                                        ->label('Код МИС')
+                                        ->required(),
+                                    TextInput::make('name')
+                                        ->label('Наименование по прайсу')
+                                        ->required(),
+                                    TextInput::make('duration')
+                                        ->label('Продолжительность (мин)')
+                                        ->required(),
+                                    TextInput::make('price')
+                                        ->label('Цена (руб)')
+                                        ->required()
+                                        ->numeric(),
+                                ])->columns(2)
+                                ->addActionLabel('Добавить позицию прайса')
+                                ->columnSpanFull()
+                        ]),
 
-                Group::make()
-                    ->schema([
-                        Section::make('Связанные специалисты и акции')
-                            ->schema([
-                                Select::make('specialists')
-                                    ->label('Специалисты')
-                                    ->relationship('specialists')
-                                    ->getOptionLabelFromRecordUsing(fn ($record) => trim("{$record->lastname} {$record->name} {$record->middle_name}"))
-                                    ->multiple()
-                                    ->searchable()
-                                    ->preload(),
+                    // Врачи
+                    Section::make('Специалисты')
+                        ->schema([
+                            Select::make('specialists')
+                                ->relationship('specialists', 'lastname')
+                                ->multiple()
+                                ->preload()
+                                ->searchable()
+                                ->label('Врачи, выполняющие услугу')
+                                ->columnSpanFull(),
+                        ]),
 
-                                Select::make('stocks')
-                                    ->label('Акции')
-                                    ->relationship('stocks', 'name')
-                                    ->multiple()
-                                    ->searchable()
-                                    ->preload(),
-                            ]),
-                    ])
-                    ->columnSpan(['lg' => 1]),
-            ])
-            ->columns(3);
+                ])->columnSpanFull(),
+            ]);
     }
 }
