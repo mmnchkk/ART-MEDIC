@@ -58,28 +58,30 @@
                 </p>
 
                 <!-- Метрики (стиль карточек .clinic-des-card) -->
-                <div class="spec-stats-grid">
-                    <div class="spec-stat-card">
-                        <h3>
-                            @if($specialist->experience)
-                                с {{ date('Y') - $specialist->experience }} года
-                            @else
-                                с 2002 года
-                            @endif
-                        </h3>
-                        <p>стаж</p>
-                    </div>
+                @if($specialist->experience || !empty($specialist->count_operations) || !empty($specialist->percentage_reviews))
+                    <div class="spec-stats-grid">
+                        @if($specialist->experience)
+                            <div class="spec-stat-card">
+                                <h3>с {{ date('Y') - $specialist->experience }} года</h3>
+                                <p>стаж</p>
+                            </div>
+                        @endif
 
-                    <div class="spec-stat-card">
-                        <h3>{{ $specialist->count_operations ?? 34 }}</h3>
-                        <p>операций за время работы в нашей клинике</p>
-                    </div>
+                        @if(!empty($specialist->count_operations))
+                            <div class="spec-stat-card">
+                                <h3>{{ $specialist->count_operations }}</h3>
+                                <p>операций за время работы в нашей клинике</p>
+                            </div>
+                        @endif
 
-                    <div class="spec-stat-card">
-                        <h3>{{ $specialist->percentage_reviews ?? 90 }}%</h3>
-                        <p>положительных отзывов</p>
+                        @if(!empty($specialist->percentage_reviews))
+                            <div class="spec-stat-card">
+                                <h3>{{ $specialist->percentage_reviews }}%</h3>
+                                <p>положительных отзывов</p>
+                            </div>
+                        @endif
                     </div>
-                </div>
+                @endif
             </div>
         </div>
 
@@ -175,7 +177,7 @@
                                                 <td>{{ $acc->position }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($acc->date_issue)->format('d.m.Y') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($acc->validity_period)->format('d.m.Y') }}</td>
-                                                <td>{{ $acc->note ?? 'Пролонгировано по приказу до 31.12.2026' }}</td>
+                                                <td>{{ !empty($acc->note) ? $acc->note : '—' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

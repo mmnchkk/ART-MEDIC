@@ -72,7 +72,9 @@
             </div>
         </div>
         @else
-        <p>Контакты пока не заполнены.</p>
+            <div class="services-empty-placeholder">
+                Информация о контактах пока не заполнена.
+            </div>
         @endif
 
 

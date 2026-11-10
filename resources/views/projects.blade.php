@@ -71,7 +71,9 @@
                     </div>
                 </div>
             @empty
-                <p style="color: #6b7280; font-size: 16px;">Список проектов пока пуст.</p>
+                <div class="services-empty-placeholder">
+                    Список проектов пока пуст.
+                </div>
             @endforelse
         </div>
 

@@ -60,9 +60,13 @@
 
                     <div class="specialist-card-content">
                         <div class="specialist-card-top">
-                            <span class="specialist-tag">
-                                {{ $specialist->specialities->pluck('name')->first() ?? 'Специалист' }}
-                            </span>
+                            <div class="specialist-tags">
+                                @forelse($specialist->specialities as $spec)
+                                    <span class="specialist-tag">{{ $spec->name }}</span>
+                                @empty
+                                    <span class="specialist-tag">Специалист</span>
+                                @endforelse
+                            </div>
                             <svg class="specialist-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
                             </svg>

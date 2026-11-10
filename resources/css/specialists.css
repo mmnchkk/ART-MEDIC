@@ -238,18 +238,29 @@
 
 .specialist-card-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
+}
+
+.specialist-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.4rem;
+    min-width: 0;
 }
 
 .specialist-tag {
     font-size: 13px;
     font-weight: 500;
     color: #6b7280;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    line-height: 1.35;
+}
+
+.specialist-tags .specialist-tag:not(:last-child)::after {
+    content: ",";
+    color: #6b7280;
 }
 
 .specialist-card-arrow {

@@ -5,7 +5,7 @@
 
 <x-main>
     <x-slot:title>
-        {{ $unco->title ?? '"Освежиться, но не более!"' }}
+        {{ $unco->title }} | Арт-Медика
     </x-slot:title>
 
     <div class="news-page">

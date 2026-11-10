@@ -4,10 +4,10 @@
 @endpush
 
 <x-main>
-    
     <x-slot:title>
-    звзв
+        Документы | Арт-Медика
     </x-slot:title>
+
     <div class="doc-page">
         <nav class="doc-breadcrumbs">
             <a href="/">Арт-Медика</a>
@@ -21,7 +21,7 @@
         </h1>
 
         <div x-data="{ active: 0 }" class="doc-accordion-container">
-            @foreach($documents as $index => $type)
+            @forelse($documents as $index => $type)
                 <div class="doc-section">
                     <button @click="active = active === {{ $index }} ? null : {{ $index }}" class="doc-section-btn">
                         <span class="doc-section-title">{{ $type->name }}</span>
@@ -42,15 +42,16 @@
                                     @endforeach
                                 </div>
                             @else
-                                <p class="doc-empty">Документы в данной категории отсутствуют.</p>
+                                <p class="doc-empty">Документы в данной категории пока отсутствуют.</p>
                             @endif
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="services-empty-placeholder">
+                    Список документов пока не добавлен.
+                </div>
+            @endforelse
         </div>
     </div>
-
-
-
 </x-main>

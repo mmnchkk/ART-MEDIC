@@ -69,24 +69,34 @@
         @endif
 
         <!-- Метрики и показатели -->
-        <div class="project-stats-grid">
-            <div class="project-stat-card">
-                <div class="project-stat-number">{{ $project->count_season }}</div>
-                <div class="project-stat-label">сезонов проекта</div>
+        @if($project->count_season || $project->count_members || $project->count_expert || $project->count_parterns)
+            <div class="project-stats-grid">
+                @if($project->count_season)
+                    <div class="project-stat-card">
+                        <div class="project-stat-number">{{ $project->count_season }}</div>
+                        <div class="project-stat-label">сезонов проекта</div>
+                    </div>
+                @endif
+                @if($project->count_members)
+                    <div class="project-stat-card">
+                        <div class="project-stat-number">{{ $project->count_members }}</div>
+                        <div class="project-stat-label">участников</div>
+                    </div>
+                @endif
+                @if($project->count_expert)
+                    <div class="project-stat-card">
+                        <div class="project-stat-number">{{ $project->count_expert }}</div>
+                        <div class="project-stat-label">экспертов</div>
+                    </div>
+                @endif
+                @if($project->count_parterns)
+                    <div class="project-stat-card">
+                        <div class="project-stat-number">{{ $project->count_parterns }}</div>
+                        <div class="project-stat-label">партнеров</div>
+                    </div>
+                @endif
             </div>
-            <div class="project-stat-card">
-                <div class="project-stat-number">{{ $project->count_members }}</div>
-                <div class="project-stat-label">участников</div>
-            </div>
-            <div class="project-stat-card">
-                <div class="project-stat-number">{{ $project->count_expert }}</div>
-                <div class="project-stat-label">экспертов</div>
-            </div>
-            <div class="project-stat-card">
-                <div class="project-stat-number">{{ $project->count_parterns }}</div>
-                <div class="project-stat-label">партнеров</div>
-            </div>
-        </div>
+        @endif
 
         <!-- Форматы работы -->
         @if($project->formatWorks && $project->formatWorks->count() > 0)

@@ -48,7 +48,9 @@
                 <div class="news-card-date">{{ \Carbon\Carbon::parse($unco->data)->format('d.m.Y') }}</div>
             </a>
             @empty
-            <p>Нет новостей.</p>
+                <div class="services-empty-placeholder" style="grid-column: 1 / -1;">
+                    Новости пока не добавлены.
+                </div>
             @endforelse
         </div>
 

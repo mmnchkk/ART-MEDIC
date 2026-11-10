@@ -5,7 +5,7 @@
 
 <x-main>
     <x-slot:title>
-        Вопросы и ответы
+        Вопросы и ответы | Арт-Медика
     </x-slot:title>
 
     <div class="qa-page">
@@ -28,9 +28,8 @@
         </div>
 
         <!-- Аккордеон (Вопросы и ответы) -->
-        <!-- x-data="{ active: 0 }" делает первый вопрос открытым по умолчанию, как на макете -->
         <div x-data="{ active: 0 }" class="qa-accordion-container">
-            @foreach($quesAnss as $index => $quesAns)
+            @forelse($quesAnss as $index => $quesAns)
                 <div class="qa-item">
                     <button @click="active = active === {{ $index }} ? null : {{ $index }}" class="qa-item-btn">
                         <span class="qa-item-question">{{ $quesAns->question }}</span>
@@ -42,7 +41,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="services-empty-placeholder">
+                    Вопросы и ответы пока не добавлены.
+                </div>
+            @endforelse
         </div>
     </div>
 </x-main>

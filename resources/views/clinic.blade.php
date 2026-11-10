@@ -42,22 +42,32 @@
                 <div class="clinic-about-text">
                     @if(!empty($clinic?->description))
                         {!! $clinic->description !!}
+                    @else
+                        <p class="service-empty-text">Информация о клинике готовится к публикации.</p>
                     @endif
                 </div>
-                <div class="clinic-des-cards">
-                    <div class="clinic-des-card">
-                        <h3>{{ $clinic?->count_study ?? 0 }}+</h3>
-                        <p>обучений в год проходят специалисты центра</p>
+                @if(!empty($clinic?->count_study) || !empty($clinic?->count_projects) || !empty($clinic?->count_reviews))
+                    <div class="clinic-des-cards">
+                        @if(!empty($clinic?->count_study))
+                            <div class="clinic-des-card">
+                                <h3>{{ $clinic->count_study }}+</h3>
+                                <p>обучений в год проходят специалисты центра</p>
+                            </div>
+                        @endif
+                        @if(!empty($clinic?->count_projects))
+                            <div class="clinic-des-card">
+                                <h3>{{ $clinic->count_projects }}</h3>
+                                <p>проектов уже было реализовано в нашей клинике</p>
+                            </div>
+                        @endif
+                        @if(!empty($clinic?->count_reviews))
+                            <div class="clinic-des-card">
+                                <h3>{{ $clinic->count_reviews }}%</h3>
+                                <p>положительных отзывов</p>
+                            </div>
+                        @endif
                     </div>
-                    <div class="clinic-des-card">
-                        <h3>{{ $clinic?->count_projects ?? 0 }}</h3>
-                        <p>проектов уже было реализовано в нашей клинике</p>
-                    </div>
-                    <div class="clinic-des-card">
-                        <h3>{{ $clinic?->count_reviews ?? 0 }}%</h3>
-                        <p>положительных отзывов</p>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
 
@@ -96,6 +106,10 @@
                         <a href="http://pravo.gov.ru" target="_blank" rel="noopener">Официальный интернет-портал правовой информации</a>
                     </div>
                 </div>
+            </div>
+        @else
+            <div class="services-empty-placeholder">
+                Информация об отделениях клиники обновляется.
             </div>
         @endif
 

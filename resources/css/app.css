@@ -1,3 +1,22 @@
+/* Общие стили для информационных заглушек (когда данных еще нет) */
+.services-empty-placeholder,
+.service-empty-placeholder {
+    font-size: 16px;
+    color: #64748B;
+    background-color: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0;
+    line-height: 1.5;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-
-
+.service-empty-text {
+    font-size: 16px;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+}
