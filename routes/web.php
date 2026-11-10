@@ -7,6 +7,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UncoController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SpecialistController;
+use App\Http\Controllers\ClinicController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,13 +25,10 @@ Route::get('/documents', [DocumentController::class, 'index'])->name('documents'
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
-Route::get('/clinic', function () {
-    return view('clinic');
-});
+Route::get('/clinic', [ClinicController::class, 'index'])->name('clinic');
 
-Route::get('/specialists', function () {
-    return view('specialists');
-});
+Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists');
+Route::get('/specialists/{id}', [SpecialistController::class, 'show'])->name('specialists.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

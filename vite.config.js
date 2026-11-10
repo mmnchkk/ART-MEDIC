@@ -17,6 +17,8 @@ export default defineConfig({
                 "resources/css/projects.css",
                 "resources/css/unco_show.css",
                 "resources/css/clinic.css",
+                "resources/css/specialists.css",
+                "resources/css/specialist_show.css",
             ],
             refresh: true,
         }),

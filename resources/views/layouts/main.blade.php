@@ -146,29 +146,29 @@
             </div>
             <div class="footer-column">
                 <h3>Клиника</h3>
-                <a href="#">О клинике</a>
-                <a href="#">Специалисты</a>
-                <a href="#">Услуги</a>
-                <a href="#">Проекты</a>
-                <a href="#">Акции</a>
-                <a href="#">Новости</a>
-                <a href="#">Цены</a>
-                <a href="#">Контакты</a>
-                <a href="#">Документы</a>
+                <a href="/clinic">О клинике</a>
+                <a href="/specialists">Специалисты</a>
+                <a href="/services">Услуги</a>
+                <a href="/projects">Проекты</a>
+                <a href="/offers">Акции</a>
+                <a href="/uncos">Новости</a>
+                <a href="/prices">Цены</a>
+                <a href="/contacts">Контакты</a>
+                <a href="/documents">Документы</a>
                 <a href="/quesAns">Вопросы и ответы</a>
             </div>
             <div class="footer-column">
                 <h3>Услуги</h3>
-                <a href="#">Пластическая хирургия</a>
-                <a href="#">Косметология</a>
-                <a href="#">Топ-продукты</a>
-                <a href="#">Дерматология</a>
-                <a href="#">Оториноларингология</a>
-                <a href="#">Лор-хирургия</a>
-                <a href="#">Неврология и рефлексотерапия</a>
-                <a href="#">Эстетическая гинекология</a>
-                <a href="#">Терапевтический приём</a>
-                <a href="#">Массаж</a>
+                <a href="/services">Пластическая хирургия</a>
+                <a href="/services">Косметология</a>
+                <a href="/services">Топ-продукты</a>
+                <a href="/services">Дерматология</a>
+                <a href="/services">Оториноларингология</a>
+                <a href="/services">Лор-хирургия</a>
+                <a href="/services">Неврология и рефлексотерапия</a>
+                <a href="/services">Эстетическая гинекология</a>
+                <a href="/services">Терапевтический приём</a>
+                <a href="/services">Массаж</a>
             </div>
             <div class="footer-contacts">
                 <div class="footer-buttons">
