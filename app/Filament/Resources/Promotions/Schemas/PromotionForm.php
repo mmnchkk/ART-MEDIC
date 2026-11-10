@@ -28,7 +28,7 @@ class PromotionForm
 
                             FileUpload::make('image')
                                 ->label('Изображение акции')
-                                ->image()
+                                ->disk('public')
                                 ->directory('promotions')
                                 ->required()
                                 ->columnSpanFull(),

@@ -17,6 +17,7 @@ class PromotionTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Фото акции')
+                    ->disk('public')
                     ->circular(),
 
                 TextColumn::make('name')

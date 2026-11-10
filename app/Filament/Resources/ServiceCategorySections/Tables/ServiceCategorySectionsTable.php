@@ -17,6 +17,7 @@ class ServiceCategorySectionTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Изображение')
+                    ->disk('public')
                     ->circular(),
 
                 TextColumn::make('sectionAll.name')

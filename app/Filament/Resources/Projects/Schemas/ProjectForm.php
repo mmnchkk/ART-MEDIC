@@ -102,7 +102,6 @@ class ProjectForm
                                             ->label('Иллюстрация формата')
                                             ->disk('public')
                                             ->directory('format_work')
-                                            ->image()
                                             ->required()
                                             ->columnSpanFull(),
                                     ])

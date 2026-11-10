@@ -41,7 +41,7 @@ class SpecialistForm
                             TextInput::make('lastname')->label('Фамилия')->required(),
                             TextInput::make('name')->label('Имя')->required(),
                             TextInput::make('middle_name')->label('Отчество'),
-                            FileUpload::make('image')->label('Фотография')->image()->directory('specialists')->required()->columnSpanFull(),
+                            FileUpload::make('image')->label('Фотография')->image()->disk('public')->directory('specialists')->required()->columnSpanFull(),
                             Textarea::make('description')->label('Описание')->required()->columnSpanFull(),
                             TextInput::make('experience')->label('Опыт (лет)')->numeric()->required(),
                             TextInput::make('count_operations')->label('Количество операций')->numeric()->default(0),

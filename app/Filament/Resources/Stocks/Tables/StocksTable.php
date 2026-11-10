@@ -17,6 +17,7 @@ class StocksTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Баннер')
+                    ->disk('public')
                     ->square(),
 
                 TextColumn::make('title')

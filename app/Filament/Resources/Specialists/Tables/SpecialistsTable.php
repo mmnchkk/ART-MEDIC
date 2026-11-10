@@ -17,6 +17,7 @@ class SpecialistsTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Фото')
+                    ->disk('public')
                     ->circular(),
 
                 TextColumn::make('lastname')

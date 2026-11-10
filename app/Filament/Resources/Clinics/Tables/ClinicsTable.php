@@ -17,6 +17,7 @@ class ClinicsTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Фото')
+                    ->disk('public')
                     ->circular(),
 
                 TextColumn::make('count_study')

@@ -78,7 +78,7 @@ class ServiceForm
                                         ->required(),
                                     FileUpload::make('image')
                                         ->label('Изображение')
-                                        ->image()
+                                        ->disk('public')
                                         ->directory('services/types'),
                                 ])->columns(2)
                                 ->addActionLabel('Добавить вид услуги')

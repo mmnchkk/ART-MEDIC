@@ -61,9 +61,8 @@ class StockForm
 
                                 FileUpload::make('image')
                                     ->label('Баннер / Изображение')
-                                    ->image()
+                                    ->disk('public')
                                     ->directory('stocks')
-                                    ->imageEditor()
                                     ->columnSpanFull(),
                             ]),
                     ])

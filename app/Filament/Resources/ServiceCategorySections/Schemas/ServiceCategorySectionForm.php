@@ -34,7 +34,7 @@ class ServiceCategorySectionForm
 
                             FileUpload::make('image')
                                 ->label('Изображение')
-                                ->image()
+                                ->disk('public')
                                 ->directory('categories/sections'),
 
                             Textarea::make('description')

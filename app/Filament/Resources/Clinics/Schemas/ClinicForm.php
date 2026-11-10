@@ -23,8 +23,7 @@ class ClinicForm
                             ->icon('heroicon-o-building-office')
                             ->schema([
                                 FileUpload::make('image')
-                                    ->label('Фотография клиники')
-                                    ->image()
+                                    ->disk('public')
                                     ->directory('clinics')
                                     ->required()
                                     ->columnSpanFull(),

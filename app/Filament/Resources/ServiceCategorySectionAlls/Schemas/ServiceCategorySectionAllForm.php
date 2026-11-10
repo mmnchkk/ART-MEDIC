@@ -26,7 +26,7 @@ class ServiceCategorySectionAllForm
 
                             FileUpload::make('image')
                                 ->label('Изображение')
-                                ->image()
+                                ->disk('public')
                                 ->directory('categories/section-alls')
                                 ->columnSpanFull(),
 
