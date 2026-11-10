@@ -1,0 +1,535 @@
+.services-detail-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    font-family: Onest, sans-serif;
+    color: #1A1D20;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+@media (min-width: 640px) {
+    .services-detail-page {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-detail-page {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Хлебные крошки */
+.services-breadcrumbs {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.services-breadcrumbs a {
+    color: #1A1D20;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.services-breadcrumbs a:hover {
+    opacity: 0.7;
+}
+
+.services-breadcrumbs .separator {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.services-breadcrumbs .current {
+    color: #6b7280;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+/* Шапка услуги */
+.service-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    min-width: 0;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .service-header {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+        gap: 3rem;
+    }
+}
+
+.service-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0;
+    display: inline-flex;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    color: #92B5DF;
+    line-height: 1.2;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.service-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.service-header-desc {
+    font-size: 24px;
+    line-height: 1.45;
+    color: #212529;
+    font-weight: 400;
+    margin: 0;
+    max-width: 780px;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.service-header-desc p {
+    margin: 0 0 0.75rem;
+}
+
+.service-header-desc p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .service-title {
+        font-size: 32px;
+    }
+
+    .service-title svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .service-header-desc {
+        font-size: 18px;
+    }
+}
+
+/* Заголовки блоков */
+.service-section-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #1A1D20;
+    margin: 0 0 2rem 0;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.service-blue-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #92B5DF;
+    margin: 0;
+    display: inline-flex;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.service-blue-title svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .service-section-title {
+        font-size: 22px;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-blue-title {
+        font-size: 26px;
+    }
+
+    .service-blue-title svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* Блок «Какие проблемы позволяет решить...» */
+.service-problems-section {
+    margin-top: 4.5rem;
+    width: 100%;
+}
+
+.service-problems-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-problem-item {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #E5E7EB;
+    font-size: 16px;
+    color: #1A1D20;
+}
+
+.service-problem-item:first-child {
+    border-top: 1px solid #E5E7EB;
+}
+
+.service-problem-num {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1A1D20;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.service-problem-name {
+    flex: 1;
+    word-break: break-word;
+    line-height: 1.45;
+}
+
+/* Блок «Виды услуги» */
+.service-types-section {
+    margin-top: 5rem;
+    width: 100%;
+}
+
+.service-types-section .service-blue-title {
+    margin-bottom: 2.5rem;
+}
+
+.service-types-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem 2rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .service-types-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.service-type-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+}
+
+.service-type-desc {
+    font-size: 17px;
+    font-weight: 500;
+    color: #1A1D20;
+    margin: 0;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.service-type-image-wrap {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    aspect-ratio: 16 / 10;
+}
+
+.service-type-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.service-placeholder-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
+    color: #94a3b8;
+    min-height: 200px;
+}
+
+.service-placeholder-box svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Двухколоночные блоки (Подготовка к операции, Способ выполнения) */
+.service-split-section {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .service-split-section {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+        gap: 3rem;
+    }
+}
+
+.service-split-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #212529;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+.service-split-text p {
+    margin: 0 0 1rem;
+}
+
+.service-split-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Блок «Почему выбирают специалистов «Арт-Медики»» */
+.service-why-us {
+    margin-top: 5.5rem;
+    width: 100%;
+}
+
+.service-why-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .service-why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .service-why-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+.service-why-card {
+    background-color: #F4F8FC;
+    border-radius: 20px;
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.service-why-num {
+    font-size: 36px;
+    font-weight: 600;
+    color: #1A1D20;
+    line-height: 1;
+}
+
+.service-why-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1A1D20;
+    margin: 0;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* Результаты процедуры (До / После) */
+.service-results-section {
+    margin-top: 5.5rem;
+    width: 100%;
+    position: relative;
+}
+
+/* Если <= 4 карточек: растягивание по ширине */
+.service-results-grid.is-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.service-results-grid.is-grid .service-result-card {
+    flex: 1 1 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    height: 380px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    min-width: 0;
+}
+
+/* Если > 4 карточек: свайпер/слайдер скролла */
+.service-results-grid.is-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.service-results-grid.is-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.service-results-grid.is-slider .service-result-card {
+    flex: 0 0 calc(25% - 1.125rem);
+    min-width: 260px;
+    height: 380px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 1024px) {
+    .service-results-grid.is-slider .service-result-card {
+        flex: 0 0 calc(50% - 0.75rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .service-results-grid.is-grid .service-result-card {
+        height: 260px;
+        flex: 1 1 100%;
+        border-radius: 16px;
+    }
+
+    .service-results-grid.is-slider .service-result-card {
+        flex: 0 0 85%;
+        height: 280px;
+        border-radius: 16px;
+    }
+}
+
+.service-result-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.service-result-card:hover .service-result-img {
+    transform: scale(1.02);
+}
+
+/* Пагинация (стрелки) */
+.service-results-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.pagination-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #37241B;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    color: #ffffff;
+}
+
+.pagination-arrow:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.pagination-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Блок «Врачи, проводящие процедуру» */
+.service-specialists-section {
+    margin-top: 5.5rem;
+    width: 100%;
+}
+
+.service-specialists-section .service-blue-title {
+    margin-bottom: 2.5rem;
+}
+
+.services-empty,
+.service-empty-placeholder {
+    font-size: 16px;
+    color: #64748B;
+    background-color: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0 0;
+    line-height: 1.5;
+}
+
+.service-empty-text {
+    font-size: 16px;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+}

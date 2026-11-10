@@ -9,12 +9,24 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
 });
 
+// Услуги (чистая и логичная структура)
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/services/section/{id?}', [ServiceController::class, 'sections'])->name('services.section');
+Route::get('/services/category/{id?}', [ServiceController::class, 'categories'])->name('services.category');
+Route::get('/service/{id?}', [ServiceController::class, 'show'])->name('services.show');
+
+// Алиасы для обратной совместимости старых путей
+Route::get('/servicescategorysectionsall', fn() => redirect()->route('services.index'))->name('servicescategorysectionsalls');
+Route::get('/servicescategorysections/{id?}', fn($id = null) => $id ? redirect()->route('services.section', $id) : redirect()->route('services.index'))->name('servicescategorysections');
+Route::get('/servicescategories/{id?}', fn($id = null) => $id ? redirect()->route('services.category', $id) : redirect()->route('services.index'))->name('servicescategories');
+Route::get('/services/{id}', fn($id) => redirect()->route('services.show', $id))->name('services');
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');

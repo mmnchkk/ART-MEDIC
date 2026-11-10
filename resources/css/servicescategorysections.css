@@ -1,0 +1,319 @@
+.services-sections-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    font-family: Onest, sans-serif;
+    color: #1A1D20;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+@media (min-width: 640px) {
+    .services-sections-page {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-sections-page {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Хлебные крошки */
+.services-breadcrumbs {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.services-breadcrumbs a {
+    color: #1A1D20;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.services-breadcrumbs a:hover {
+    opacity: 0.7;
+}
+
+.services-breadcrumbs .separator {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.services-breadcrumbs .current {
+    color: #6b7280;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+/* Шапка раздела */
+.services-sections-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 3.5rem;
+    min-width: 0;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .services-sections-header {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+        gap: 3rem;
+    }
+}
+
+.services-sections-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0;
+    display: inline-flex;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    color: #92B5DF;
+    line-height: 1.2;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.services-sections-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.services-sections-desc {
+    font-size: 24px;
+    line-height: 1.4;
+    color: #212529;
+    font-weight: 500;
+    margin: 0;
+    max-width: 780px;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .services-sections-title {
+        font-size: 32px;
+    }
+
+    .services-sections-title svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .services-sections-desc {
+        font-size: 18px;
+        line-height: 1.45;
+    }
+}
+
+/* Список карточек подразделов */
+.services-sections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    min-width: 0;
+}
+
+.services-section-card {
+    background-color: #F4F8FC;
+    border-radius: 24px;
+    padding: 2.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2.5rem;
+    align-items: stretch;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.services-section-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.services-section-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    gap: 2rem;
+}
+
+.services-section-content-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    min-width: 0;
+    width: 100%;
+}
+
+.services-section-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A1D20;
+    margin: 0;
+    line-height: 1.3;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    flex: 1 1 auto;
+}
+
+.services-section-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #1A1D20;
+    margin: 0;
+    max-width: 360px;
+    flex: 0 1 360px;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+}
+
+.services-section-content-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.services-section-btn {
+    background-color: #37241B;
+    color: #ffffff;
+    border-radius: 9999px;
+    padding: 0.85rem 2.5rem;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.services-section-btn:hover {
+    background-color: #4a3227;
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+/* Картинка подраздела */
+.services-section-image-wrap {
+    width: 380px;
+    max-width: 42%;
+    flex-shrink: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ffffff;
+    aspect-ratio: 4 / 3;
+    min-height: 220px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.services-section-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.services-section-card:hover .services-section-image {
+    transform: scale(1.03);
+}
+
+.services-section-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
+    color: #94a3b8;
+}
+
+.services-section-placeholder svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Адаптив для планшетов и мобильных устройств */
+@media (max-width: 992px) {
+    .services-section-card {
+        flex-direction: column;
+        padding: 1.75rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .services-section-content {
+        gap: 1.25rem;
+    }
+
+    .services-section-content-top {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .services-section-text {
+        max-width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .services-section-image-wrap {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        min-height: unset;
+        order: 2;
+    }
+
+    .services-section-content-bottom {
+        order: 3;
+        width: 100%;
+    }
+
+    .services-section-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.services-empty {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 2rem 0;
+}
+
