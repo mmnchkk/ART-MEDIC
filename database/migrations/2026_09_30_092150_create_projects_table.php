@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('short_desc');
-            $table->string('description');
+            $table->text('short_desc');
+            $table->text('description');
             $table->date('date');
             $table->integer('count_season');
             $table->integer('count_members');
