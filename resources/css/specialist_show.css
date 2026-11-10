@@ -1,0 +1,637 @@
+@import "fonts.css";
+
+/* ==========================================================================
+   КОНТЕЙНЕР СТРАНИЦЫ (СТРОГО КАК В DOC-PAGE И CLINIC: max-width: 80rem)
+   ========================================================================== */
+.spec-page {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+    font-family: "Onest", sans-serif;
+    color: #1A1D20;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+@media (min-width: 640px) {
+    .spec-page {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        gap: 3.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .spec-page {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        gap: 4rem;
+    }
+}
+
+/* ==========================================================================
+   ХЛЕБНЫЕ КРОШКИ (ИЗ DOCUMENTS / CLINIC)
+   ========================================================================== */
+.spec-breadcrumbs {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    line-height: normal;
+}
+
+.spec-breadcrumbs a {
+    color: #1A1D20;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.spec-breadcrumbs a:hover {
+    opacity: 0.7;
+}
+
+.spec-breadcrumbs .separator {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spec-breadcrumbs .current {
+    color: #6b7280;
+    word-break: break-word;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   ВЕРХНИЙ БЛОК: СТРОГО 2 КОЛОНКИ ПО МАКЕТУ
+   Левая колонка: [Специалисты ↗] -> [Фото] -> [Кнопка]
+   Правая колонка: [ФИО] -> [Описание] -> [3 карточки]
+   ========================================================================== */
+.spec-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .spec-hero-grid {
+        grid-template-columns: 310px 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Левая колонка */
+.spec-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.spec-back-title {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 40px;
+    line-height: 52px;
+    font-weight: 500;
+    color: #91B5D5;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s;
+    height: 52px;
+}
+
+.spec-back-title:hover {
+    opacity: 0.8;
+}
+
+.spec-back-title svg {
+    flex-shrink: 0;
+}
+
+.spec-photo-card {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    min-height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #F4F7FF;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.spec-photo-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.spec-btn-appointment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    background: #37241B;
+    color: #ffffff;
+    border-radius: 100px;
+    font-family: "OnestMedium", sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.spec-btn-appointment:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* Правая колонка */
+.spec-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.spec-doctor-name {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 40px;
+    line-height: 52px;
+    font-weight: 500;
+    color: #37241B;
+    margin: 0;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+@media (max-width: 1023px) {
+    .spec-back-title,
+    .spec-doctor-name {
+        font-size: 30px;
+        line-height: 40px;
+        height: auto;
+        min-height: 0;
+    }
+}
+
+.spec-bio-text {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #37241B;
+    margin: 0;
+}
+
+/* Карточки показателей (стиль .clinic-des-card) */
+.spec-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .spec-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+.spec-stat-card {
+    background: #F4F7FF;
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px;
+    box-sizing: border-box;
+}
+
+.spec-stat-card h3 {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 48px;
+    line-height: 1.1;
+    color: #37241B;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+}
+
+@media (max-width: 1023px) {
+    .spec-stat-card h3 {
+        font-size: 38px;
+    }
+}
+
+.spec-stat-card p {
+    font-size: 14px;
+    line-height: 1.35;
+    color: #37241B;
+    margin: 0;
+}
+
+/* ==========================================================================
+   НАПРАВЛЕНИЕ ДЕЯТЕЛЬНОСТИ (СТИЛЬ .clinic-departments С МАРКЕРОМ-СТРЕЛОЧКОЙ)
+   ========================================================================== */
+.spec-directions-box {
+    background: #F4F7FF;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 639px) {
+    .spec-directions-box {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+}
+
+.spec-directions-title {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 24px;
+    line-height: 32px;
+    color: #37241B;
+    margin: 0 0 20px 0;
+    font-weight: 500;
+}
+
+.spec-directions-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 768px) {
+    .spec-directions-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.spec-direction-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #37241B;
+}
+
+.spec-direction-arrow {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   АККОРДЕОНЫ ИЗ DOCUMENTS: .doc-accordion-container, .doc-section, .doc-section-btn
+   ========================================================================== */
+.doc-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.doc-section {
+    background-color: #F4F7FF;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.doc-section-btn {
+    width: 100%;
+    padding: 1.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    gap: 1.5rem;
+}
+
+.doc-section-btn:hover {
+    background-color: rgba(230, 235, 250, 0.4);
+}
+
+.doc-section-btn:focus {
+    outline: none;
+}
+
+.doc-section-title {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A1D20;
+}
+
+@media (max-width: 639px) {
+    .doc-section-btn {
+        padding: 1.25rem;
+    }
+    .doc-section-title {
+        font-size: 18px;
+    }
+}
+
+.doc-section-icon {
+    width: 24px;
+    height: 24px;
+    color: #1A1D20;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.doc-section-icon.rotate {
+    transform: rotate(180deg);
+}
+
+.doc-content {
+    padding: 0 2rem 2rem 2rem;
+}
+
+@media (max-width: 639px) {
+    .doc-content {
+        padding: 0 1.25rem 1.25rem;
+    }
+}
+
+.doc-empty {
+    color: #6b7280;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   ТАБЛИЦЫ БЕЗ БОРДЕРОВ В ТОЧНОСТИ ПО МАКЕТУ
+   ========================================================================== */
+.spec-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.spec-table-clean {
+    width: 100%;
+    border-collapse: collapse;
+    border: none !important;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.spec-table-clean th {
+    padding: 6px 24px 16px 0;
+    font-family: "OnestMedium", sans-serif;
+    font-weight: 500;
+    color: #1A1D20;
+    border: none !important;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.spec-table-clean td {
+    padding: 10px 24px 10px 0;
+    color: #1A1D20;
+    border: none !important;
+    vertical-align: top;
+    font-size: 15px;
+}
+
+.spec-table-clean th:last-child,
+.spec-table-clean td:last-child {
+    padding-right: 0;
+}
+
+/* ==========================================================================
+   РАЗДЕЛ "РЕЗУЛЬТАТ ОПЕРАЦИЙ" (В ТОЧНОСТИ ИЗ CLINIC: ШРИФТЫ, ЦВЕТА, BLUR)
+   ========================================================================== */
+.clinic-title {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .clinic-title {
+        grid-template-columns: 1.2fr 2fr;
+        gap: 4rem;
+    }
+}
+
+.clinic-title-nav {
+    display: flex;
+    align-items: flex-start;
+}
+
+.clinic-title h1,
+.clinic-title-nav h1 {
+    font-family: "OnestMedium", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #91B5D5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.clinic-title svg,
+.clinic-title-nav svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2.5;
+    color: #91B5D5;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.clinic-title-description {
+    font-size: 26px;
+    line-height: 1.4;
+    color: #37241B;
+    font-weight: 400;
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1023px) {
+    .clinic-title h1,
+    .clinic-title-nav h1 {
+        font-size: 32px;
+    }
+    .clinic-title-description {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 639px) {
+    .clinic-title h1,
+    .clinic-title-nav h1 {
+        font-size: 28px;
+    }
+    .clinic-title svg,
+    .clinic-title-nav svg {
+        width: 24px;
+        height: 24px;
+        margin-top: 4px;
+    }
+    .clinic-title-description {
+        font-size: 18px;
+        line-height: 1.45;
+    }
+}
+
+/* Фильтры галереи */
+.clinic-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.clinic-filters {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.clinic-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.clinic-filter {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.65rem 1.35rem;
+    border-radius: 9999px;
+    border: none;
+    background: #F4F7FF;
+    font-family: "Onest", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #212529;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+
+.clinic-filter:hover {
+    background: #e6ebfa;
+    color: #000000;
+}
+
+.clinic-filter.active {
+    background: #37241B;
+    color: #ffffff;
+    font-family: "OnestMedium", sans-serif;
+}
+
+/* Галерея с размытием (filter: blur(12px)) как в clinic */
+.clinic-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .clinic-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .clinic-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.clinic-gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 20px;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    background: #F4F7FF;
+    isolation: isolate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clinic-gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.clinic-gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(12px);
+    transform: scale(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .clinic-gallery-item:hover img {
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* Стрелки пагинации галереи (по краям слева и справа) */
+.clinic-pagination-left,
+.clinic-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.pagination-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    background: #37241B;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    color: #ffffff;
+}
+
+.pagination-arrow:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}

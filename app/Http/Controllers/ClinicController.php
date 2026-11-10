@@ -12,6 +12,6 @@ class ClinicController extends Controller
         $clinic = Clinic::with('departments.directions')
             ->first();
 
-        return view('clinic.index', compact('clinic'));
+        return view('clinic', compact('clinic'));
     }
 }

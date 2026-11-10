@@ -4,141 +4,237 @@
 
 <x-main>
     <x-slot:title>
-        Арт-медика
+        О клинике | Арт-Медика
     </x-slot:title>
 
     <div class="clinic">
-        <div class="clinic-navigation">
+        <!-- Хлебные крошки -->
+        <nav class="clinic-breadcrumbs">
             <a href="/">Арт-Медика</a>
-            <span>&gt;</span>
-            <p>О клинике</p>
-        </div>
+            <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="current">О клинике</span>
+        </nav>
 
-        <div class="clinic-title">
-            <div class="clinic-title-nav">
-                <h1>О клинике</h1>
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path
-                        d="M19.6847 19.6326L19.6274 1.50556L1.5003 1.56291M19.6274 1.50556L3.06346 18.1746"
-                        stroke="#91B5D5"
-                        stroke-width="3"
-                        stroke-linecap="round" />
+        <!-- Шапка раздела -->
+        <div class="clinic-header">
+            <h1 class="clinic-title">
+                О клинике
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
                 </svg>
-            </div>
+            </h1>
 
-            <p class="clinic-title-description">
+            <div class="clinic-intro">
                 Превращаем заветные мечты пациентов в реальность, невзирая на сложность задачи
-            </p>
+            </div>
         </div>
 
+        <!-- О нас: Картинка и описание с карточками -->
         <div class="clinic-about">
             <div class="clinic-about-image">
-                <img src="{{ Vite::asset('resources/image/clinic.svg') }}" alt="Клиника">
+                @if(!empty($clinic?->image))
+                    <img src="{{ asset('storage/' . $clinic->image) }}" alt="Клиника Арт-Медика">
+                @endif
             </div>
             <div class="clinic-about-info">
                 <div class="clinic-about-text">
-                    <p>Центр «Арт-Медика» — партнер ЮУГМУ, клиническая база «Межрегионального центра непрерывного медицинского и фармацевтического образования» (г. Москва). Наша клиника является участником международных проектов в направлении "Пластическая хирургия и косметология".</p>
-                    <p>Качество результата обеспечивает инновационное высокотехнологичное хирургическое, эндоскопическое и лазерное оборудование.</p>
+                    @if(!empty($clinic?->description))
+                        {!! $clinic->description !!}
+                    @endif
                 </div>
                 <div class="clinic-des-cards">
                     <div class="clinic-des-card">
-                        <h3>10+</h3>
+                        <h3>{{ $clinic?->count_study ?? 0 }}+</h3>
                         <p>обучений в год проходят специалисты центра</p>
                     </div>
                     <div class="clinic-des-card">
-                        <h3>20</h3>
+                        <h3>{{ $clinic?->count_projects ?? 0 }}</h3>
                         <p>проектов уже было реализовано в нашей клинике</p>
                     </div>
                     <div class="clinic-des-card">
-                        <h3>90%</h3>
+                        <h3>{{ $clinic?->count_reviews ?? 0 }}%</h3>
                         <p>положительных отзывов</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="clinic-departments">
-            <div class="clinic-policlinic">
-                <div class="clinic-department-title">
-                    <h3>Поликлиническое отделение</h3>
-                    <p>Вы можете получить помощь по направлениям:</p>
-                </div>
-                <ol class="clinic-policlinic-list">
-                    <li>Оториноларингология</li>
-                    <li>Косметология</li>
-                    <li>Дерматология</li>
-                    <li>Венерология</li>
-                    <li>Эстетическая гинекология</li>
-                    <li>Неврология</li>
-                    <li>Диагностика</li>
-                    <li>Терапевтические услуги</li>
-                </ol>
-            </div>
-            <div class="clinic-hospital">
-                <h3>Стационарное отделение</h3>
-                <div class="clinic-hospital-text">
-                    <p>На территории отделения мы ежедневно оказываем помощь даже самым маленьким пациентам, выполняя полный спектр операций по направлению «Лор-хирургия», одним из самых востребованных остается аденотомия и септопластика (исправление носовой перегородки).</p>
-                    <p>В стационарном отделении к вашим услугам палата европейского уровня с 3-х разовым питанием. Медицинская сестра будет сопровождать Вас 24 часа в сутки для создания самых комфортных условий.</p>
-                    <p>Также в стационарном отделении мы оказываем полный спектр операций по направлению «Пластическая хирургия», особое место занимает проект <b>«Доступная пластическая хирургия из Милана»</b>.</p>
-                </div>
-                <div class="clinic-hospital-bottom">
-                    <button class="clinic-button" type="button">Подробнее</button>
+        <!-- Отделения клиники из БД -->
+        @if(!empty($clinic?->departments) && $clinic->departments->count() > 0)
+            <div class="clinic-departments">
+                @foreach($clinic->departments as $dept)
+                    <div class="clinic-department-item">
+                        <div class="clinic-department-title">
+                            <h3>{{ $dept->name }}</h3>
+                            @if(!empty($dept->description))
+                                <div class="clinic-department-desc">{!! $dept->description !!}</div>
+                            @endif
+                        </div>
+
+                        @if(!empty($dept->directions) && $dept->directions->count() > 0)
+                            <ul class="clinic-policlinic-list">
+                                @foreach($dept->directions as $direction)
+                                    <li>
+                                        <svg class="clinic-direction-arrow" width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 13L13 1M13 1H4M13 1V10" stroke="#37241B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span>{{ $direction->name }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endforeach
+
+                <!-- Общий подвал блока отделений: кнопка и ссылки один раз -->
+                <div class="clinic-departments-bottom">
+                    <a href="/specialists" class="clinic-button">Подробнее</a>
                     <div class="clinic-links">
-                        <a href="#">Сайт Министерства здравоохранения Российской Федерации</a>
-                        <a href="#">Официальный интернет-портал правовой информации</a>
+                        <a href="https://minzdrav.gov.ru" target="_blank" rel="noopener">Сайт Министерства здравоохранения Российской Федерации</a>
+                        <a href="http://pravo.gov.ru" target="_blank" rel="noopener">Официальный интернет-портал правовой информации</a>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
-        <div class="clinic-title">
-            <div class="clinic-title-nav">
-                <h1>Результат операций</h1>
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path
-                        d="M19.6847 19.6326L19.6274 1.50556L1.5003 1.56291M19.6274 1.50556L3.06346 18.1746"
-                        stroke="#91B5D5"
-                        stroke-width="3"
-                        stroke-linecap="round" />
-                </svg>
-            </div>
+        @php
+            $servicesFilter = \App\Models\Service::whereHas('results')->get();
+            $resultsList = \App\Models\ServiceResult::with('service')->latest()->get();
+        @endphp
 
-            <p class="clinic-title-description">
-                Мы гордимся результатами, которых достигаем вместе с нашими пациентами благодаря современным методикам и золотым рукам хирургов. Убедитесь сами, как тонко и естественно мы умеем работать с красотой.
-            </p>
-        </div>
+        <!-- Результат операций: отображается только если есть результаты -->
+        @if($resultsList->count() > 0)
+            <div class="clinic-header clinic-results-header">
+                <h1 class="clinic-title">
+                    Результат операций
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
+                    </svg>
+                </h1>
 
-        <div class="clinic-results">
-            <div class="clinic-filters">
-                <a href="#" class="clinic-filter active">Все</a>
-                <a href="#" class="clinic-filter">Блефаропластика</a>
-                <a href="#" class="clinic-filter">Ринопластика</a>
-                <a href="#" class="clinic-filter">Фэйслифтинг</a>
-                <a href="#" class="clinic-filter">Коррекция губ</a>
-                <a href="#" class="clinic-filter">Нитевой лифтинг</a>
-                <a href="#" class="clinic-filter">Маммопластика</a>
-                <a href="#" class="clinic-filter">Липосакция</a>
-                <a href="#" class="clinic-filter">Липофилинг</a>
-            </div>
-            <div class="clinic-gallery">
-                <div class="clinic-gallery-item">
-                    <img src="{{ Vite::asset('resources/image/clinic2.svg') }}" alt="Результат операции">
-                </div>
-                <div class="clinic-gallery-item">
-                    <img src="{{ Vite::asset('resources/image/clinic2.svg') }}" alt="Результат операции">
-                </div>
-                <div class="clinic-gallery-item">
-                    <img src="{{ Vite::asset('resources/image/clinic2.svg') }}" alt="Результат операции">
+                <div class="clinic-intro">
+                    Мы гордимся результатами, которых достигаем вместе с нашими пациентами благодаря современным методикам и золотым рукам хирургов. Убедитесь сами, как тонко и естественно мы умеем работать с красотой.
                 </div>
             </div>
-            <div class="clinic-pagination">
-                <a href="#" class="pagination-arrow"><svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.12109 10.0605L1.06043 8.99989L-0.000227284 10.0605L1.06043 11.1212L2.12109 10.0605ZM24.6211 11.5605C25.4495 11.5605 26.1211 10.889 26.1211 10.0605C26.1211 9.23212 25.4495 8.56055 24.6211 8.56055L24.6211 10.0605L24.6211 11.5605ZM11.1211 1.06055L10.0604 -0.000112555L1.06043 8.99989L2.12109 10.0605L3.18175 11.1212L12.1818 2.12121L11.1211 1.06055ZM2.12109 10.0605L1.06043 11.1212L10.0604 20.1212L11.1211 19.0605L12.1818 17.9999L3.18175 8.99989L2.12109 10.0605ZM2.12109 10.0605L2.12109 11.5605L24.6211 11.5605L24.6211 10.0605L24.6211 8.56055L2.12109 8.56055L2.12109 10.0605Z" fill="#F4F7FF" />
-                    </svg></a>
-                <a href="#" class="pagination-arrow"><svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 10.0605L25.0607 11.1212L26.1213 10.0605L25.0607 8.99989L24 10.0605ZM1.5 8.56054C0.671575 8.56054 1.71846e-06 9.23212 1.57361e-06 10.0605C1.42876e-06 10.889 0.671575 11.5605 1.5 11.5605L1.5 10.0605L1.5 8.56054ZM15 19.0605L16.0607 20.1212L25.0607 11.1212L24 10.0605L22.9393 8.99989L13.9393 17.9999L15 19.0605ZM24 10.0605L25.0607 8.99989L16.0607 -0.000113922L15 1.06055L13.9393 2.1212L22.9393 11.1212L24 10.0605ZM24 10.0605L24 8.56055L1.5 8.56054L1.5 10.0605L1.5 11.5605L24 11.5605L24 10.0605Z" fill="#F4F7FF" />
-                    </svg></a>
+
+            <div class="clinic-results" id="clinicResultsSection">
+                <div class="clinic-filters">
+                    <button type="button" class="clinic-filter active" data-filter="all">Все</button>
+                    @foreach($servicesFilter as $srv)
+                        <button type="button" class="clinic-filter" data-filter="service-{{ $srv->id }}">{{ $srv->name }}</button>
+                    @endforeach
+                </div>
+
+                <div class="clinic-gallery" id="clinicGallery">
+                    @foreach($resultsList as $res)
+                        <div class="clinic-gallery-item" data-service="service-{{ $res->service_id }}">
+                            <img src="{{ asset('storage/' . $res->image) }}" alt="{{ $res->service?->name ?? 'Результат операции' }}">
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="clinic-pagination">
+                    <button type="button" class="pagination-arrow" id="clinicPrevBtn" aria-label="Назад">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="pagination-arrow" id="clinicNextBtn" aria-label="Вперед">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const filterButtons = document.querySelectorAll('.clinic-filter');
+                    const galleryItems = Array.from(document.querySelectorAll('.clinic-gallery-item'));
+                    const prevBtn = document.getElementById('clinicPrevBtn');
+                    const nextBtn = document.getElementById('clinicNextBtn');
+                    const ITEMS_PER_PAGE = 3;
+
+                    let currentFilter = 'all';
+                    let currentPage = 1;
+
+                    function getFilteredItems() {
+                        if (currentFilter === 'all') {
+                            return galleryItems;
+                        }
+                        return galleryItems.filter(item => item.getAttribute('data-service') === currentFilter);
+                    }
+
+                    function renderGallery() {
+                        const filtered = getFilteredItems();
+                        const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+
+                        if (currentPage > totalPages) {
+                            currentPage = 1;
+                        }
+
+                        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+                        const endIndex = startIndex + ITEMS_PER_PAGE;
+
+                        galleryItems.forEach(item => {
+                            item.style.display = 'none';
+                        });
+
+                        filtered.forEach((item, index) => {
+                            if (index >= startIndex && index < endIndex) {
+                                item.style.display = 'block';
+                            }
+                        });
+
+                        if (prevBtn) {
+                            prevBtn.disabled = currentPage <= 1;
+                            prevBtn.style.opacity = currentPage <= 1 ? '0.35' : '1';
+                            prevBtn.style.cursor = currentPage <= 1 ? 'not-allowed' : 'pointer';
+                        }
+
+                        if (nextBtn) {
+                            nextBtn.disabled = currentPage >= totalPages;
+                            nextBtn.style.opacity = currentPage >= totalPages ? '0.35' : '1';
+                            nextBtn.style.cursor = currentPage >= totalPages ? 'not-allowed' : 'pointer';
+                        }
+                    }
+
+                    filterButtons.forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            filterButtons.forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
+
+                            currentFilter = this.getAttribute('data-filter');
+                            currentPage = 1;
+                            renderGallery();
+                        });
+                    });
+
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', function () {
+                            if (currentPage > 1) {
+                                currentPage--;
+                                renderGallery();
+                            }
+                        });
+                    }
+
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', function () {
+                            const filtered = getFilteredItems();
+                            const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+                            if (currentPage < totalPages) {
+                                currentPage++;
+                                renderGallery();
+                            }
+                        });
+                    }
+
+                    renderGallery();
+                });
+            </script>
+        @endif
     </div>
 </x-main>

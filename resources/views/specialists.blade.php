@@ -1,143 +1,86 @@
 @push('vite')
-@vite('resources/css/app.css')
-@vite('resources/css/specialists.css')
+@vite(['resources/css/app.css', 'resources/css/specialists.css'])
 @endpush
 
 <x-main>
-    <x-slot:title>Наши специалисты</x-slot:title>
+    <x-slot:title>Наши специалисты | Арт-Медика</x-slot:title>
 
-    <div class="specialists">
-        <div class="specialists-navigation">
+    <div class="specialists-page">
+        <!-- Хлебные крошки -->
+        <nav class="specialists-breadcrumbs">
             <a href="/">Арт-Медика</a>
-            <span>&gt;</span>
-            <p>Специалисты</p>
-        </div>
+            <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="current">Специалисты</span>
+        </nav>
 
-        <div class="specialists-title">
-            <div class="specialists-title-nav">
-                <h1>Наши специалисты</h1>
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path
-                        d="M19.6847 19.6326L19.6274 1.50556L1.5003 1.56291M19.6274 1.50556L3.06346 18.1746"
-                        stroke="#91B5D5"
-                        stroke-width="3"
-                        stroke-linecap="round" />
+        <!-- Шапка -->
+        <div class="specialists-header">
+            <h1 class="specialists-title">
+                Наши специалисты
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
                 </svg>
-            </div>
+            </h1>
 
-            <p class="specialists-title-description">
+            <div class="specialists-intro">
                 Наши специалисты — это команда профессионалов с многолетним опытом в пластической хирургии и косметологии. Они постоянно повышают своё мастерство, чтобы дарить вам гармонию, уверенность в себе и в своём теле.
-            </p>
+            </div>
         </div>
 
-        <div>
-            <div class="specialists-filter">
-                <a href="#" class="specialists-filter-item active">Все</a>
-                <a href="#" class="specialists-filter-item">Руководство</a>
-                <a href="#" class="specialists-filter-item">Поликлиническое отделение</a>
-                <a href="#" class="specialists-filter-item">Хирургия</a>
-                <a href="#" class="specialists-filter-item">Эстетическая гинекология</a>
-                <a href="#" class="specialists-filter-item">Косметология</a>
-                <a href="#" class="specialists-filter-item">Дерматология</a>
-                <a href="#" class="specialists-filter-item">Лор-хирургия</a>
-                <a href="#" class="specialists-filter-item">Оториноларингология</a>
-            </div>
+        <!-- Фильтры по специальностям -->
+        <div class="specialists-filters">
+            <a href="{{ route('specialists') }}" class="specialists-filter-item {{ empty($selectedSpeciality) ? 'active' : '' }}">
+                Все
+            </a>
+            @foreach($specialities as $spec)
+                <a href="{{ route('specialists', ['speciality' => $spec->name]) }}" 
+                   class="specialists-filter-item {{ $selectedSpeciality == $spec->name || $selectedSpeciality == $spec->id ? 'active' : '' }}">
+                    {{ $spec->name }}
+                </a>
+            @endforeach
+        </div>
 
-            <div class="specialists-cards">
-                <div class="specialist-card">
-                    <img src="{{ Vite::asset('../../../../public/img/specialist-1.svg') }}" alt="Кузнецова Ирина Сергеевна">
-
+        <!-- Сетка карточек специалистов -->
+        <div class="specialists-grid">
+            @forelse($specialists as $specialist)
+                <a href="{{ route('specialists.show', $specialist->id) }}" class="specialist-card">
+                    <div class="specialist-card-image">
+                        @if($specialist->image)
+                            @if(str_starts_with($specialist->image, 'http') || str_starts_with($specialist->image, '/'))
+                                <img src="{{ $specialist->image }}" alt="{{ $specialist->full_name }}" onerror="this.onerror=null;this.src='/img/specialist-1.svg'">
+                            @else
+                                <img src="{{ asset('storage/' . $specialist->image) }}" alt="{{ $specialist->full_name }}" onerror="this.onerror=null;this.src='/img/specialist-1.svg'">
+                            @endif
+                        @else
+                            <img src="/img/specialist-1.svg" alt="{{ $specialist->full_name }}">
+                        @endif
+                    </div>
 
                     <div class="specialist-card-content">
                         <div class="specialist-card-top">
-                            <span>Руководство</span>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.5004 0.75V10.5C13.5004 10.6989 13.4214 10.8897 13.2807 11.0303C13.1401 11.171 12.9493 11.25 12.7504 11.25C12.5515 11.25 12.3607 11.171 12.2201 11.0303C12.0794 10.8897 12.0004 10.6989 12.0004 10.5V2.56031L1.28104 13.2806C1.14031 13.4214 0.94944 13.5004 0.750417 13.5004C0.551394 13.5004 0.360523 13.4214 0.219792 13.2806C0.0790615 13.1399 0 12.949 0 12.75C0 12.551 0.0790615 12.3601 0.219792 12.2194L10.9401 1.5H3.00042C2.8015 1.5 2.61074 1.42098 2.47009 1.28033C2.32943 1.13968 2.25042 0.948912 2.25042 0.75C2.25042 0.551088 2.32943 0.360322 2.47009 0.21967C2.61074 0.0790178 2.8015 0 3.00042 0H12.7504C12.9493 0 13.1401 0.0790178 13.2807 0.21967C13.4214 0.360322 13.5004 0.551088 13.5004 0.75Z" fill="#212529" />
+                            <span class="specialist-tag">
+                                {{ $specialist->specialities->pluck('name')->first() ?? 'Специалист' }}
+                            </span>
+                            <svg class="specialist-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
                             </svg>
                         </div>
 
-                        <div class="specialist-card-btm">
-                            <h2>Кузнецова Ирина Сергеевна</h2>
-                            <p>
-                                Директор ООО «МКЦ «Арт-Медика», врач-организатор здравоохранения,
-                                дерматовенеролог, косметолог. Руководитель, врач координатор
-                                российского-итальянского проекта «Доступная пластическая хирургия
-                                из Милана в России», руководитель оргкомитета международного
-                                проекта-преображение «Красота в тебе чета чета чета там"
+                        <div class="specialist-card-body">
+                            <h2 class="specialist-card-name">{{ $specialist->full_name }}</h2>
+                            <p class="specialist-card-desc">
+                                {{ $specialist->description }}
                             </p>
                         </div>
                     </div>
+                </a>
+            @empty
+                <div class="specialists-empty">
+                    В данной категории специалисты пока не добавлены.
                 </div>
-
-                <div class="specialist-card">
-                    <img src="{{ Vite::asset('../../../../public/img/specialist-2.svg') }}" alt="Бусыгина Анастасия Петровна">
-
-                    <div class="specialist-card-content">
-                        <div class="specialist-card-top">
-                            <span>Руководство</span>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.5004 0.75V10.5C13.5004 10.6989 13.4214 10.8897 13.2807 11.0303C13.1401 11.171 12.9493 11.25 12.7504 11.25C12.5515 11.25 12.3607 11.171 12.2201 11.0303C12.0794 10.8897 12.0004 10.6989 12.0004 10.5V2.56031L1.28104 13.2806C1.14031 13.4214 0.94944 13.5004 0.750417 13.5004C0.551394 13.5004 0.360523 13.4214 0.219792 13.2806C0.0790615 13.1399 0 12.949 0 12.75C0 12.551 0.0790615 12.3601 0.219792 12.2194L10.9401 1.5H3.00042C2.8015 1.5 2.61074 1.42098 2.47009 1.28033C2.32943 1.13968 2.25042 0.948912 2.25042 0.75C2.25042 0.551088 2.32943 0.360322 2.47009 0.21967C2.61074 0.0790178 2.8015 0 3.00042 0H12.7504C12.9493 0 13.1401 0.0790178 13.2807 0.21967C13.4214 0.360322 13.5004 0.551088 13.5004 0.75Z" fill="#212529" />
-                            </svg>
-                        </div>
-
-                        <div class="specialist-card-btm">
-                            <h2>Бусыгина Анастасия Петровна</h2>
-                            <p>
-                                Заведующая амбулаторно-поликлиническим отделением ООО
-                                «МКЦ«Арт-Медика», врач дерматовенеролог, косметолог,
-                                трихолог, миколог.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="specialist-card">
-                    <img src="{{ Vite::asset('../../../../public/img/specialist-3.svg') }}" alt="Перевезенцев Юрий Юрьевич">
-
-                    <div class="specialist-card-content">
-                        <div class="specialist-card-top">
-                            <span>Руководство</span>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.5004 0.75V10.5C13.5004 10.6989 13.4214 10.8897 13.2807 11.0303C13.1401 11.171 12.9493 11.25 12.7504 11.25C12.5515 11.25 12.3607 11.171 12.2201 11.0303C12.0794 10.8897 12.0004 10.6989 12.0004 10.5V2.56031L1.28104 13.2806C1.14031 13.4214 0.94944 13.5004 0.750417 13.5004C0.551394 13.5004 0.360523 13.4214 0.219792 13.2806C0.0790615 13.1399 0 12.949 0 12.75C0 12.551 0.0790615 12.3601 0.219792 12.2194L10.9401 1.5H3.00042C2.8015 1.5 2.61074 1.42098 2.47009 1.28033C2.32943 1.13968 2.25042 0.948912 2.25042 0.75C2.25042 0.551088 2.32943 0.360322 2.47009 0.21967C2.61074 0.0790178 2.8015 0 3.00042 0H12.7504C12.9493 0 13.1401 0.0790178 13.2807 0.21967C13.4214 0.360322 13.5004 0.551088 13.5004 0.75Z" fill="#212529" />
-                            </svg>
-                        </div>
-
-                        <div class="specialist-card-btm">
-                            <h2>Перевезенцев Юрий Юрьевич</h2>
-                            <p>
-                                Заведующий стационарным отделением пластической хирургии
-                                ООО «МКЦ «Арт-Медика», врач пластический хирург, кандидат
-                                медицинских наук (к.м.н.), врач высшей категории, врач
-                                российского итальянского проекта «Доступная пластическая
-                                хирургия из Милана в России», действительный участник
-                                ОПРЭХ России и Ассоциации ПРЭХ чета чета чета там
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="specialist-card">
-                    <img src="{{ Vite::asset('../../../../public/img/specialist-4.svg') }}" alt="Кузнецова Ирина Сергеевна">
-
-                    <div class="specialist-card-content">
-                        <div class="specialist-card-top">
-                            <span>Руководство</span>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.5004 0.75V10.5C13.5004 10.6989 13.4214 10.8897 13.2807 11.0303C13.1401 11.171 12.9493 11.25 12.7504 11.25C12.5515 11.25 12.3607 11.171 12.2201 11.0303C12.0794 10.8897 12.0004 10.6989 12.0004 10.5V2.56031L1.28104 13.2806C1.14031 13.4214 0.94944 13.5004 0.750417 13.5004C0.551394 13.5004 0.360523 13.4214 0.219792 13.2806C0.0790615 13.1399 0 12.949 0 12.75C0 12.551 0.0790615 12.3601 0.219792 12.2194L10.9401 1.5H3.00042C2.8015 1.5 2.61074 1.42098 2.47009 1.28033C2.32943 1.13968 2.25042 0.948912 2.25042 0.75C2.25042 0.551088 2.32943 0.360322 2.47009 0.21967C2.61074 0.0790178 2.8015 0 3.00042 0H12.7504C12.9493 0 13.1401 0.0790178 13.2807 0.21967C13.4214 0.360322 13.5004 0.551088 13.5004 0.75Z" fill="#212529" />
-                            </svg>
-                        </div>
-
-                        <div class="specialist-card-btm">
-                            <h2>Кузнецова Ирина Сергеевна</h2>
-                            <p>
-                                Заместитель директора по медицинской части, заведующая
-                                стационарным отделением «Оториноларингологии», врач
-                                оториноларинголог, фониатр ООО «МКЦ «Арт-Медика».
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </x-main>

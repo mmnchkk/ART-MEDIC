@@ -10,12 +10,12 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialists = Specialist::with(['specialities', 'educations', 'accreditations', 'directions'])->get();
-        return view('specialists.index', compact('specialists'));
+        return view('specialists', compact('specialists'));
     }
 
     public function show($id)
     {
         $specialist = Specialist::with(['specialities', 'educations', 'accreditations', 'directions'])->findOrFail($id);
-        return view('specialists.show', compact('specialist'));
+        return view('specialist_show', compact('specialist'));
     }
 }

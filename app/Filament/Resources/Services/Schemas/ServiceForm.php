@@ -93,8 +93,8 @@ class ServiceForm
                                 ->relationship('results')
                                 ->schema([
                                     FileUpload::make('image')
-                                        ->label('Фото результата')
-                                        ->image()
+                                        ->label('Фото результата')                                    
+                                        ->disk('public')
                                         ->directory('services/results')
                                         ->required(),
                                 ])

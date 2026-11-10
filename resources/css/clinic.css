@@ -349,11 +349,27 @@
     }
 }
 
-.clinic-department-title p {
+.clinic-department-title p,
+.clinic-department-desc,
+.clinic-department-desc p {
     font-size: 16px;
-    line-height: 1.4;
-    color: #6b7280;
+    line-height: 1.5;
+    color: #1A1D20;
     margin: 0;
+}
+
+.clinic-links a {
+    font-size: 14px;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: #1A1D20;
+    transition: opacity 0.2s;
+}
+
+.clinic-links a:hover {
+    color: #1A1D20;
+    opacity: 0.7;
 }
 
 .clinic-policlinic-list {
@@ -375,14 +391,10 @@
     cursor: default;
 }
 
-.clinic-policlinic-list li::before {
-    content: "";
+.clinic-direction-arrow {
     flex-shrink: 0;
-    width: 12px;
-    height: 12px;
-    background-color: #37241B;
-    -webkit-mask: url("/img/arrow-ul-ol.svg") center / contain no-repeat;
-    mask: url("/img/arrow-ul-ol.svg") center / contain no-repeat;
+    width: 13px;
+    height: 13px;
 }
 
 .clinic-hospital-text {
@@ -402,13 +414,24 @@
     font-weight: 600;
 }
 
+.clinic-department-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.clinic-departments-bottom,
 .clinic-hospital-bottom {
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1.25rem;
     margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .clinic-button {
@@ -560,9 +583,10 @@
 
 .clinic-pagination {
     display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .pagination-arrow {
