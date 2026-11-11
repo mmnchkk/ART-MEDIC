@@ -10,10 +10,11 @@ class PromotionController extends Controller
     public function index()
     {
         $promotions = Promotion::with('services')
+            ->orderBy('date', 'desc')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(6);
 
-        return view('promotions.index', compact('promotions'));
+        return view('promotions', compact('promotions'));
     }
 
     public function show($id)
@@ -21,7 +22,6 @@ class PromotionController extends Controller
         $promotion = Promotion::with(['services.prices', 'services.specialists'])
             ->findOrFail($id);
 
-        return view('promotions.show', compact('promotion'));
+        return view('promotion_show', compact('promotion'));
     }
 }
-

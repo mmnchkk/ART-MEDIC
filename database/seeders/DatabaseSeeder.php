@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Accreditation;
+use App\Models\Promotion;
 use App\Models\Clinic;
 use App\Models\Contact;
 use App\Models\Department;
@@ -1058,5 +1059,32 @@ class DatabaseSeeder extends Seeder
             ['project_id' => $project->id, 'name' => 'Инвитро Эксперт'],
             ['description' => 'Лабораторная диагностика']
         );
+
+        // --- АКЦИИ (из макета) ---
+        $promo1 = Promotion::firstOrCreate(
+            ['name' => 'Нитевой лифтинг "Лепесток" скидка 50%'],
+            [
+                'description' => '<p>Освежить лицо, подчеркнуть красоту и вернуть коже упругость. Уникальная авторская методика "Лепесток" позволяет эффективно подтянуть среднюю и нижнюю треть лица без длительной реабилитации.</p>',
+                'date' => '2025-04-07',
+                'image' => 'promotions/promo1.jpg',
+            ]
+        );
+        $blefaroService = Service::where('name', 'like', '%блефаропластика%')->first();
+        if ($blefaroService) {
+            $promo1->services()->syncWithoutDetaching([$blefaroService->id]);
+        }
+
+        $promo2 = Promotion::firstOrCreate(
+            ['name' => 'PURE MOLECULE - инновационная технология омоложения'],
+            [
+                'description' => '<p>МОЛЕКУЛА - программа комплексного омоложения организма, уникальная разработка европейских врачей-косметологов. Стимулирует выработку собственного коллагена и естественную регенерацию.</p>',
+                'date' => '2025-04-07',
+                'image' => 'promotions/promo2.jpg',
+            ]
+        );
+        $smasService = Service::where('name', 'like', '%SMAS%')->first();
+        if ($smasService) {
+            $promo2->services()->syncWithoutDetaching([$smasService->id]);
+        }
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,9 @@ Route::get('/servicescategories/{id?}', fn($id = null) => $id ? redirect()->rout
 Route::get('/services/{id}', fn($id) => redirect()->route('services.show', $id))->name('services');
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
+Route::get('/promotions/{id}', [PromotionController::class, 'show'])->name('promotions.show');
+Route::get('/offers', fn() => redirect()->route('promotions.index'))->name('offers');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 Route::get('/quesAns', [QuestionAnswerController::class, 'index'])->name('quesAns');
 Route::get('/uncos', [UncoController::class, 'index'])->name('uncos');

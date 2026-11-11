@@ -23,6 +23,7 @@ export default defineConfig({
                 "resources/css/servicescategorysections.css",
                 "resources/css/servicescategories.css",
                 "resources/css/services.css",
+                "resources/css/promotions.css",
             ],
             refresh: true,
         }),
