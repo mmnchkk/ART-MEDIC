@@ -12,16 +12,22 @@ class PromotionController extends Controller
         $promotions = Promotion::with('services')
             ->orderBy('date', 'desc')
             ->orderBy('created_at', 'desc')
-            ->paginate(6);
+            ->paginate(4);
 
         return view('promotions', compact('promotions'));
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $promotion = Promotion::with(['services.prices', 'services.specialists'])
             ->findOrFail($id);
 
-        return view('promotion_show', compact('promotion'));
+        $otherPromotions = Promotion::with('services')
+            ->where('id', '!=', $id)
+            ->orderBy('date', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(2);
+
+        return view('promotion_show', compact('promotion', 'otherPromotions'));
     }
 }

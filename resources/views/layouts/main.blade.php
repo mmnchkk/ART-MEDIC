@@ -10,6 +10,11 @@
 </head>
 
 <body>
+@php
+    if (!isset($headerServices)) {
+        $headerServices = \App\Models\ServiceCategorySectionAll::all();
+    }
+@endphp
     <header class="header" x-data="{ mobileMenuOpen: false, servicesOpen: false }">
         <div class="header-container">
             <!-- Бургер (виден на экранах < 1200px) -->
@@ -96,16 +101,11 @@
                         </svg>
                     </button>
                     <div x-show="servicesOpen" x-collapse class="drawer-services-sublist">
-                        <a href="/services" @click="mobileMenuOpen = false">Пластическая хирургия</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Косметология</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Топ-продукты</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Дерматология</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Оториноларингология</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Лор-хирургия</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Неврология и рефлексотерапия</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Эстетическая гинекология</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Терапевтический приём</a>
-                        <a href="/services" @click="mobileMenuOpen = false">Массаж</a>
+                        @foreach($headerServices as $allSec)
+                            <a href="{{ route('services.section', $allSec->id) }}" @click="mobileMenuOpen = false">
+                                {{ $allSec->name }}
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
@@ -159,16 +159,11 @@
             </div>
             <div class="footer-column">
                 <h3>Услуги</h3>
-                <a href="/services">Пластическая хирургия</a>
-                <a href="/services">Косметология</a>
-                <a href="/services">Топ-продукты</a>
-                <a href="/services">Дерматология</a>
-                <a href="/services">Оториноларингология</a>
-                <a href="/services">Лор-хирургия</a>
-                <a href="/services">Неврология и рефлексотерапия</a>
-                <a href="/services">Эстетическая гинекология</a>
-                <a href="/services">Терапевтический приём</a>
-                <a href="/services">Массаж</a>
+                @foreach($headerServices as $allSec)
+                    <a href="{{ route('services.section', $allSec->id) }}">
+                        {{ $allSec->name }}
+                    </a>
+                @endforeach
             </div>
             <div class="footer-contacts">
                 <div class="footer-buttons">
