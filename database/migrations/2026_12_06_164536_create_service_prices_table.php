@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('service_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained('services')->onDelete('cascade'); // Привязка к услуге
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
+            $table->string('code'); // Привязка к услуге
             $table->string('code_mis'); //Код МИС
             $table->string('name'); //Наименование мед услуги
             $table->string('duration'); //Продолжительность мед услуги в минутах

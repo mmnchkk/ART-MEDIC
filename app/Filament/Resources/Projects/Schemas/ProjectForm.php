@@ -172,7 +172,6 @@ class ProjectForm
                                             ->label('Картинка')
                                             ->disk('public')
                                             ->directory('image_work')
-                                            ->image()
                                             ->required(),
                                     ])
                                     ->grid(3)
