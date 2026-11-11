@@ -1,0 +1,493 @@
+/* ==========================================================================
+   ПАНЕЛЬ СЛАБОВИДЯЩИХ
+   ========================================================================== */
+
+/* Обёртка — фиксированная снизу по центру */
+.a11y-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% + 50px));
+    z-index: 9999;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    pointer-events: none;
+    opacity: 0;
+    width: min(720px, calc(100vw - 24px));
+    max-height: 85vh;
+}
+
+.a11y-panel--visible {
+    transform: translateX(-50%) translateY(0);
+    pointer-events: all;
+    opacity: 1;
+}
+
+/* Карточка панели */
+.a11y-panel-inner {
+    background: #18181f;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 14px 16px;
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.5),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(85vh - 20px);
+    overflow-y: auto;
+}
+
+/* Шапка панели (заголовок + кнопка закрыть в одну строчку) */
+.a11y-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.a11y-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: Onest, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.a11y-panel-title svg {
+    color: #92B5DF;
+    flex-shrink: 0;
+}
+
+/* Кнопка закрытия / обычной версии */
+.a11y-close-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 100, 100, 0.35);
+    background: rgba(255, 60, 60, 0.12);
+    color: #ff9898;
+    font-family: Onest, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.a11y-close-btn:hover {
+    background: rgba(255, 60, 60, 0.25);
+    border-color: rgba(255, 100, 100, 0.6);
+    color: #ffb5b5;
+}
+
+/* Тело с группами */
+.a11y-panel-body {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+/* Секция-группа */
+.a11y-group {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.a11y-group-label {
+    font-family: Onest, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+/* Ряд кнопок */
+.a11y-btn-row {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    height: 100%;
+}
+
+/* Базовый стиль маленьких карточек-кнопок */
+.a11y-color-btn,
+.a11y-size-btn,
+.a11y-toggle-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 4px;
+    border-radius: 10px;
+    border: 1.5px solid transparent;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: Onest, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.a11y-color-btn:hover,
+.a11y-size-btn:hover,
+.a11y-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* Активное состояние */
+.a11y-color-btn.a11y-active,
+.a11y-size-btn.a11y-active {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.a11y-toggle-btn.a11y-active {
+    border-color: #92B5DF;
+    background: rgba(146, 181, 223, 0.2);
+    color: #92B5DF;
+}
+
+.a11y-toggle-btn svg {
+    color: inherit;
+    flex-shrink: 0;
+}
+
+/* Цветовые кружки */
+.a11y-color-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    display: block;
+    flex-shrink: 0;
+}
+
+.a11y-swatch-none {
+    background: linear-gradient(135deg, #444 50%, #aaa 50%);
+}
+
+.a11y-swatch-dark {
+    background: #111111;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.a11y-swatch-light {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.a11y-swatch-yellow {
+    background: linear-gradient(135deg, #111100 50%, #FFD700 50%);
+}
+
+.a11y-swatch-blue {
+    background: linear-gradient(135deg, #001028 50%, #9ecbff 50%);
+}
+
+/* Буквы размеров шрифта */
+.a11y-size-letter {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.a11y-size-letter--lg {
+    font-size: 15px;
+}
+
+.a11y-size-letter--xl {
+    font-size: 17px;
+}
+
+/* =========================================
+   АДАПТИВ (Планшеты и телефоны)
+   ========================================= */
+@media (max-width: 768px) {
+    .a11y-panel {
+        bottom: 12px;
+        width: calc(100vw - 16px);
+        max-height: 80vh;
+    }
+
+    .a11y-panel-inner {
+        padding: 10px 10px 8px;
+        border-radius: 16px;
+        gap: 8px;
+    }
+
+    .a11y-panel-body {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .a11y-group {
+        padding: 6px 8px;
+        border-radius: 10px;
+        gap: 4px;
+    }
+
+    .a11y-group-label {
+        font-size: 9px;
+    }
+
+    .a11y-btn-row {
+        gap: 4px;
+    }
+
+    .a11y-color-btn,
+    .a11y-size-btn,
+    .a11y-toggle-btn {
+        padding: 5px 2px;
+        font-size: 9px;
+        gap: 2px;
+    }
+
+    .a11y-color-swatch {
+        width: 14px;
+        height: 14px;
+    }
+
+    .a11y-close-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
+/* Совсем узкие экраны (< 420px) */
+@media (max-width: 420px) {
+    .a11y-panel-title span {
+        font-size: 12px;
+    }
+
+    .a11y-color-btn span:last-child {
+        display: none;
+        /* скрываем подписи цветов, оставляем только свотчи */
+    }
+
+    .a11y-color-btn {
+        padding: 8px 4px;
+    }
+}
+
+/* ==========================================================================
+   ЦВЕТОВЫЕ СХЕМЫ (применяются к body)
+   ========================================================================== */
+
+/* --- Тёмная: чёрный фон / белый текст --- */
+body.accessible.a11y-dark {
+    background-color: #111111 !important;
+}
+
+body.accessible.a11y-dark *:not(.a11y-panel):not(.a11y-panel *) {
+    background-color: transparent !important;
+    color: #f0f0f0 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.accessible.a11y-dark .header {
+    background: #1a1a1a !important;
+    border-bottom: 2px solid #333 !important;
+}
+
+body.accessible.a11y-dark .footer,
+body.accessible.a11y-dark .footer-warning {
+    background: #0d0d0d !important;
+}
+
+body.accessible.a11y-dark a {
+    color: #90caf9 !important;
+    text-decoration: underline !important;
+}
+
+body.accessible.a11y-dark h1,
+body.accessible.a11y-dark h2,
+body.accessible.a11y-dark h3 {
+    color: #ffffff !important;
+}
+
+/* --- Светлая: белый фон / чёрный текст --- */
+body.accessible.a11y-light {
+    background-color: #f8f8f0 !important;
+}
+
+body.accessible.a11y-light *:not(.a11y-panel):not(.a11y-panel *) {
+    background-color: transparent !important;
+    color: #111111 !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+body.accessible.a11y-light .header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #cccccc !important;
+}
+
+body.accessible.a11y-light .footer,
+body.accessible.a11y-light .footer-warning {
+    background: #eeeeee !important;
+}
+
+body.accessible.a11y-light a {
+    color: #0066cc !important;
+    text-decoration: underline !important;
+}
+
+body.accessible.a11y-light h1,
+body.accessible.a11y-light h2,
+body.accessible.a11y-light h3 {
+    color: #000000 !important;
+}
+
+/* --- Жёлтая: чёрный фон / жёлтый текст --- */
+body.accessible.a11y-yellow {
+    background-color: #111100 !important;
+}
+
+body.accessible.a11y-yellow *:not(.a11y-panel):not(.a11y-panel *) {
+    background-color: transparent !important;
+    color: #FFD700 !important;
+    border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+body.accessible.a11y-yellow .header {
+    background: #1a1a00 !important;
+    border-bottom: 2px solid #FFD700 !important;
+}
+
+body.accessible.a11y-yellow .footer,
+body.accessible.a11y-yellow .footer-warning {
+    background: #0d0d00 !important;
+}
+
+body.accessible.a11y-yellow a {
+    color: #FFD700 !important;
+    text-decoration: underline !important;
+}
+
+body.accessible.a11y-yellow h1,
+body.accessible.a11y-yellow h2,
+body.accessible.a11y-yellow h3 {
+    color: #FFE44D !important;
+}
+
+/* --- Синяя: тёмно-синий фон / светло-голубой текст --- */
+body.accessible.a11y-blue {
+    background-color: #001028 !important;
+}
+
+body.accessible.a11y-blue *:not(.a11y-panel):not(.a11y-panel *) {
+    background-color: transparent !important;
+    color: #cce4ff !important;
+    border-color: rgba(100, 180, 255, 0.2) !important;
+}
+
+body.accessible.a11y-blue .header {
+    background: #001a40 !important;
+    border-bottom: 2px solid #336699 !important;
+}
+
+body.accessible.a11y-blue .footer,
+body.accessible.a11y-blue .footer-warning {
+    background: #000d1f !important;
+}
+
+body.accessible.a11y-blue a {
+    color: #80c8ff !important;
+    text-decoration: underline !important;
+}
+
+body.accessible.a11y-blue h1,
+body.accessible.a11y-blue h2,
+body.accessible.a11y-blue h3 {
+    color: #9ecbff !important;
+}
+
+/* ==========================================================================
+   ОБЩИЕ СТИЛИ В РЕЖИМЕ ДОСТУПНОСТИ
+   ========================================================================== */
+
+body.accessible {
+    font-size: 18px !important;
+    line-height: 1.75 !important;
+    font-family: Arial, sans-serif !important;
+}
+
+body.accessible * {
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body.accessible img {
+    filter: grayscale(50%) contrast(1.1) !important;
+    border-radius: 4px !important;
+}
+
+/* --- Размер шрифта --- */
+body.accessible.a11y-font-md {
+    font-size: 18px !important;
+}
+
+body.accessible.a11y-font-lg {
+    font-size: 22px !important;
+}
+
+body.accessible.a11y-font-xl {
+    font-size: 26px !important;
+}
+
+body.accessible.a11y-font-lg * {
+    font-size: inherit !important;
+}
+
+body.accessible.a11y-font-xl * {
+    font-size: inherit !important;
+}
+
+/* --- Межбуквенный интервал --- */
+body.accessible.a11y-spacing,
+body.accessible.a11y-spacing * {
+    letter-spacing: 0.08em !important;
+    word-spacing: 0.15em !important;
+    line-height: 2 !important;
+}
+
+/* --- Скрыть картинки --- */
+body.accessible.a11y-no-images img {
+    visibility: hidden !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+body.accessible.a11y-no-images [class*="-image"],
+body.accessible.a11y-no-images [class*="-img"],
+body.accessible.a11y-no-images [class*="-photo"] {
+    display: none !important;
+}
