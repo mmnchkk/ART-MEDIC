@@ -1,13 +1,53 @@
+/* Onest Regular (400) */
 @font-face {
-  font-family: "Onest"; 
-  src: url("../../public/fonts/onest/Onest-Regular.ttf") format("opentype"); 
-  font-style: normal; 
-  font-weight: normal; 
+  font-family: "Onest";
+  src: url("../../public/fonts/onest/Onest-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
+/* Onest Medium (500) */
 @font-face {
-  font-family: "OnestMedium"; 
-  src: url("../../public/fonts/onest/Onest-Medium.ttf") format("opentype"); 
-  font-style: normal; 
-  font-weight: normal; 
+  font-family: "Onest";
+  src: url("../../public/fonts/onest/Onest-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* Onest SemiBold (600) */
+@font-face {
+  font-family: "Onest";
+  src: url("../../public/fonts/onest/Onest-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* Onest Bold (700) */
+@font-face {
+  font-family: "Onest";
+  src: url("../../public/fonts/onest/Onest-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Onest ExtraBold (800) */
+@font-face {
+  font-family: "Onest";
+  src: url("../../public/fonts/onest/Onest-ExtraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* Алиас для старых мест где использовался OnestMedium */
+@font-face {
+  font-family: "OnestMedium";
+  src: url("../../public/fonts/onest/Onest-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
 }

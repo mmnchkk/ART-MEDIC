@@ -1,3 +1,5 @@
+@import "fonts.css";
+
 /* Общие стили для информационных заглушек (когда данных еще нет) */
 .services-empty-placeholder,
 .service-empty-placeholder {
