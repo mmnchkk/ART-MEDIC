@@ -14,7 +14,14 @@ use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    $clinic = \App\Models\Clinic::first();
+    $serviceSectionsAll = \App\Models\ServiceCategorySectionAll::with(['sections.categories'])->get();
+    $servicesFilter = \App\Models\Service::whereHas('results')->get();
+    $resultsList = \App\Models\ServiceResult::with('service')->latest()->get();
+    $specialities = \App\Models\Speciality::whereHas('specialists')->get();
+    $specialists = \App\Models\Specialist::with('specialities')->get();
+    $projects = \App\Models\Project::with('images')->latest('date')->get();
+    return view('index', compact('clinic', 'serviceSectionsAll', 'servicesFilter', 'resultsList', 'specialities', 'specialists', 'projects'));
 });
 
 // Услуги (чистая и логичная структура)

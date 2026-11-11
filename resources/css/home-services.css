@@ -1,0 +1,336 @@
+/* ==========================================================================
+   БЛОК УСЛУГ НА ГЛАВНОЙ СТРАНИЦЕ
+   ========================================================================== */
+
+.home-services-section {
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Onest, sans-serif;
+    color: #1A1D20;
+    box-sizing: border-box;
+}
+
+.home-services-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .home-services-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-services-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Шапка блока — строго идентична reviews-header из блока Кейсы */
+.home-services-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .home-services-header {
+        grid-template-columns: 1.2fr 2fr;
+        gap: 4rem;
+    }
+}
+
+.home-services-title {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    color: #92B5DF;
+    margin: 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.home-services-title:hover {
+    opacity: 0.7;
+}
+
+.home-services-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+/* Описание — строго как .reviews-intro из блока Кейсы */
+.home-services-intro {
+    font-size: 26px;
+    line-height: 1.4;
+    color: #2b2b2b;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Контейнер аккордеонов */
+.home-services-accordions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+/* Элемент аккордеона — прозрачный, карточки раскрываются вне плашки */
+.home-services-accordion-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+/* Кнопка аккордеона — отдельная плашка */
+.home-services-accordion-btn {
+    width: 100%;
+    background: #F5F8FC;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    font-family: Onest, sans-serif;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.home-services-accordion-btn:hover {
+    background: #EDF3FB;
+}
+
+.home-services-accordion-btn:focus {
+    outline: none;
+}
+
+.home-services-accordion-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A1D20;
+}
+
+.home-services-accordion-icon {
+    width: 24px;
+    height: 24px;
+    color: #1A1D20;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.home-services-accordion-icon.rotate {
+    transform: rotate(180deg);
+}
+
+/* Выпадающий блок с карточками — лежит прямо на странице под кнопкой */
+.home-services-collapse-wrap {
+    width: 100%;
+}
+
+.home-services-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Карточка подраздела */
+.home-service-card {
+    position: relative;
+    flex: 1 1 calc(33.333% - 12px);
+    min-width: 280px;
+    height: 310px;
+    min-height: 310px;
+    background-color: #CAD4E2;
+    border-radius: 16px;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 45, 65, 0.08);
+}
+
+/* Градиентное затемнение слева под текстом */
+.home-service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        #CAD4E2 0%,
+        rgba(202, 212, 226, 0.96) 38%,
+        rgba(202, 212, 226, 0.35) 68%,
+        rgba(202, 212, 226, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Контент карточки: растянут на всю высоту, заголовок сверху, услуги снизу */
+.home-service-card-content {
+    position: relative;
+    z-index: 3;
+    max-width: 60%;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.home-service-card-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A1D20;
+    text-decoration: none;
+    margin: 0;
+    line-height: 1.25;
+    transition: opacity 0.2s;
+}
+
+.home-service-card-title:hover {
+    opacity: 0.7;
+}
+
+/* Список конкретных услуг (прижат к низу карточки) */
+.home-service-categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 0;
+}
+
+.home-service-category-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    text-decoration: none;
+    color: #333333;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.home-service-category-link:hover {
+    opacity: 0.8;
+    color: #1A1D20;
+}
+
+.home-service-category-name {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.home-service-category-arrow {
+    flex-shrink: 0;
+    color: #1A1D20;
+    transition: transform 0.2s ease;
+}
+
+.home-service-category-link:hover .home-service-category-arrow {
+    transform: translateX(3px);
+}
+
+/* Фиксированная область картинки — шире половины блока (60%) */
+.home-service-card-image-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 60%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.home-service-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    filter: grayscale(100%) contrast(1.18) brightness(1.02);
+    mix-blend-mode: multiply;
+}
+
+.home-services-empty-item {
+    width: 100%;
+    font-size: 15px;
+    color: #6b7280;
+    padding: 1rem 0;
+}
+
+/* =========================================
+   Адаптивность
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .home-service-card {
+        flex: 1 1 calc(50% - 1rem);
+        height: 310px;
+        min-height: 310px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-services-container {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .home-services-accordion-btn {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .home-services-accordion-title {
+        font-size: 19px;
+    }
+
+    .home-service-card {
+        flex: 1 1 100%;
+        height: auto;
+        min-height: 260px;
+        padding: 20px 20px;
+    }
+
+    .home-service-card-content {
+        max-width: 72%;
+    }
+
+    .home-service-card-title {
+        font-size: 21px;
+    }
+}
