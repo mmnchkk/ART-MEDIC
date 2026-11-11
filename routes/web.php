@@ -11,6 +11,7 @@ use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\PriceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +38,7 @@ Route::get('/servicescategories/{id?}', fn($id = null) => $id ? redirect()->rout
 Route::get('/services/{id}', fn($id) => redirect()->route('services.show', $id))->name('services');
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+Route::get('/prices', [PriceController::class, 'index'])->name('prices');
 Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
 Route::get('/promotions/{id}', [PromotionController::class, 'show'])->name('promotions.show');
 Route::get('/offers', fn() => redirect()->route('promotions.index'))->name('offers');

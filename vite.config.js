@@ -33,6 +33,7 @@ export default defineConfig({
                 "resources/css/home-specialists.css",
                 "resources/css/home-projects.css",
                 "resources/css/home-work.css",
+                "resources/css/prices.css",
             ],
             refresh: true,
         }),
