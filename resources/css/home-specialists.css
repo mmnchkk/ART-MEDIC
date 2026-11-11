@@ -1,0 +1,317 @@
+/* ==========================================================================
+   БЛОК «НАШИ СПЕЦИАЛИСТЫ» НА ГЛАВНОЙ СТРАНИЦЕ
+   ========================================================================== */
+
+.home-specialists-section {
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Onest, sans-serif;
+    color: #1A1D20;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.home-specialists-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem 5rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .home-specialists-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-specialists-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Шапка блока */
+.home-specialists-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .home-specialists-header {
+        grid-template-columns: 1.2fr 2fr;
+        gap: 4rem;
+        margin-bottom: 3.5rem;
+    }
+}
+
+.home-specialists-title {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    color: #92B5DF;
+    margin: 0;
+    text-decoration: none;
+    line-height: 1.2;
+    transition: opacity 0.2s;
+    width: fit-content;
+}
+
+.home-specialists-title:hover {
+    opacity: 0.7;
+}
+
+.home-specialists-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.75rem;
+    stroke-width: 2;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.home-specialists-intro {
+    font-size: 26px;
+    line-height: 1.4;
+    color: #2b2b2b;
+    font-weight: 500;
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Фильтры в виде плашек-таблеток */
+.home-specialists-filters {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.home-specialists-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.home-specialists-filter {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.65rem 1.4rem;
+    border-radius: 9999px;
+    border: none;
+    background: #F5F8FC;
+    font-family: Onest, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #212529;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+    user-select: none;
+}
+
+.home-specialists-filter:hover {
+    background: #EDF3FB;
+    color: #000000;
+}
+
+.home-specialists-filter.active {
+    background: #37241B;
+    color: #ffffff;
+}
+
+/* Сетка карточек врачей: 4 на десктопе, 2 на планшете, 1 на мобильном */
+.home-specialists-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .home-specialists-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-specialists-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+/* Карточка специалиста */
+.home-specialist-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4.1;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #CAD4E2;
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.75rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-specialist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.home-specialist-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.home-specialist-card:hover .home-specialist-img {
+    transform: scale(1.03);
+}
+
+/* Градиентное затемнение снизу */
+.home-specialist-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 35%,
+        rgba(26, 29, 32, 0.45) 55%,
+        rgba(26, 29, 32, 0.88) 80%,
+        rgba(26, 29, 32, 0.96) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Информация о враче поверх фото */
+.home-specialist-info {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.home-specialist-name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.home-specialist-desc {
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Пагинация */
+.home-specialists-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.home-specialists-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #37241B;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    color: #ffffff;
+}
+
+.home-specialists-nav-btn:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   Адаптивность
+   ========================================= */
+
+@media (max-width: 1023px) {
+    .home-specialists-title {
+        font-size: 32px;
+    }
+
+    .home-specialists-intro {
+        font-size: 22px;
+    }
+
+    .home-specialist-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .home-specialist-name {
+        font-size: 18px;
+    }
+
+    .home-specialist-desc {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 639px) {
+    .home-specialists-container {
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+    }
+
+    .home-specialists-title {
+        font-size: 28px;
+    }
+
+    .home-specialists-title svg {
+        width: 24px;
+        height: 24px;
+        margin-top: 4px;
+    }
+
+    .home-specialists-intro {
+        font-size: 18px;
+        line-height: 1.45;
+    }
+
+    .home-specialist-card {
+        border-radius: 16px;
+        aspect-ratio: 3 / 4.1;
+    }
+}
