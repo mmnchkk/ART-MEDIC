@@ -105,27 +105,11 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.a11y-swatch-none {
-    background: linear-gradient(135deg, #444 50%, #aaa 50%);
-}
-
-.a11y-swatch-dark {
-    background: #111111;
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-.a11y-swatch-light {
-    background: #ffffff;
-    border-color: rgba(0, 0, 0, 0.3);
-}
-
-.a11y-swatch-yellow {
-    background: linear-gradient(135deg, #111100 50%, #FFD700 50%);
-}
-
-.a11y-swatch-blue {
-    background: linear-gradient(135deg, #001028 50%, #9ecbff 50%);
-}
+.a11y-swatch-none   { background: linear-gradient(135deg, #444 50%, #aaa 50%); }
+.a11y-swatch-dark   { background: #111111; border-color: rgba(255, 255, 255, 0.5); }
+.a11y-swatch-light  { background: #ffffff; border-color: rgba(0, 0, 0, 0.3); }
+.a11y-swatch-yellow { background: linear-gradient(135deg, #111100 50%, #FFD700 50%); }
+.a11y-swatch-blue   { background: linear-gradient(135deg, #001028 50%, #9ecbff 50%); }
 
 /* Кнопки размера шрифта и тоглы */
 .a11y-size-btn,
@@ -210,8 +194,7 @@
     }
 
     .a11y-group-label {
-        display: none;
-        /* Скрываем подписи на мобильных */
+        display: none; /* Скрываем подписи на мобильных */
     }
 
     .a11y-divider {
@@ -251,129 +234,57 @@
 body.accessible.a11y-dark {
     background-color: #111111 !important;
 }
-
 body.accessible.a11y-dark *:not(.a11y-panel):not(.a11y-panel *) {
     background-color: transparent !important;
     color: #f0f0f0 !important;
     border-color: rgba(255, 255, 255, 0.15) !important;
 }
-
-body.accessible.a11y-dark .header {
-    background: #1a1a1a !important;
-    border-bottom: 2px solid #333 !important;
-}
-
-body.accessible.a11y-dark .footer,
-body.accessible.a11y-dark .footer-warning {
-    background: #0d0d0d !important;
-}
-
-body.accessible.a11y-dark a {
-    color: #90caf9 !important;
-    text-decoration: underline !important;
-}
-
-body.accessible.a11y-dark h1,
-body.accessible.a11y-dark h2,
-body.accessible.a11y-dark h3 {
-    color: #ffffff !important;
-}
+body.accessible.a11y-dark .header { background: #1a1a1a !important; border-bottom: 2px solid #333 !important; }
+body.accessible.a11y-dark .footer, body.accessible.a11y-dark .footer-warning { background: #0d0d0d !important; }
+body.accessible.a11y-dark a { color: #90caf9 !important; text-decoration: underline !important; }
+body.accessible.a11y-dark h1, body.accessible.a11y-dark h2, body.accessible.a11y-dark h3 { color: #ffffff !important; }
 
 /* --- Светлая: белый фон / чёрный текст --- */
 body.accessible.a11y-light {
     background-color: #f8f8f0 !important;
 }
-
 body.accessible.a11y-light *:not(.a11y-panel):not(.a11y-panel *) {
     background-color: transparent !important;
     color: #111111 !important;
     border-color: rgba(0, 0, 0, 0.12) !important;
 }
-
-body.accessible.a11y-light .header {
-    background: #ffffff !important;
-    border-bottom: 2px solid #cccccc !important;
-}
-
-body.accessible.a11y-light .footer,
-body.accessible.a11y-light .footer-warning {
-    background: #eeeeee !important;
-}
-
-body.accessible.a11y-light a {
-    color: #0066cc !important;
-    text-decoration: underline !important;
-}
-
-body.accessible.a11y-light h1,
-body.accessible.a11y-light h2,
-body.accessible.a11y-light h3 {
-    color: #000000 !important;
-}
+body.accessible.a11y-light .header { background: #ffffff !important; border-bottom: 2px solid #cccccc !important; }
+body.accessible.a11y-light .footer, body.accessible.a11y-light .footer-warning { background: #eeeeee !important; }
+body.accessible.a11y-light a { color: #0066cc !important; text-decoration: underline !important; }
+body.accessible.a11y-light h1, body.accessible.a11y-light h2, body.accessible.a11y-light h3 { color: #000000 !important; }
 
 /* --- Жёлтая: чёрный фон / жёлтый текст --- */
 body.accessible.a11y-yellow {
     background-color: #111100 !important;
 }
-
 body.accessible.a11y-yellow *:not(.a11y-panel):not(.a11y-panel *) {
     background-color: transparent !important;
     color: #FFD700 !important;
     border-color: rgba(255, 215, 0, 0.2) !important;
 }
-
-body.accessible.a11y-yellow .header {
-    background: #1a1a00 !important;
-    border-bottom: 2px solid #FFD700 !important;
-}
-
-body.accessible.a11y-yellow .footer,
-body.accessible.a11y-yellow .footer-warning {
-    background: #0d0d00 !important;
-}
-
-body.accessible.a11y-yellow a {
-    color: #FFD700 !important;
-    text-decoration: underline !important;
-}
-
-body.accessible.a11y-yellow h1,
-body.accessible.a11y-yellow h2,
-body.accessible.a11y-yellow h3 {
-    color: #FFE44D !important;
-}
+body.accessible.a11y-yellow .header { background: #1a1a00 !important; border-bottom: 2px solid #FFD700 !important; }
+body.accessible.a11y-yellow .footer, body.accessible.a11y-yellow .footer-warning { background: #0d0d00 !important; }
+body.accessible.a11y-yellow a { color: #FFD700 !important; text-decoration: underline !important; }
+body.accessible.a11y-yellow h1, body.accessible.a11y-yellow h2, body.accessible.a11y-yellow h3 { color: #FFE44D !important; }
 
 /* --- Синяя: тёмно-синий фон / светло-голубой текст --- */
 body.accessible.a11y-blue {
     background-color: #001028 !important;
 }
-
 body.accessible.a11y-blue *:not(.a11y-panel):not(.a11y-panel *) {
     background-color: transparent !important;
     color: #cce4ff !important;
     border-color: rgba(100, 180, 255, 0.2) !important;
 }
-
-body.accessible.a11y-blue .header {
-    background: #001a40 !important;
-    border-bottom: 2px solid #336699 !important;
-}
-
-body.accessible.a11y-blue .footer,
-body.accessible.a11y-blue .footer-warning {
-    background: #000d1f !important;
-}
-
-body.accessible.a11y-blue a {
-    color: #80c8ff !important;
-    text-decoration: underline !important;
-}
-
-body.accessible.a11y-blue h1,
-body.accessible.a11y-blue h2,
-body.accessible.a11y-blue h3 {
-    color: #9ecbff !important;
-}
+body.accessible.a11y-blue .header { background: #001a40 !important; border-bottom: 2px solid #336699 !important; }
+body.accessible.a11y-blue .footer, body.accessible.a11y-blue .footer-warning { background: #000d1f !important; }
+body.accessible.a11y-blue a { color: #80c8ff !important; text-decoration: underline !important; }
+body.accessible.a11y-blue h1, body.accessible.a11y-blue h2, body.accessible.a11y-blue h3 { color: #9ecbff !important; }
 
 /* ==========================================================================
    ОБЩИЕ СТИЛИ В РЕЖИМЕ ДОСТУПНОСТИ
@@ -384,38 +295,23 @@ body.accessible {
     line-height: 1.75 !important;
     font-family: Arial, sans-serif !important;
 }
-
 body.accessible *:not(.a11y-panel):not(.a11y-panel *) {
     background-image: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
 }
-
 body.accessible img:not(.a11y-panel *) {
     filter: grayscale(50%) contrast(1.1) !important;
     border-radius: 4px !important;
 }
 
 /* --- Размер шрифта (не затрагивает панель управления) --- */
-body.accessible.a11y-font-md {
-    font-size: 18px !important;
-}
+body.accessible.a11y-font-md { font-size: 18px !important; }
+body.accessible.a11y-font-lg { font-size: 22px !important; }
+body.accessible.a11y-font-xl { font-size: 26px !important; }
 
-body.accessible.a11y-font-lg {
-    font-size: 22px !important;
-}
-
-body.accessible.a11y-font-xl {
-    font-size: 26px !important;
-}
-
-body.accessible.a11y-font-lg *:not(.a11y-panel):not(.a11y-panel *) {
-    font-size: inherit !important;
-}
-
-body.accessible.a11y-font-xl *:not(.a11y-panel):not(.a11y-panel *) {
-    font-size: inherit !important;
-}
+body.accessible.a11y-font-lg *:not(.a11y-panel):not(.a11y-panel *) { font-size: inherit !important; }
+body.accessible.a11y-font-xl *:not(.a11y-panel):not(.a11y-panel *) { font-size: inherit !important; }
 
 /* Фиксируем свойства внутри самой панели */
 .a11y-panel,
@@ -441,7 +337,6 @@ body.accessible.a11y-no-images img {
     margin: 0 !important;
     border: none !important;
 }
-
 body.accessible.a11y-no-images [class*="-image"],
 body.accessible.a11y-no-images [class*="-img"],
 body.accessible.a11y-no-images [class*="-photo"] {
