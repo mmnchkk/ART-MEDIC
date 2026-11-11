@@ -187,85 +187,65 @@
     </footer>
 
     <!-- Панель слабовидящих -->
-    <div class="a11y-panel" id="a11yPanel" aria-label="Настройки версии для слабовидящих">
+    <div class="a11y-panel" id="a11yPanel" aria-label="Панель настроек доступности">
         <div class="a11y-panel-inner">
 
-            <!-- Шапка панели -->
-            <div class="a11y-panel-header">
-                <div class="a11y-panel-title">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.636-7 10-7 10 7 10 7-3.636 7-10 7S2 12 2 12z"/></svg>
-                    <span>Версия для слабовидящих</span>
+            <!-- Цвета -->
+            <div class="a11y-group">
+                <span class="a11y-group-label">Цвет</span>
+                <div class="a11y-btn-row">
+                    <button class="a11y-color-btn" data-scheme="none" title="Стандартный цвет">
+                        <span class="a11y-color-swatch a11y-swatch-none"></span>
+                    </button>
+                    <button class="a11y-color-btn" data-scheme="dark" title="Тёмная тема (чёрный/белый)">
+                        <span class="a11y-color-swatch a11y-swatch-dark"></span>
+                    </button>
+                    <button class="a11y-color-btn" data-scheme="light" title="Светлая тема (белый/чёрный)">
+                        <span class="a11y-color-swatch a11y-swatch-light"></span>
+                    </button>
+                    <button class="a11y-color-btn" data-scheme="yellow" title="Жёлтая тема (чёрный/жёлтый)">
+                        <span class="a11y-color-swatch a11y-swatch-yellow"></span>
+                    </button>
+                    <button class="a11y-color-btn" data-scheme="blue" title="Синяя тема (синий/голубой)">
+                        <span class="a11y-color-swatch a11y-swatch-blue"></span>
+                    </button>
                 </div>
-                <button class="a11y-close-btn" id="a11yClose" title="Вернуться к обычной версии">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span>Обычная версия</span>
-                </button>
             </div>
 
-            <div class="a11y-panel-body">
+            <div class="a11y-divider"></div>
 
-                <!-- Цветовая схема -->
-                <div class="a11y-group">
-                    <div class="a11y-group-label">Цвет</div>
-                    <div class="a11y-btn-row">
-                        <button class="a11y-color-btn" data-scheme="none" title="Без изменений">
-                            <span class="a11y-color-swatch a11y-swatch-none"></span>
-                            <span>Стандарт</span>
-                        </button>
-                        <button class="a11y-color-btn" data-scheme="dark" title="Чёрный фон, белый текст">
-                            <span class="a11y-color-swatch a11y-swatch-dark"></span>
-                            <span>Тёмная</span>
-                        </button>
-                        <button class="a11y-color-btn" data-scheme="light" title="Белый фон, чёрный текст">
-                            <span class="a11y-color-swatch a11y-swatch-light"></span>
-                            <span>Светлая</span>
-                        </button>
-                        <button class="a11y-color-btn" data-scheme="yellow" title="Чёрный фон, жёлтый текст">
-                            <span class="a11y-color-swatch a11y-swatch-yellow"></span>
-                            <span>Жёлтая</span>
-                        </button>
-                        <button class="a11y-color-btn" data-scheme="blue" title="Синий фон, голубой текст">
-                            <span class="a11y-color-swatch a11y-swatch-blue"></span>
-                            <span>Синяя</span>
-                        </button>
-                    </div>
+            <!-- Шрифт -->
+            <div class="a11y-group">
+                <span class="a11y-group-label">Шрифт</span>
+                <div class="a11y-btn-row">
+                    <button class="a11y-size-btn" data-size="md" title="Стандартный шрифт">A</button>
+                    <button class="a11y-size-btn" data-size="lg" title="Крупный шрифт">A+</button>
+                    <button class="a11y-size-btn" data-size="xl" title="Очень крупный шрифт">A++</button>
                 </div>
-
-                <!-- Размер шрифта -->
-                <div class="a11y-group">
-                    <div class="a11y-group-label">Размер шрифта</div>
-                    <div class="a11y-btn-row">
-                        <button class="a11y-size-btn" data-size="md" title="Обычный">
-                            <span class="a11y-size-letter">A</span>
-                            <span>Стандарт</span>
-                        </button>
-                        <button class="a11y-size-btn" data-size="lg" title="Крупный">
-                            <span class="a11y-size-letter a11y-size-letter--lg">A</span>
-                            <span>Крупный</span>
-                        </button>
-                        <button class="a11y-size-btn" data-size="xl" title="Очень крупный">
-                            <span class="a11y-size-letter a11y-size-letter--xl">A</span>
-                            <span>Макси</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Дополнительно -->
-                <div class="a11y-group">
-                    <div class="a11y-group-label">Дополнительно</div>
-                    <div class="a11y-btn-row">
-                        <button class="a11y-toggle-btn" id="a11ySpacing" title="Увеличенный межбуквенный интервал">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7l3-3-3-3"/><path d="M20 7l-3-3 3-3"/><line x1="4" y1="4" x2="20" y2="4"/><line x1="12" y1="8" x2="12" y2="21"/></svg>
-                            <span>Интервал</span>
-                        </button>
-                        <button class="a11y-toggle-btn" id="a11yImages" title="Скрыть изображения">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
-                            <span>Без фото</span>
-                        </button>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="a11y-divider"></div>
+
+            <!-- Опции -->
+            <div class="a11y-group">
+                <span class="a11y-group-label">Опции</span>
+                <div class="a11y-btn-row">
+                    <button class="a11y-toggle-btn" id="a11ySpacing" title="Интервал между буквами">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7l3-3-3-3"/><path d="M20 7l-3-3 3-3"/><line x1="4" y1="4" x2="20" y2="4"/><line x1="12" y1="8" x2="12" y2="21"/></svg>
+                    </button>
+                    <button class="a11y-toggle-btn" id="a11yImages" title="Скрыть/показать изображения">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="a11y-divider"></div>
+
+            <!-- Закрыть -->
+            <button class="a11y-close-btn" id="a11yClose" title="Выйти из режима для слабовидящих">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <span>Выход</span>
+            </button>
 
         </div>
     </div>
