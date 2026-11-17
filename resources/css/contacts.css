@@ -136,6 +136,30 @@
     margin-bottom: 0;
 }
 
+.contact-link {
+    color: #333333 !important;
+    text-decoration: none !important;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+.contact-link:hover {
+    opacity: 0.75;
+    color: #333333 !important;
+    text-decoration: none !important;
+}
+
+.contact-link:visited,
+.contact-link:active,
+.contact-link:focus {
+    color: #333333 !important;
+    text-decoration: none !important;
+}
+
+.contact-desc {
+    color: #64748B;
+}
+
 .contact-socials {
     display: flex;
     justify-content: flex-end;

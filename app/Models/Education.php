@@ -8,6 +8,7 @@ class Education extends Model
 {
     protected $table = 'education';
     protected $fillable = [
+        'specialist_id',
         'level',
         'organisation',
         'year_issue',

@@ -9,6 +9,7 @@ class FormatWork extends Model
     protected $table = 'format_works';
 
     protected $fillable = [
+        'project_id',
         'name',
         'description',
         'image'

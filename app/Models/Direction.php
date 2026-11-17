@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Direction extends Model
 {
     protected $fillable = [
+        'specialist_id',
         'name'
     ];
 

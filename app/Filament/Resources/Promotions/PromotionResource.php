@@ -6,7 +6,7 @@ use App\Filament\Resources\Promotions\Pages\CreatePromotion;
 use App\Filament\Resources\Promotions\Pages\EditPromotion;
 use App\Filament\Resources\Promotions\Pages\ListPromotions;
 use App\Filament\Resources\Promotions\Schemas\PromotionForm;
-use App\Filament\Resources\Promotions\Tables\PromotionTable;
+use App\Filament\Resources\Promotions\Tables\PromotionsTable;
 use App\Models\Promotion;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -35,7 +35,7 @@ class PromotionResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return PromotionTable::configure($table);
+        return PromotionsTable::configure($table);
     }
 
     public static function getRelations(): array

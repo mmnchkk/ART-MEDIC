@@ -9,6 +9,7 @@ class Parten extends Model
     protected $table = 'partens';
 
     protected $fillable = [
+        'project_id',
         'name',
         'description',
     ];

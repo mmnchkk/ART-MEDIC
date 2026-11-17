@@ -1,5 +1,5 @@
 @props([
-    'youtubeId' => 'HVpOo6alIeo',
+    'youtubeId' => '5Ar6QBhadg4',
 ])
 
 <section class="home-work-section" id="homeWorkSection">

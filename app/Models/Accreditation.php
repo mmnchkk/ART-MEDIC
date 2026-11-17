@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Accreditation extends Model
 {
     protected $fillable = [
+        'specialist_id',
         'type_doc',
         'speciality',
         'position',

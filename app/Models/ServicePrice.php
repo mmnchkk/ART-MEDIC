@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class ServicePrice extends Model
 {
     protected $fillable = [
-        'price',
-        'complexity_id',
         'service_id',
+        'complexity_id',
         'code',
         'code_mis',
         'name',
         'duration',
-        'price'
+        'price',
+        'price_category_1',
+        'price_category_2',
+        'price_category_3',
     ];
 
     public function service()

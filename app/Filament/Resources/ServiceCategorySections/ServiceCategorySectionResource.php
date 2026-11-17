@@ -6,7 +6,7 @@ use App\Filament\Resources\ServiceCategorySections\Pages\CreateServiceCategorySe
 use App\Filament\Resources\ServiceCategorySections\Pages\EditServiceCategorySection;
 use App\Filament\Resources\ServiceCategorySections\Pages\ListServiceCategorySections;
 use App\Filament\Resources\ServiceCategorySections\Schemas\ServiceCategorySectionForm;
-use App\Filament\Resources\ServiceCategorySections\Tables\ServiceCategorySectionTable;
+use App\Filament\Resources\ServiceCategorySections\Tables\ServiceCategorySectionsTable;
 use App\Models\ServiceCategorySection;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -36,7 +36,7 @@ class ServiceCategorySectionResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return ServiceCategorySectionTable::configure($table);
+        return ServiceCategorySectionsTable::configure($table);
     }
 
     public static function getRelations(): array

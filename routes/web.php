@@ -55,6 +55,19 @@ Route::get('/clinic', [ClinicController::class, 'index'])->name('clinic');
 Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists');
 Route::get('/specialists/{id}', [SpecialistController::class, 'show'])->name('specialists.show');
 
+// Русскоязычные пути art-medica.ru
+Route::get('/spetcialisty', [SpecialistController::class, 'index']);
+Route::get('/spetcialisty/{id}', [SpecialistController::class, 'show']);
+Route::get('/uslugi', [ServiceController::class, 'index']);
+Route::get('/uslugi/{id}', [ServiceController::class, 'show']);
+Route::get('/price', [PriceController::class, 'index']);
+Route::get('/aktcii', [PromotionController::class, 'index']);
+Route::get('/aktcii/{id}', [PromotionController::class, 'show']);
+Route::get('/otzyvy', [ReviewController::class, 'index']);
+Route::get('/o-klinike/dokumenty-kliniki', [DocumentController::class, 'index']);
+Route::get('/o-klinike', [ClinicController::class, 'index']);
+Route::get('/kontakty', [ContactController::class, 'index']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

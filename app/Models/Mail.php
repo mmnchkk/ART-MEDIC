@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mail extends Model
 {
     protected $fillable = [
+        'contact_id',
         'mail',
         'description',
     ];

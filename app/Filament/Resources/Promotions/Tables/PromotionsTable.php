@@ -9,7 +9,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class PromotionTable
+class PromotionsTable
 {
     public static function configure(Table $table): Table
     {

@@ -122,6 +122,23 @@ main {
     font-family: OnestMedium, sans-serif;
     font-weight: 500;
     line-height: 1.3;
+    color: #37241B !important;
+    text-decoration: none !important;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+.header-address:hover {
+    opacity: 0.75;
+    color: #37241B !important;
+    text-decoration: none !important;
+}
+
+.header-address:visited,
+.header-address:active,
+.header-address:focus {
+    color: #37241B !important;
+    text-decoration: none !important;
 }
 
 .address-city {
@@ -601,6 +618,23 @@ i {
     line-height: 1.35;
     display: flex;
     align-items: flex-start;
+    color: #37241B !important;
+    text-decoration: none !important;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+a.footer-contact:hover {
+    opacity: 0.75;
+    color: #37241B !important;
+    text-decoration: none !important;
+}
+
+a.footer-contact:visited,
+a.footer-contact:active,
+a.footer-contact:focus {
+    color: #37241B !important;
+    text-decoration: none !important;
 }
 
 .hours-sep {

@@ -42,7 +42,7 @@
                     @endif
                 </div>
 
-                <a href="#appointment" class="spec-btn-appointment">
+                <a href="https://booking.medflex.ru/?user=176b72f48c940d2370217d001935a7e4&isRoundWidget=true" target="_blank" rel="noopener noreferrer" class="spec-btn-appointment">
                     Записаться на приём
                 </a>
             </div>

@@ -40,14 +40,26 @@
             <!-- Карточка 1: Адрес -->
             <div class="contact-card">
                 <h3>Адрес</h3>
-                <p>{{ $contact->adress }}</p>
+                <p>
+                    <a href="https://yandex.ru/maps/?text={{ urlencode($contact->adress) }}" target="_blank" rel="noopener noreferrer" class="contact-link" style="color: #000000 !important; text-decoration: none !important;">
+                        {{ $contact->adress }}
+                    </a>
+                </p>
             </div>
 
             <!-- Карточка 2: Телефоны -->
             <div class="contact-card">
                 <h3>Телефоны</h3>
                 @foreach($contact->phones as $phone)
-                <p>{{ $phone->phone }} - {{ $phone->description }}</p>
+                <p>
+                    @php
+                        $cleanPhone = preg_replace('/[^\d+]/', '', $phone->phone);
+                    @endphp
+                    <a href="tel:{{ $cleanPhone }}" class="contact-link" style="color: #000000 !important; text-decoration: none !important;">{{ $phone->phone }}</a>
+                    @if($phone->description)
+                        <span class="contact-desc"> - {{ $phone->description }}</span>
+                    @endif
+                </p>
                 @endforeach
             </div>
 
@@ -55,7 +67,12 @@
             <div class="contact-card">
                 <h3>E-mail</h3>
                 @foreach($contact->mails as $mail)
-                <p>{{ $mail->mail }} - {{ $mail->description }}</p>
+                <p>
+                    <a href="mailto:{{ $mail->mail }}" class="contact-link" style="color: #000000 !important; text-decoration: none !important;">{{ $mail->mail }}</a>
+                    @if($mail->description)
+                        <span class="contact-desc"> - {{ $mail->description }}</span>
+                    @endif
+                </p>
                 @endforeach
             </div>
 

@@ -42,16 +42,16 @@
             <!-- Правая часть -->
             <div class="header-right">
                 <div class="header-info">
-                    <div class="header-address">
+                    <a href="https://yandex.ru/maps/?text=%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%2C+%D0%BF%D1%80.+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0+12%D0%B0" target="_blank" rel="noopener noreferrer" class="header-address" style="color: #000000 !important; text-decoration: none !important;">
                         <span class="address-city">Челябинск,<span class="address-space"> </span></span>
                         <span class="address-street">пр. Ленина 12а</span>
-                    </div>
+                    </a>
                     <div class="header-time">
                         ПН-СБ с 9:00 до 20:00
                     </div>
                 </div>
                 <div class="header-buttons">
-                    <a href="#appointment" class="appointment-button">Записаться</a>
+                    <a href="https://booking.medflex.ru/?user=176b72f48c940d2370217d001935a7e4&isRoundWidget=true" target="_blank" rel="noopener noreferrer" class="appointment-button">Записаться</a>
                 </div>
             </div>
         </div>
@@ -167,13 +167,13 @@
             </div>
             <div class="footer-contacts">
                 <div class="footer-buttons">
-                    <a href="#" class="footer-appointment">Записаться</a>
-                    <a href="#" class="phone-button"><img src="/img/icons/phone-icon.svg" alt="phone" class="phone-icon"></a>
+                    <a href="https://booking.medflex.ru/?user=176b72f48c940d2370217d001935a7e4&isRoundWidget=true" target="_blank" rel="noopener noreferrer" class="footer-appointment">Записаться</a>
+                    <a href="tel:+73517751918" class="phone-button"><img src="/img/icons/phone-icon.svg" alt="phone" class="phone-icon"></a>
                 </div>
                 <div class="footer-contact-list">
-                    <div class="footer-contact"><i class="demo-icon icon-subtract-1"></i>Челябинск, пр. Ленина 12а</div>
-                    <div class="footer-contact"><i class="demo-icon icon-vector-189"></i>+7 (351) 775-19-18</div>
-                    <div class="footer-contact"><i class="demo-icon icon-subtract-2"></i>marketing.art-medica@mail.ru</div>
+                    <a href="https://yandex.ru/maps/?text=%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%2C+%D0%BF%D1%80.+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0+12%D0%B0" target="_blank" rel="noopener noreferrer" class="footer-contact" style="color: #000000 !important; text-decoration: none !important;"><i class="demo-icon icon-subtract-1"></i>Челябинск, пр. Ленина 12а</a>
+                    <a href="tel:+73517751918" class="footer-contact" style="color: #000000 !important; text-decoration: none !important;"><i class="demo-icon icon-vector-189"></i>+7 (351) 775-19-18</a>
+                    <a href="mailto:marketing.art-medica@mail.ru" class="footer-contact" style="color: #000000 !important; text-decoration: none !important;"><i class="demo-icon icon-subtract-2"></i>marketing.art-medica@mail.ru</a>
                     <div class="footer-contact">
                         <i class="demo-icon icon-subtract-3"></i>
                         <span>09:00 до 20:00<span class="hours-sep"> </span><br class="hours-br">понедельник - суббота</span>

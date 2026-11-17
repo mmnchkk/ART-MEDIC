@@ -9,6 +9,7 @@ class ProjectStages extends Model
     protected $table = 'project_stages';
 
     protected $fillable = [
+        'project_id',
         'name'
     ];
 
