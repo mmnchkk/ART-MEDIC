@@ -6,6 +6,8 @@
     <x-slot:title>
         {{ !empty($section?->name) ? $section->name . ' | Арт-Медика' : 'Услуги | Арт-Медика' }}
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($section?->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $section?->keywords }}</x-slot:keywords>
 
     <div class="services-categories-page">
         <!-- Хлебные крошки -->
@@ -19,7 +21,7 @@
                 <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="{{ route('services.section', $section->sectionAll->id) }}">
+                <a href="{{ route('services.section', $section->sectionAll->slug) }}">
                     {{ $section->sectionAll->name }}
                 </a>
             @endif
@@ -46,7 +48,7 @@
         <!-- Сетка категорий (3 колонки) -->
         <div class="services-categories-grid">
             @forelse($categories as $cat)
-                <a href="{{ route('services.show', $cat->id) }}" class="services-category-card">
+                <a href="{{ route('services.show', $cat->slug) }}" class="services-category-card">
                     <h2 class="services-category-name">{{ $cat->name }}</h2>
                 </a>
             @empty

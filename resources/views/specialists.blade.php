@@ -45,7 +45,7 @@
         <!-- Сетка карточек специалистов -->
         <div class="specialists-grid">
             @forelse($specialists as $specialist)
-                <a href="{{ route('specialists.show', $specialist->id) }}" class="specialist-card">
+                <a href="{{ route('specialists.show', $specialist->slug) }}" class="specialist-card">
                     <div class="specialist-card-image">
                         @if($specialist->image)
                             @if(str_starts_with($specialist->image, 'http') || str_starts_with($specialist->image, '/'))

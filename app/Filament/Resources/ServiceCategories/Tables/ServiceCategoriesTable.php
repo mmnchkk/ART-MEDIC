@@ -24,6 +24,12 @@ class ServiceCategoriesTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable(),
+
                 TextColumn::make('created_at')
                     ->label('Дата создания')
                     ->dateTime()

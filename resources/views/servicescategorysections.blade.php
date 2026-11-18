@@ -6,6 +6,8 @@
     <x-slot:title>
         {{ !empty($sectionAll?->name) ? $sectionAll->name . ' | Арт-Медика' : 'Услуги | Арт-Медика' }}
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($sectionAll?->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $sectionAll?->keywords }}</x-slot:keywords>
 
     <div class="services-sections-page">
         <!-- Хлебные крошки -->
@@ -53,7 +55,7 @@
                             @endif
                         </div>
                         <div class="services-section-content-bottom">
-                            <a href="{{ route('services.category', $item->id) }}" class="services-section-btn">
+                            <a href="{{ route('services.category', $item->slug) }}" class="services-section-btn">
                                 Подробнее
                             </a>
                         </div>

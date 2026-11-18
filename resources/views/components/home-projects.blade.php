@@ -35,7 +35,7 @@
                     @php
                         $coverImg = $p->images->first()?->image;
                     @endphp
-                    <a href="{{ route('projects.show', $p->id) }}" class="home-project-card">
+                    <a href="{{ route('projects.show', $p->slug) }}" class="home-project-card">
                         <div class="home-project-card-top">
                             <span class="home-project-tag">Проекты</span>
                             <svg class="home-project-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

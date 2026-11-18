@@ -27,9 +27,20 @@ class SpecialistController extends Controller
         return view('specialists', compact('specialists', 'specialities', 'selectedSpeciality'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $specialist = Specialist::with(['specialities', 'educations', 'accreditations', 'directions'])->findOrFail($id);
+        if (is_numeric($slug)) {
+            if (str_contains((string)$slug, '.') || (int)$slug <= 0) {
+                abort(404);
+            }
+            $specialist = Specialist::findOrFail((int)$slug);
+            return redirect()->route('specialists.show', $specialist->slug, 301);
+        }
+
+        $specialist = Specialist::with(['specialities', 'educations', 'accreditations', 'directions'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
         return view('specialist_show', compact('specialist'));
     }
 }

@@ -55,7 +55,7 @@
                             ? (str_starts_with($s->image, 'http') || str_starts_with($s->image, '/') ? $s->image : asset('storage/' . $s->image))
                             : '/img/specialist-1.svg';
                     @endphp
-                    <a href="{{ route('specialists.show', $s->id) }}" 
+                    <a href="{{ route('specialists.show', $s->slug) }}" 
                        class="home-specialist-card" 
                        data-specs="{{ json_encode($specNames) }}">
                         <img src="{{ $cardImg }}" alt="{{ $s->full_name }}" class="home-specialist-img" loading="lazy" onerror="this.src='/img/specialist-1.svg'">

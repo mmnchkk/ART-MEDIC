@@ -2,11 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceCategory extends Model
 {
-    protected $fillable = ['parent_id', 'section_id', 'name'];
+    use HasSlug;
+
+    protected $fillable = [
+        'parent_id',
+        'section_id',
+        'name',
+        'slug',
+        'description',
+        'keywords',
+    ];
 
     public function parent()
     {

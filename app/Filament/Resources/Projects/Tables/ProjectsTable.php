@@ -21,6 +21,12 @@ class ProjectsTable
                     ->sortable()
                     ->description(fn ($record) => $record->short_desc ? \Illuminate\Support\Str::limit($record->short_desc, 50) : null),
 
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable(),
+
                 TextColumn::make('date')
                     ->label('Дата')
                     ->date('d.m.Y')

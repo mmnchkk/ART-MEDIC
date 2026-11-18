@@ -2,11 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceCategorySection extends Model
 {
-    protected $fillable = ['section_all_id', 'name', 'description', 'image'];
+    use HasSlug;
+
+    protected $fillable = [
+        'section_all_id',
+        'name',
+        'slug',
+        'description',
+        'keywords',
+        'image',
+    ];
 
     public function sectionAll()
     {

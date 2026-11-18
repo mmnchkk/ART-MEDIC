@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
+    @if(isset($description) && trim((string)$description) !== '')
+        <meta name="description" content="{{ trim(strip_tags(html_entity_decode((string)$description, ENT_QUOTES | ENT_HTML5, 'UTF-8'))) }}">
+    @endif
+    @if(isset($keywords) && trim((string)$keywords) !== '')
+        <meta name="keywords" content="{{ trim(strip_tags(html_entity_decode((string)$keywords, ENT_QUOTES | ENT_HTML5, 'UTF-8'))) }}">
+    @endif
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     @vite(['resources/css/header-footer.css', 'resources/css/accessible.css', 'resources/css/fontello.css', 'resources/js/app.js'])
     @stack('vite')
 </head>
@@ -102,7 +110,7 @@
                     </button>
                     <div x-show="servicesOpen" x-collapse class="drawer-services-sublist">
                         @foreach($headerServices as $allSec)
-                            <a href="{{ route('services.section', $allSec->id) }}" @click="mobileMenuOpen = false">
+                            <a href="{{ route('services.section', $allSec->slug) }}" @click="mobileMenuOpen = false">
                                 {{ $allSec->name }}
                             </a>
                         @endforeach
@@ -160,7 +168,7 @@
             <div class="footer-column">
                 <h3>Услуги</h3>
                 @foreach($headerServices as $allSec)
-                    <a href="{{ route('services.section', $allSec->id) }}">
+                    <a href="{{ route('services.section', $allSec->slug) }}">
                         {{ $allSec->name }}
                     </a>
                 @endforeach

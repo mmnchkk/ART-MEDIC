@@ -25,6 +25,12 @@ class PromotionsTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable(),
+
                 TextColumn::make('date')
                     ->label('Дата')
                     ->dateTime('d.m.Y')

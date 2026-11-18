@@ -35,6 +35,7 @@ use App\Models\Unco;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -182,7 +183,9 @@ foreach ($promotionsData as $promo) {
     $promotion = Promotion::firstOrCreate(
         ['name' => $promo['name']],
         [
+            'slug' => $promo['slug'] ?? Str::slug($promo['name']),
             'description' => $promo['description'],
+            'keywords' => mb_strtolower($promo['name'] . ', акция, скидка, арт-медика, челябинск'),
             'date' => $promo['date'],
             'image' => $promo['image'],
         ]
@@ -526,9 +529,11 @@ foreach ($uncosData as $unco) {
     Unco::updateOrCreate(
         ['title' => $unco['title']],
         [
+            'slug' => $unco['slug'] ?? Str::slug($unco['title']),
             'data' => $unco['data'],
             'image' => $unco['image'],
             'description' => $unco['description'],
+            'keywords' => mb_strtolower($unco['title'] . ', новости, арт-медика, челябинск'),
         ]
     );
 }
@@ -834,8 +839,10 @@ foreach ($projectsData as $projData) {
     $proj = Project::firstOrCreate(
         ['name' => $projData['name']],
         [
+            'slug' => Str::slug($projData['name']),
             'short_desc' => $projData['short_desc'],
             'description' => $projData['description'],
+            'keywords' => mb_strtolower($projData['name'] . ', проект, арт-медика, челябинск'),
             'date' => $projData['date'],
             'count_season' => $projData['count_season'],
             'count_members' => $projData['count_members'],
@@ -2401,6 +2408,7 @@ $specialistsData = [
 
 // Seeding logic to execute in DatabaseSeeder::run():
 foreach ($specialistsData as $data) {
+    $fullName = trim("{$data['lastname']} {$data['name']} {$data['middle_name']}");
     $specialist = Specialist::firstOrCreate(
         [
             'lastname' => $data['lastname'],
@@ -2408,7 +2416,9 @@ foreach ($specialistsData as $data) {
             'middle_name' => $data['middle_name'],
         ],
         [
+            'slug' => $data['slug'] ?? Str::slug($fullName),
             'description' => $data['description'],
+            'keywords' => mb_strtolower("{$fullName}, врач, специалист, арт-медика, челябинск"),
             'experience' => $data['experience'],
             'count_operations' => $data['count_operations'],
             'percentage_reviews' => $data['percentage_reviews'],
@@ -5479,6 +5489,40 @@ ServiceResult::firstOrCreate(['service_id' => $srv_9_0_4_0->id, 'image' => 'serv
             }
         }
 
+        // Ensure all seeded entities across the 8 target tables have valid, unique slug, description, and keywords
+        $targetModelClasses = [
+            ServiceCategorySectionAll::class,
+            ServiceCategorySection::class,
+            ServiceCategory::class,
+            Service::class,
+            Specialist::class,
+            Promotion::class,
+            Project::class,
+            Unco::class,
+        ];
 
+        foreach ($targetModelClasses as $modelClass) {
+            $records = $modelClass::whereNull('slug')
+                ->orWhere('slug', '')
+                ->orWhereNull('description')
+                ->orWhere('description', '')
+                ->orWhereNull('keywords')
+                ->orWhere('keywords', '')
+                ->get();
+
+            foreach ($records as $record) {
+                if (empty($record->slug)) {
+                    $record->slug = $record->generateUniqueSlug();
+                }
+                if (empty($record->description)) {
+                    $record->description = $record->generateDefaultDescription();
+                }
+                if (empty($record->keywords)) {
+                    $record->keywords = $record->generateDefaultKeywords();
+                }
+                $record->save();
+            }
+        }
     }
 }
+

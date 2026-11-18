@@ -26,6 +26,12 @@ class UncosTable
                     ->sortable()
                     ->wrap(),
 
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable(),
+
                 TextColumn::make('data')
                     ->label('Дата')
                     ->date('d.m.Y')

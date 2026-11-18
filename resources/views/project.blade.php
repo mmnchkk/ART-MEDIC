@@ -7,6 +7,8 @@
     <x-slot:title>
         {{ $project->name }}
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($project->description ?: $project->short_desc) }}</x-slot:description>
+    <x-slot:keywords>{{ $project->keywords }}</x-slot:keywords>
 
     <div class="projects-page">
         <!-- Хлебные крошки -->

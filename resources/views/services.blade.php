@@ -6,6 +6,8 @@
     <x-slot:title>
         {{ !empty($service?->name) ? $service->name . ' | Арт-Медика' : 'Услуга | Арт-Медика' }}
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($service?->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $service?->keywords }}</x-slot:keywords>
 
     <div class="services-detail-page">
         <!-- Хлебные крошки -->
@@ -20,7 +22,7 @@
                 <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="{{ route('services.section', $service->category->section->sectionAll->id) }}">
+                <a href="{{ route('services.section', $service->category->section->sectionAll->slug) }}">
                     {{ $service->category->section->sectionAll->name }}
                 </a>
             @endif
@@ -29,7 +31,7 @@
                 <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="{{ route('services.category', $service->category->section->id) }}">
+                <a href="{{ route('services.category', $service->category->section->slug) }}">
                     {{ $service->category->section->name }}
                 </a>
             @endif
@@ -38,7 +40,7 @@
                 <svg class="separator" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="{{ route('services.show', $service->category->id) }}">
+                <a href="{{ route('services.show', $service->category->slug) }}">
                     {{ $service->category->name }}
                 </a>
             @endif
@@ -68,7 +70,7 @@
 
                 <div class="service-header-desc">
                     @if(!empty($service->description))
-                        {!! $service->description !!}
+                        {!! strip_tags(preg_replace('#<script\b[^>]*>(.*?)</script>#is', '', $service->description), '<p><a><br><ul><ol><li><strong><em><b><i><h2><h3><h4><span><div>') !!}
                     @else
                         <p class="service-empty-text">Описание услуги готовится к публикации.</p>
                     @endif
@@ -252,7 +254,7 @@
                 @if($service->specialists && $service->specialists->isNotEmpty())
                     <div class="specialists-grid" style="margin-top: 2rem;">
                         @foreach($service->specialists as $specialist)
-                            <a href="{{ route('specialists.show', $specialist->id) }}" class="specialist-card">
+                            <a href="{{ route('specialists.show', $specialist->slug) }}" class="specialist-card">
                                 <div class="specialist-card-image">
                                     @if($specialist->image)
                                         @if(str_starts_with($specialist->image, 'http') || str_starts_with($specialist->image, '/'))

@@ -13,10 +13,18 @@ class UncoController extends Controller
         return view('unco', compact('uncos'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $unco = Unco::findOrFail($id);
-        $otherUncos = Unco::where('id', '!=', $id)->orderBy('data', 'desc')->take(4)->get();
+        if (is_numeric($slug)) {
+            if (str_contains((string)$slug, '.') || (int)$slug <= 0) {
+                abort(404);
+            }
+            $unco = Unco::findOrFail((int)$slug);
+            return redirect()->route('uncos.show', $unco->slug, 301);
+        }
+
+        $unco = Unco::where('slug', $slug)->firstOrFail();
+        $otherUncos = Unco::where('id', '!=', $unco->id)->orderBy('data', 'desc')->take(4)->get();
         return view('unco_show', compact('unco', 'otherUncos'));
     }
 }

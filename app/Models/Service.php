@@ -2,11 +2,22 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['category_id', 'name', 'description', 'preparation', 'method'];
+    use HasSlug;
+
+    protected $fillable = [
+        'category_id',
+        'name',
+        'slug',
+        'description',
+        'keywords',
+        'preparation',
+        'method',
+    ];
 
     public function category()
     {

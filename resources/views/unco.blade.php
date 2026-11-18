@@ -34,7 +34,7 @@
         <!-- Сетка карточек -->
         <div class="news-grid">
             @forelse ($uncos as $unco)
-            <a href="{{ route('uncos.show', $unco->id) }}" class="news-card">
+            <a href="{{ route('uncos.show', $unco->slug) }}" class="news-card">
                 <div class="news-card-header">
                     <span>Новость</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

@@ -7,6 +7,8 @@
     <x-slot:title>
         {{ $unco->title }} | Арт-Медика
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($unco?->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $unco->keywords }}</x-slot:keywords>
 
     <div class="news-page">
         <!-- Хлебные крошки -->
@@ -42,7 +44,7 @@
                 <img src="{{ asset('storage/' . $unco->image) }}" alt="{{ $unco->title }}" onerror="this.src='/img/news/cosmetology.jpg'">
             </div>
             <div class="news-detail-text">
-                {!! $unco->description !!}
+                {!! strip_tags(preg_replace('#<script\b[^>]*>(.*?)</script>#is', '', $unco->description), '<p><a><br><ul><ol><li><strong><em><b><i><h2><h3><h4><span><div>') !!}
             </div>
         </div>
 
@@ -50,7 +52,7 @@
         @if(count($otherUncos) > 0)
         <div class="news-grid" style="margin-bottom: 0;">
             @foreach ($otherUncos as $other)
-            <a href="{{ route('uncos.show', $other->id) }}" class="news-card">
+            <a href="{{ route('uncos.show', $other->slug) }}" class="news-card">
                 <div class="news-card-header">
                     <span>Новость</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

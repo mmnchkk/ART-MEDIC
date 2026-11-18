@@ -17,13 +17,22 @@ class PromotionController extends Controller
         return view('promotions', compact('promotions'));
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $slug)
     {
+        if (is_numeric($slug)) {
+            if (str_contains((string)$slug, '.') || (int)$slug <= 0) {
+                abort(404);
+            }
+            $promotion = Promotion::findOrFail((int)$slug);
+            return redirect()->route('promotions.show', $promotion->slug, 301);
+        }
+
         $promotion = Promotion::with(['services.prices', 'services.specialists'])
-            ->findOrFail($id);
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         $otherPromotions = Promotion::with('services')
-            ->where('id', '!=', $id)
+            ->where('id', '!=', $promotion->id)
             ->orderBy('date', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(2);

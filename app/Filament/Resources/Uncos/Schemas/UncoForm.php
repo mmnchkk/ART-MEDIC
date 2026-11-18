@@ -8,7 +8,11 @@ use Filament\Schemas\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class UncoForm
 {
@@ -26,19 +30,44 @@ class UncoForm
                                     ->label('Название новости')
                                     ->placeholder('Введите заголовок новости...')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (string $operation, ?string $state, Set $set, Get $get, ?Model $record) {
+                                        if ($operation === 'create') {
+                                            $set('slug', Str::slug((string) $state));
+                                            return;
+                                        }
+                                        $currentSlug = $get('slug');
+                                        $oldTitle = $record?->title;
+                                        if (blank($currentSlug) || $currentSlug === Str::slug((string) $oldTitle)) {
+                                            $set('slug', Str::slug((string) $state));
+                                        }
+                                    }),
+
+                                TextInput::make('slug')
+                                    ->label('Slug (URL)')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->unique(ignoreRecord: true),
 
                                 DatePicker::make('data')
                                     ->label('Дата публикации')
                                     ->required()
                                     ->native(false)
                                     ->displayFormat('d.m.Y')
-                                    ->default(now()),
+                                    ->default(now())
+                                    ->columnSpanFull(),
 
                                 RichEditor::make('description')
                                     ->label('Описание новости')
                                     ->placeholder('Подробный текст новости...')
                                     ->required()
+                                    ->columnSpanFull(),
+
+                                TextInput::make('keywords')
+                                    ->label('Ключевые слова (SEO)')
+                                    ->maxLength(255)
+                                    ->nullable()
                                     ->columnSpanFull(),
                             ])
                             ->columns(2),

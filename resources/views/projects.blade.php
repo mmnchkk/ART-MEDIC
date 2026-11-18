@@ -35,7 +35,7 @@
                 @endphp
                 <div class="project-card">
                     <div class="project-card-image-col">
-                        <a href="{{ route('projects.show', $project->id) }}">
+                        <a href="{{ route('projects.show', $project->slug) }}">
                             <img 
                                 src="{{ $coverImg ? asset('storage/' . $coverImg) : '/img/logo.svg' }}" 
                                 alt="{{ $project->name }}" 
@@ -47,12 +47,12 @@
                         <div class="project-card-content-top">
                             <div class="project-card-meta-top">
                                 <span class="project-card-tag">Проекты</span>
-                                <a href="{{ route('projects.show', $project->id) }}" class="project-card-arrow-icon" aria-label="Перейти к проекту">
+                                <a href="{{ route('projects.show', $project->slug) }}" class="project-card-arrow-icon" aria-label="Перейти к проекту">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path></svg>
                                 </a>
                             </div>
                             <h2 class="project-card-title">
-                                <a href="{{ route('projects.show', $project->id) }}" style="color: inherit; text-decoration: none;">
+                                <a href="{{ route('projects.show', $project->slug) }}" style="color: inherit; text-decoration: none;">
                                     {{ $project->name }}
                                 </a>
                             </h2>
@@ -60,7 +60,7 @@
                                 {{ $project->short_desc }}
                             </div>
                             <div class="project-card-btn-wrap">
-                                <a href="{{ route('projects.show', $project->id) }}" class="project-card-btn">
+                                <a href="{{ route('projects.show', $project->slug) }}" class="project-card-btn">
                                     Подробнее
                                 </a>
                             </div>

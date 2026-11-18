@@ -9,7 +9,11 @@ use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class ProjectForm
 {
@@ -27,13 +31,32 @@ class ProjectForm
                                     ->label('Название проекта')
                                     ->placeholder('Например: Молодежный медицинский форум')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (string $operation, ?string $state, Set $set, Get $get, ?Model $record) {
+                                        if ($operation === 'create') {
+                                            $set('slug', Str::slug((string) $state));
+                                            return;
+                                        }
+                                        $currentSlug = $get('slug');
+                                        $oldName = $record?->name;
+                                        if (blank($currentSlug) || $currentSlug === Str::slug((string) $oldName)) {
+                                            $set('slug', Str::slug((string) $state));
+                                        }
+                                    }),
+
+                                TextInput::make('slug')
+                                    ->label('Slug (URL)')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->unique(ignoreRecord: true),
 
                                 DatePicker::make('date')
                                     ->label('Дата проведения')
                                     ->required()
                                     ->native(false)
-                                    ->displayFormat('d.m.Y'),
+                                    ->displayFormat('d.m.Y')
+                                    ->columnSpanFull(),
 
                                 Textarea::make('short_desc')
                                     ->label('Краткое описание для карточки')
@@ -47,6 +70,12 @@ class ProjectForm
                                     ->placeholder('Детальное описание проекта...')
                                     ->rows(4)
                                     ->required()
+                                    ->columnSpanFull(),
+
+                                TextInput::make('keywords')
+                                    ->label('Ключевые слова (SEO)')
+                                    ->maxLength(255)
+                                    ->nullable()
                                     ->columnSpanFull(),
                             ])
                             ->columns(2),

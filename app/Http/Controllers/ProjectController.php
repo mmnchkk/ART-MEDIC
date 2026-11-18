@@ -13,10 +13,26 @@ class ProjectController extends Controller
         return view('projects', compact('projects'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $project = Project::with(['images', 'formatWorks', 'projectStages', 'partners'])->findOrFail($id);
-        $otherProjects = Project::with('images')->where('id', '!=', $id)->orderBy('date', 'desc')->take(3)->get();
+        if (is_numeric($slug)) {
+            if (str_contains((string)$slug, '.') || (int)$slug <= 0) {
+                abort(404);
+            }
+            $project = Project::findOrFail((int)$slug);
+            return redirect()->route('projects.show', $project->slug, 301);
+        }
+
+        $project = Project::with(['images', 'formatWorks', 'projectStages', 'partners'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $otherProjects = Project::with('images')
+            ->where('id', '!=', $project->id)
+            ->orderBy('date', 'desc')
+            ->take(3)
+            ->get();
+
         return view('project', compact('project', 'otherProjects'));
     }
 }

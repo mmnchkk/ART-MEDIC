@@ -34,7 +34,7 @@
         <!-- Сетка категорий -->
         <div class="services-grid">
             @forelse($sections as $item)
-                <a href="{{ route('services.section', $item->id) }}" class="service-card">
+                <a href="{{ route('services.show', $item->slug) }}" class="service-card">
                     <div class="service-card-image-wrap">
                         @if(!empty($item->image))
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="service-card-image" loading="lazy">

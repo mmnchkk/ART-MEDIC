@@ -58,14 +58,14 @@
                             @forelse($allSec->sections as $sec)
                                 <div class="home-service-card">
                                     <div class="home-service-card-content">
-                                        <a href="{{ route('services.category', $sec->id) }}" class="home-service-card-title">
+                                        <a href="{{ route('services.category', $sec->slug) }}" class="home-service-card-title">
                                             {{ $sec->name }}
                                         </a>
 
                                         @if($sec->categories && $sec->categories->count() > 0)
                                             <div class="home-service-categories-list">
                                                 @foreach($sec->categories as $cat)
-                                                    <a href="{{ route('services.show', $cat->id) }}" class="home-service-category-link">
+                                                    <a href="{{ route('services.show', $cat->slug) }}" class="home-service-category-link">
                                                         <span class="home-service-category-name">{{ $cat->name }}</span>
                                                         <svg class="home-service-category-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                             <line x1="5" y1="12" x2="19" y2="12"></line>

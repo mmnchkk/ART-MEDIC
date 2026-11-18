@@ -2,16 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Directory;
 use Illuminate\Database\Eloquent\Model;
 
 class Specialist extends Model
 {
+    use HasSlug;
+
     protected $fillable = [
         'lastname',
         'name',
         'middle_name',
+        'slug',
         'description',
+        'keywords',
         'experience',
         'count_operations',
         'percentage_reviews',

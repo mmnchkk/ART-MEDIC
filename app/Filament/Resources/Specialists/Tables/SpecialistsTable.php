@@ -33,6 +33,12 @@ class SpecialistsTable
                     ->label('Отчество')
                     ->searchable(),
 
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable(),
+
                 TextColumn::make('experience')
                     ->label('Опыт (лет)')
                     ->sortable(),

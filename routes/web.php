@@ -27,42 +27,42 @@ Route::get('/', function () {
 
 // Услуги (чистая и логичная структура)
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/section/{id?}', [ServiceController::class, 'sections'])->name('services.section');
-Route::get('/services/category/{id?}', [ServiceController::class, 'categories'])->name('services.category');
-Route::get('/service/{id?}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/services/section/{slug?}', [ServiceController::class, 'sections'])->name('services.section');
+Route::get('/services/category/{slug?}', [ServiceController::class, 'categories'])->name('services.category');
+Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/service/{slug?}', fn($slug = null) => $slug ? redirect()->route('services.show', $slug, 301) : redirect()->route('services.index', [], 301))->name('services.show.alias');
 
 // Алиасы для обратной совместимости старых путей
-Route::get('/servicescategorysectionsall', fn() => redirect()->route('services.index'))->name('servicescategorysectionsalls');
-Route::get('/servicescategorysections/{id?}', fn($id = null) => $id ? redirect()->route('services.section', $id) : redirect()->route('services.index'))->name('servicescategorysections');
-Route::get('/servicescategories/{id?}', fn($id = null) => $id ? redirect()->route('services.category', $id) : redirect()->route('services.index'))->name('servicescategories');
-Route::get('/services/{id}', fn($id) => redirect()->route('services.show', $id))->name('services');
+Route::get('/servicescategorysectionsall', fn() => redirect()->route('services.index', [], 301))->name('servicescategorysectionsalls');
+Route::get('/servicescategorysections/{slug?}', fn($slug = null) => $slug ? redirect()->route('services.section', $slug, 301) : redirect()->route('services.index', [], 301))->name('servicescategorysections');
+Route::get('/servicescategories/{slug?}', fn($slug = null) => $slug ? redirect()->route('services.category', $slug, 301) : redirect()->route('services.index', [], 301))->name('servicescategories');
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::get('/prices', [PriceController::class, 'index'])->name('prices');
 Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
-Route::get('/promotions/{id}', [PromotionController::class, 'show'])->name('promotions.show');
-Route::get('/offers', fn() => redirect()->route('promotions.index'))->name('offers');
+Route::get('/promotions/{slug}', [PromotionController::class, 'show'])->name('promotions.show');
+Route::get('/offers', fn() => redirect()->route('promotions.index', [], 301))->name('offers');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 Route::get('/quesAns', [QuestionAnswerController::class, 'index'])->name('quesAns');
 Route::get('/uncos', [UncoController::class, 'index'])->name('uncos');
-Route::get('/uncos/{id}', [UncoController::class, 'show'])->name('uncos.show');
+Route::get('/uncos/{slug}', [UncoController::class, 'show'])->name('uncos.show');
 Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
-Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('/clinic', [ClinicController::class, 'index'])->name('clinic');
 
 Route::get('/specialists', [SpecialistController::class, 'index'])->name('specialists');
-Route::get('/specialists/{id}', [SpecialistController::class, 'show'])->name('specialists.show');
+Route::get('/specialists/{slug}', [SpecialistController::class, 'show'])->name('specialists.show');
 
 // Русскоязычные пути art-medica.ru
 Route::get('/spetcialisty', [SpecialistController::class, 'index']);
-Route::get('/spetcialisty/{id}', [SpecialistController::class, 'show']);
+Route::get('/spetcialisty/{slug}', [SpecialistController::class, 'show']);
 Route::get('/uslugi', [ServiceController::class, 'index']);
-Route::get('/uslugi/{id}', [ServiceController::class, 'show']);
+Route::get('/uslugi/{slug}', [ServiceController::class, 'show']);
 Route::get('/price', [PriceController::class, 'index']);
 Route::get('/aktcii', [PromotionController::class, 'index']);
-Route::get('/aktcii/{id}', [PromotionController::class, 'show']);
+Route::get('/aktcii/{slug}', [PromotionController::class, 'show']);
 Route::get('/otzyvy', [ReviewController::class, 'index']);
 Route::get('/o-klinike/dokumenty-kliniki', [DocumentController::class, 'index']);
 Route::get('/o-klinike', [ClinicController::class, 'index']);

@@ -39,7 +39,7 @@
                     $tagText = $firstService ? 'Акции / ' . $firstService->name : 'Акции';
                     $cleanDesc = strip_tags($promotion->description);
                 @endphp
-                <a href="{{ route('promotions.show', $promotion->id) }}" class="promotion-card">
+                <a href="{{ route('promotions.show', $promotion->slug) }}" class="promotion-card">
                     <div class="promotion-card-image-col">
                         <img 
                             src="{{ $promotion->image ? asset('storage/' . $promotion->image) : '/img/logo.svg' }}" 

@@ -4,6 +4,8 @@
 
 <x-main>
     <x-slot:title>{{ $specialist->full_name }} | Арт-Медика</x-slot:title>
+    <x-slot:description>{{ strip_tags($specialist->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $specialist->keywords }}</x-slot:keywords>
 
     <div class="spec-page">
         <!-- Хлебные крошки (стиль как в Документах / О клинике) -->

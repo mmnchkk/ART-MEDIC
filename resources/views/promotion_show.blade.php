@@ -7,6 +7,8 @@
     <x-slot:title>
         {{ $promotion->name }} | Арт-Медика
     </x-slot:title>
+    <x-slot:description>{{ strip_tags($promotion?->description) }}</x-slot:description>
+    <x-slot:keywords>{{ $promotion->keywords }}</x-slot:keywords>
 
     <div class="promotions-page">
         @php
@@ -30,7 +32,7 @@
         <!-- Шапка: Слева название категории со стрелкой ↗, справа заголовок акции -->
         <div class="promotions-header">
             @if ($firstService)
-                <a href="{{ route('services.show', $firstService->id) }}" class="promotions-title" title="Перейти к услуге">
+                <a href="{{ route('services.show', $firstService->slug) }}" class="promotions-title" title="Перейти к услуге">
                     {{ $serviceCategoryName }}
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15"></path>
@@ -62,7 +64,7 @@
 
             <div class="promotions-detail-body">
                 <div class="promotions-detail-text">
-                    {!! $promotion->description !!}
+                    {!! strip_tags(preg_replace('#<script\b[^>]*>(.*?)</script>#is', '', $promotion->description), '<p><a><br><ul><ol><li><strong><em><b><i><h2><h3><h4><span><div>') !!}
                 </div>
 
                 @if ($promotion->date)
@@ -81,7 +83,7 @@
                 </h3>
                 <div class="promotions-detail-services-list">
                     @foreach ($promotion->services as $service)
-                        <a href="{{ route('services.show', $service->id) }}" class="promotions-detail-service-link">
+                        <a href="{{ route('services.show', $service->slug) }}" class="promotions-detail-service-link">
                             <span>{{ $service->name }}</span>
                             <span>Подробнее →</span>
                         </a>
@@ -100,7 +102,7 @@
                             $otherTag = $otherService ? 'Акции / ' . $otherService->name : 'Акции';
                             $otherCleanDesc = strip_tags($other->description);
                         @endphp
-                        <a href="{{ route('promotions.show', $other->id) }}" class="promotion-card">
+                        <a href="{{ route('promotions.show', $other->slug) }}" class="promotion-card">
                             <div class="promotion-card-image-col">
                                 <img 
                                     src="{{ $other->image ? asset('storage/' . $other->image) : '/img/logo.svg' }}" 
